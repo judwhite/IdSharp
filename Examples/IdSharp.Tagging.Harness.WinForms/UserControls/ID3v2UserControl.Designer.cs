@@ -51,6 +51,9 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.txtImageDescription = new System.Windows.Forms.TextBox();
             this.txtAlbum = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miLoadImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSaveImage = new System.Windows.Forms.ToolStripMenuItem();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.cmbImageType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,9 +68,12 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.cmbGenre = new System.Windows.Forms.ComboBox();
             this.imageOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.imageSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.imageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.miLoadImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSaveImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtPlayLength = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBitrate = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtFrequency = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).BeginInit();
             this.imageBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -128,7 +134,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.imageBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.imageBindingNavigator.Name = "imageBindingNavigator";
             this.imageBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.imageBindingNavigator.Size = new System.Drawing.Size(256, 25);
+            this.imageBindingNavigator.Size = new System.Drawing.Size(255, 25);
             this.imageBindingNavigator.TabIndex = 124;
             this.imageBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -145,7 +151,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -275,6 +281,33 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.pictureBox1.TabIndex = 123;
             this.pictureBox1.TabStop = false;
             // 
+            // imageContextMenu
+            // 
+            this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miLoadImage,
+            this.miSaveImage});
+            this.imageContextMenu.Name = "contextMenuStrip1";
+            this.imageContextMenu.Size = new System.Drawing.Size(99, 48);
+            this.imageContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.imageContextMenu_Opening);
+            // 
+            // miLoadImage
+            // 
+            this.miLoadImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.open_image16_h;
+            this.miLoadImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.miLoadImage.Name = "miLoadImage";
+            this.miLoadImage.Size = new System.Drawing.Size(98, 22);
+            this.miLoadImage.Text = "Load";
+            this.miLoadImage.Click += new System.EventHandler(this.miLoadImage_Click);
+            // 
+            // miSaveImage
+            // 
+            this.miSaveImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.save16_h;
+            this.miSaveImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.miSaveImage.Name = "miSaveImage";
+            this.miSaveImage.Size = new System.Drawing.Size(98, 22);
+            this.miSaveImage.Text = "Save";
+            this.miSaveImage.Click += new System.EventHandler(this.miSaveImage_Click);
+            // 
             // txtYear
             // 
             this.txtYear.Location = new System.Drawing.Point(94, 166);
@@ -390,37 +423,70 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.imageOpenFileDialog.Filter = "*.jpg, *.jpeg, *.png|*.jpg;*.jpeg;*.png";
             // 
-            // imageContextMenu
+            // txtPlayLength
             // 
-            this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miLoadImage,
-            this.miSaveImage});
-            this.imageContextMenu.Name = "contextMenuStrip1";
-            this.imageContextMenu.Size = new System.Drawing.Size(99, 48);
-            this.imageContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.imageContextMenu_Opening);
+            this.txtPlayLength.Location = new System.Drawing.Point(94, 247);
+            this.txtPlayLength.Name = "txtPlayLength";
+            this.txtPlayLength.ReadOnly = true;
+            this.txtPlayLength.Size = new System.Drawing.Size(146, 20);
+            this.txtPlayLength.TabIndex = 127;
+            this.txtPlayLength.TabStop = false;
             // 
-            // miLoadImage
+            // label7
             // 
-            this.miLoadImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.open_image16_h;
-            this.miLoadImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.miLoadImage.Name = "miLoadImage";
-            this.miLoadImage.Size = new System.Drawing.Size(98, 22);
-            this.miLoadImage.Text = "Load";
-            this.miLoadImage.Click += new System.EventHandler(this.miLoadImage_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 250);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.TabIndex = 128;
+            this.label7.Text = "Play length";
             // 
-            // miSaveImage
+            // txtBitrate
             // 
-            this.miSaveImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.save16_h;
-            this.miSaveImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.miSaveImage.Name = "miSaveImage";
-            this.miSaveImage.Size = new System.Drawing.Size(98, 22);
-            this.miSaveImage.Text = "Save";
-            this.miSaveImage.Click += new System.EventHandler(this.miSaveImage_Click);
+            this.txtBitrate.Location = new System.Drawing.Point(94, 273);
+            this.txtBitrate.Name = "txtBitrate";
+            this.txtBitrate.ReadOnly = true;
+            this.txtBitrate.Size = new System.Drawing.Size(146, 20);
+            this.txtBitrate.TabIndex = 129;
+            this.txtBitrate.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 276);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.TabIndex = 130;
+            this.label11.Text = "Bitrate";
+            // 
+            // txtFrequency
+            // 
+            this.txtFrequency.Location = new System.Drawing.Point(94, 299);
+            this.txtFrequency.Name = "txtFrequency";
+            this.txtFrequency.ReadOnly = true;
+            this.txtFrequency.Size = new System.Drawing.Size(146, 20);
+            this.txtFrequency.TabIndex = 131;
+            this.txtFrequency.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 302);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.TabIndex = 132;
+            this.label12.Text = "Frequency";
             // 
             // ID3v2UserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtFrequency);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtBitrate);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtPlayLength);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtFilename);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.imageBindingNavigator);
@@ -495,5 +561,11 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         private System.Windows.Forms.ContextMenuStrip imageContextMenu;
         private System.Windows.Forms.ToolStripMenuItem miLoadImage;
         private System.Windows.Forms.ToolStripMenuItem miSaveImage;
+        private System.Windows.Forms.TextBox txtPlayLength;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBitrate;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtFrequency;
+        private System.Windows.Forms.Label label12;
     }
 }

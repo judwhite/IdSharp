@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 using NUnit.Framework;
 
-namespace IdSharp.Tagging.Tests.Utils
+namespace IdSharp.Common.Tests.Utils
 {
     [TestFixture]
     public class CRC32Test

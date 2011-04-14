@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.Lyrics3
 {

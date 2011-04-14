@@ -117,6 +117,14 @@
     <Content Include="Resources\save16_h.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IdSharp.AudioInfo\IdSharp.AudioInfo.csproj">
+      <Project>{136F9938-42FC-4C63-B76E-9DAAD3A63864}</Project>
+      <Name>IdSharp.AudioInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IdSharp.Common\IdSharp.Common.csproj">
+      <Project>{1C83FB63-E16E-4380-9DD0-26E1799C417D}</Project>
+      <Name>IdSharp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\IdSharp.Tagging\IdSharp.Tagging.csproj">
       <Project>{A4BC39D2-FB08-4DCE-B485-0F49D21B106D}</Project>
       <Name>IdSharp.Tagging</Name>

@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel;
 using System.IO;
+using IdSharp.Common.Utils;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
-using IdSharp.Tagging.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {

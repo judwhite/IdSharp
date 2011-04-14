@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Libs.zlib;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2
 {

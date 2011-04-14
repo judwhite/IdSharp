@@ -2,7 +2,9 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
+using IdSharp.AudioInfo;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
 using IdSharp.Tagging.ID3v2.Frames;
@@ -155,6 +157,30 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
                     cmbID3v2.SelectedIndex = cmbID3v2.Items.IndexOf("ID3v2.4");
                     break;
             }
+
+            txtPlayLength.Text = string.Empty;
+            txtBitrate.Text = string.Empty;
+            txtFrequency.Text = string.Empty;
+
+            Thread t = new Thread(LoadAudioFileDetails);
+            t.Start(path);
+        }
+
+        private void LoadAudioFileDetails(object pathObject)
+        {
+            string path = (string)pathObject;
+
+            IAudioFile audioFile = AudioFile.Create(path, false);
+            decimal bitrate = audioFile.Bitrate; // force bitrate calculation
+
+            Invoke(new Action<IAudioFile>(SetAudioFileDetails), audioFile);
+        }
+
+        private void SetAudioFileDetails(IAudioFile audioFile)
+        {
+            txtPlayLength.Text = string.Format("{0}:{1:00}", (int)audioFile.TotalSeconds / 60, (int)audioFile.TotalSeconds % 60);
+            txtBitrate.Text = string.Format("{0:#,0} kbps", audioFile.Bitrate);
+            txtFrequency.Text = string.Format("{0:#,0} Hz", audioFile.Frequency);
         }
 
         public void SaveFile(string path)

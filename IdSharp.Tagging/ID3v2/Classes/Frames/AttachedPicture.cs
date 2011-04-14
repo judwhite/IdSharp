@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {

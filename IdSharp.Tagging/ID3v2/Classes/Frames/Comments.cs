@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {

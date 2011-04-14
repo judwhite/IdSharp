@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using IdSharp.Common.Utils;
 using IdSharp.Tagging.ID3v1;
-using IdSharp.Tagging.Utils;
 
 namespace IdSharp.Tagging.Mpeg4
 {

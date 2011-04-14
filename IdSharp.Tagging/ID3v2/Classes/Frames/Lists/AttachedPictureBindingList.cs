@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
-using IdSharp.Tagging.Utils.Events;
+using IdSharp.Common.Events;
 
 namespace IdSharp.Tagging.ID3v2.Frames.Lists
 {

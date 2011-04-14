@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using IdSharp.Tagging.Utils;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.VorbisComment
 {

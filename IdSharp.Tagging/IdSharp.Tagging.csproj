@@ -255,17 +255,6 @@
     <Compile Include="VorbisComment\NameValueList.cs" />
     <Compile Include="SimpleTag\ISimpleTag.cs" />
     <Compile Include="SimpleTag\SimpleTag.cs" />
-    <Compile Include="Utils\ByteUtils.cs" />
-    <Compile Include="Utils\Events\CancelDataEventArgs.cs" />
-    <Compile Include="Utils\CRC32.cs" />
-    <Compile Include="Utils\Events\DataEventArgs.cs" />
-    <Compile Include="Utils\Events\ErrorType.cs" />
-    <Compile Include="Utils\Events\INotifyInvalidData.cs" />
-    <Compile Include="Utils\Events\InvalidDataEventArgs.cs" />
-    <Compile Include="Utils\Events\InvalidDataEventHandler.cs" />
-    <Compile Include="Utils\MathUtils.cs" />
-    <Compile Include="Utils\PathUtils.cs" />
-    <Compile Include="Utils\StreamUtils.cs" />
     <Compile Include="VorbisComment\FlacMetaDataBlock.cs" />
     <Compile Include="VorbisComment\FlacMetaDataBlockType.cs" />
     <Compile Include="VorbisComment\IVorbisComment.cs" />
@@ -310,7 +299,12 @@
   <ItemGroup>
     <None Include="idsharp.tagging.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IdSharp.Common\IdSharp.Common.csproj">
+      <Project>{1C83FB63-E16E-4380-9DD0-26E1799C417D}</Project>
+      <Name>IdSharp.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

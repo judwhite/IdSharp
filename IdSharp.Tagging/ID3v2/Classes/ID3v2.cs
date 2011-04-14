@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using IdSharp.Common.Utils;
 using IdSharp.Tagging.ID3v2.Frames;
-using IdSharp.Tagging.Utils;
 
 namespace IdSharp.Tagging.ID3v2
 {

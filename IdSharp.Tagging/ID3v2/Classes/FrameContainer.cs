@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using IdSharp.Common.Events;
+using IdSharp.Common.Utils;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2.Frames;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
-using IdSharp.Tagging.Utils;
-using IdSharp.Tagging.Utils.Events;
 
 namespace IdSharp.Tagging.ID3v2
 {
