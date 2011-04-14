@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4BC39D2-FB08-4DCE-B485-0F49D21B106D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IdSharp.Tagging</RootNamespace>
+    <AssemblyName>IdSharp.Tagging</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>idsharp.tagging.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\IdSharp.Tagging.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\IdSharp.xml</DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zlib.net">
+      <HintPath>Libraries\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="APEv2\APEv2.Static.cs" />
+    <Compile Include="ID3v1\ID3v1.Static.cs" />
+    <Compile Include="ID3v2\Classes\Frame.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2.Static.cs" />
+    <Compile Include="Lyrics3\Lyrics3.cs" />
+    <Compile Include="Lyrics3\Lyrics3.Static.cs" />
+    <Compile Include="Mpeg4Tag\Mpeg4Tag.cs" />
+    <Compile Include="APEv2\APEv2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="APEv2\IAPEv2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ID3v1\ID3v1.cs" />
+    <Compile Include="ID3v1\ID3v1TagVersion.cs" />
+    <Compile Include="ID3v1\IID3v1.cs" />
+    <Compile Include="ID3v1\GenreHelper.cs" />
+    <Compile Include="ID3v2\Classes\FrameContainer.cs" />
+    <Compile Include="ID3v2\Classes\Frames\AudioEncryption.cs" />
+    <Compile Include="ID3v2\Classes\Frames\AudioSeekPointIndex.cs" />
+    <Compile Include="ID3v2\Classes\Frames\AudioText.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Comments.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Commercial.cs" />
+    <Compile Include="ID3v2\Classes\Frames\EncryptedMetaFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\EncryptionMethod.cs" />
+    <Compile Include="ID3v2\Classes\Frames\EqualizationList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\EventTiming.cs" />
+    <Compile Include="ID3v2\Classes\Frames\GeneralEncapsulatedObject.cs" />
+    <Compile Include="ID3v2\Classes\Frames\GroupIdentification.cs" />
+    <Compile Include="ID3v2\Classes\Frames\InvolvedPersonList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\EqualizationItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\EventTimingItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\InvolvedPerson.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\LanguageItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\MpegLookupTableItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\MusicianCreditsItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\SynchronizedTextItem.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\TempoData.cs" />
+    <Compile Include="ID3v2\Classes\Frames\LanguageFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\LinkedInformation.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\AudioEncryptionBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\AudioTextBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\CommercialBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\EncryptedMetaFrameBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\EncryptionMethodBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\EqualizationItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\EqualizationListBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\EventTimingItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\GroupIdentificationBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\InvolvedPersonBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\LanguageItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\CommentsBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\GeneralEncapsulatedObjectBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\LinkedInformationBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\MpegLookupTableItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\MusicianCreditsItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\PopularimeterBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\PriceInformationBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\PrivateFrameBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\RelativeVolumeAdjustmentBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\SignatureBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\SynchronizedTextBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\SynchronizedTextItemBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\TempoDataBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\TermsOfUseBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\UniqueFileIdentifierBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\UnsynchronizedLyricsBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\MpegLookupTable.cs" />
+    <Compile Include="ID3v2\Classes\Frames\MusicianCreditsList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Ownership.cs" />
+    <Compile Include="ID3v2\Classes\Frames\PlayCount.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Popularimeter.cs" />
+    <Compile Include="ID3v2\Classes\Frames\PositionSynchronization.cs" />
+    <Compile Include="ID3v2\Classes\Frames\PrivateFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\RecommendedBufferSize.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Reverb.cs" />
+    <Compile Include="ID3v2\Classes\Frames\SeekNextTag.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Signature.cs" />
+    <Compile Include="ID3v2\Classes\Frames\SynchronizedTempoCodes.cs" />
+    <Compile Include="ID3v2\Classes\Frames\SynchronizedText.cs" />
+    <Compile Include="ID3v2\Classes\Frames\TermsOfUse.cs" />
+    <Compile Include="ID3v2\Classes\Frames\MusicCDIdentifier.cs" />
+    <Compile Include="ID3v2\Classes\Frames\UniqueFileIdentifier.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\UrlBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\UserDefinedTextBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\UserDefinedUrlBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\RelativeVolumeAdjustment.cs" />
+    <Compile Include="ID3v2\Classes\Frames\TXXXFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\UnsynchronizedText.cs" />
+    <Compile Include="ID3v2\Classes\Frames\UrlFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\WXXXFrame.cs" />
+    <Compile Include="ID3v2\Enums\Enums.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IAttachedPicture.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IAudioEncryption.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IAudioSeekPointIndex.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IComments.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ICommercial.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IEncryptedMetaFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IEncryptionMethod.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IEqualizationList.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IEventTiming.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IGeneralEncapsulatedObject.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IGroupIdentification.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IInvolvedPersonList.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ILanguageFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ILinkedInformation.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IMpegLookupTable.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IMusicianCreditsList.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IOwnership.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IPlayCount.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IPopularimeter.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IPositionSynchronization.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IPrivateFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IRecommendedBufferSize.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IRelativeVolumeAdjustment.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IReverb.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ISeekNextTag.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ISignature.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IAudioText.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ISynchronizedTempoCodes.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ISynchronizedText.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\ILanguageItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IMusicianCreditsItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IEqualizationItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IEventTimingItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IInvolvedPerson.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IMpegLookupTableItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\IPriceString.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\ISynchronizedTextItem.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\Items\ITempoData.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Items\PriceInformation.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ITermsOfUse.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ITextEncoding.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ITextFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IMusicCDIdentifier.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\ITXXXFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IUniqueFileIdentifier.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IUnsynchronizedText.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IUrlFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\Frames\IWXXXFrame.cs" />
+    <Compile Include="ID3v2\Interfaces\IFrameContainer.cs" />
+    <Compile Include="ID3v2\Interfaces\IFrameHeader.cs" />
+    <Compile Include="ID3v2\Interfaces\IID3v2.cs" />
+    <Compile Include="ID3v2\Interfaces\IID3v2ExtendedHeader.cs" />
+    <Compile Include="ID3v2\Interfaces\IID3v2Header.cs" />
+    <Compile Include="ID3v2\Interfaces\ITagRestrictions.cs" />
+    <Compile Include="ID3v2\LanguageHelper.cs" />
+    <Compile Include="ID3v2\TagReadingInfo.cs" />
+    <Compile Include="ID3v2\Classes\FrameHeader.cs" />
+    <Compile Include="ID3v2\Classes\Frames\AttachedPicture.cs" />
+    <Compile Include="ID3v2\Classes\Frames\Lists\AttachedPictureBindingList.cs" />
+    <Compile Include="ID3v2\Classes\Frames\TextFrame.cs" />
+    <Compile Include="ID3v2\Classes\Frames\UnknownFrame.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2ExtendedHeader.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2Header.cs" />
+    <Compile Include="ID3v2\ID3v2Utils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VorbisComment\NameValueItem.cs" />
+    <Compile Include="ID3v2\FrameBinder.cs" />
+    <Compile Include="ID3v2\PictureTypeHelper.cs" />
+    <Compile Include="VorbisComment\NameValueList.cs" />
+    <Compile Include="SimpleTag\ISimpleTag.cs" />
+    <Compile Include="SimpleTag\SimpleTag.cs" />
+    <Compile Include="Utils\ByteUtils.cs" />
+    <Compile Include="Utils\Events\CancelDataEventArgs.cs" />
+    <Compile Include="Utils\CRC32.cs" />
+    <Compile Include="Utils\Events\DataEventArgs.cs" />
+    <Compile Include="Utils\Events\ErrorType.cs" />
+    <Compile Include="Utils\Events\INotifyInvalidData.cs" />
+    <Compile Include="Utils\Events\InvalidDataEventArgs.cs" />
+    <Compile Include="Utils\Events\InvalidDataEventHandler.cs" />
+    <Compile Include="Utils\MathUtils.cs" />
+    <Compile Include="Utils\PathUtils.cs" />
+    <Compile Include="Utils\StreamUtils.cs" />
+    <Compile Include="VorbisComment\FlacMetaDataBlock.cs" />
+    <Compile Include="VorbisComment\FlacMetaDataBlockType.cs" />
+    <Compile Include="VorbisComment\IVorbisComment.cs" />
+    <Compile Include="VorbisComment\VorbisComment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="idsharp.tagging.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
