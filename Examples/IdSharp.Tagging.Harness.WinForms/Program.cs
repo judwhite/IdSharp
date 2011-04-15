@@ -14,7 +14,7 @@ namespace IdSharp.Tagging.Harness.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+            Application.ThreadException += Application_ThreadException;
             Application.Run(new MainForm());
         }
 

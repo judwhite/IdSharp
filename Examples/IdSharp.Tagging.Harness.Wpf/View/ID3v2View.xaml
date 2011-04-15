@@ -1,0 +1,108 @@
+﻿<UserControl 
+    x:Class="IdSharp.Tagging.Harness.Wpf.View.ID3v2View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Converters="clr-namespace:IdSharp.Tagging.Harness.Wpf.Converters" 
+    mc:Ignorable="d" 
+    d:DesignHeight="300" 
+    d:DesignWidth="300"
+>
+    <UserControl.Resources>
+        <Converters:PlayLengthConverter x:Key="PlayLengthConverter" />
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="8,2,0,2" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="8,2,0,2" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="File name" />
+            <TextBlock Grid.Row="1" Text="ID3v2" />
+            <TextBlock Grid.Row="2" Text="Artist" />
+            <TextBlock Grid.Row="3" Text="Title" />
+            <TextBlock Grid.Row="4" Text="Album" />
+            <TextBlock Grid.Row="5" Text="Genre" />
+            <TextBlock Grid.Row="6" Text="Year" />
+            <TextBlock Grid.Row="7" Text="Track" />
+
+            <TextBlock Grid.Row="9" Text="Play length" />
+            <TextBlock Grid.Row="10" Text="Bitrate" />
+            <TextBlock Grid.Row="11" Text="Encoder/Preset" />
+            
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FileName, Mode=OneWay}" IsReadOnly="True" />
+            <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ID3v2VersionCollection}" SelectedItem="{Binding ID3v2Version, Mode=TwoWay}" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Artist, Mode=TwoWay}" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Title, Mode=TwoWay}" />
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Album, Mode=TwoWay}" />
+            <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding GenreCollection}" SelectedItem="{Binding Genre, Mode=TwoWay}" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Year, Mode=TwoWay}" />
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Track, Mode=TwoWay}" />
+
+            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding PlayLength, Mode=OneWay, Converter={StaticResource PlayLengthConverter}}" IsReadOnly="True" />
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Bitrate, Mode=OneWay, StringFormat='{}{0} kbps'}" IsReadOnly="True" />
+            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding EncoderPreset, Mode=OneWay}" IsReadOnly="True" />
+        </Grid>
+        
+        <Grid Grid.Column="1" Margin="16,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Image Grid.Row="0" Source="{Binding Path=CurrentPicture.ImageSource, Mode=TwoWay}" />
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Picture Type" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Description" />
+
+                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding PicturesTypes}" SelectedItem="{Binding Path=CurrentPicture.PictureType, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CurrentPicture.Description, Mode=TwoWay}" />
+            </Grid>
+        </Grid>
+            
+    </Grid>
+</UserControl>

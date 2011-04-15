@@ -1,0 +1,74 @@
+﻿<Window 
+    x:Class="IdSharp.Tagging.Harness.Wpf.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:IdSharp.Tagging.Harness.Wpf.View" Title="IdSharp Harness" 
+    Height="559" 
+    Width="811"
+    WindowStartupLocation="CenterScreen"
+>
+    <Grid Margin="16">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding Version, Mode=OneWay}" />
+        
+        <TabControl Grid.Row="1" Margin="0,8">
+            <TabControl.Items>                
+                
+                <TabItem Header="File">
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TabControl Grid.Row="0">
+                            <TabControl.Items>
+                                <TabItem Header="ID3v2">
+                                    <View:ID3v2View Margin="8,4" />
+                                </TabItem>
+                                <TabItem Header="ID3v1">
+                                    <View:ID3v1View Margin="8,4" />
+                                </TabItem>
+                            </TabControl.Items>
+                        </TabControl>
+                        
+                        <Grid Grid.Row="1" Grid.IsSharedSizeScope="True" Margin="0,8">
+                            <Grid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Padding" Value="10,2" />
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ButtonsGrid" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ButtonsGrid" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ButtonsGrid" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ButtonsGrid" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Button Grid.Column="0" Content="_Load" Command="{Binding LoadCommand}" Margin="0,0,8,0" />
+                            <Button Grid.Column="1" Content="_Save" Command="{Binding SaveCommand}" Margin="0,0,8,0" />
+                            <Button Grid.Column="2" Content="_Remove ID3v2" Command="{Binding RemoveID3v2Command}" Margin="0,0,8,0" />
+                            <Button Grid.Column="3" Content="R_emove ID3v1" Command="{Binding RemoveID3v1Command}" Margin="0,0,8,0" />
+                        </Grid>
+                    </Grid>
+                    
+                </TabItem>
+                
+                <TabItem Header="Scan">
+                    <View:ScanView Margin="8,4" />
+                </TabItem>
+                
+            </TabControl.Items>
+        </TabControl>
+        
+        <Button x:Name="CloseButton" Grid.Row="2" Content="Close" Padding="20,2" HorizontalAlignment="Right" Click="CloseButton_Click" />
+        
+    </Grid>
+</Window>
