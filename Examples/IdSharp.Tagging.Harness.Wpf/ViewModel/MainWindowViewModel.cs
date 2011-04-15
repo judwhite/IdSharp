@@ -15,6 +15,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         private readonly DelegateCommand _saveCommand;
         private readonly DelegateCommand _removeID3v1Command;
         private readonly DelegateCommand _removeID3v2Command;
+        private readonly DelegateCommand _closeCommand;
 
         private string _fileName;
 
@@ -34,6 +35,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             _saveCommand = new DelegateCommand(Save, () => CanSave);
             _removeID3v1Command = new DelegateCommand(RemoveID3v1, () => CanRemoveID3v1);
             _removeID3v2Command = new DelegateCommand(RemoveID3v2, () => CanRemoveID3v2);
+            _closeCommand = new DelegateCommand(CloseApplication);
         }
 
         public string Version
@@ -60,6 +62,11 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         public ICommand RemoveID3v1Command
         {
             get { return _removeID3v1Command; }
+        }
+
+        public ICommand CloseCommand
+        {
+            get { return _closeCommand; }
         }
 
         public bool CanSave
@@ -101,6 +108,11 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             }
         }
 
+        private void CloseApplication()
+        {
+            Application.Current.MainWindow.Close();
+        }
+
         private void Load()
         {
             if (_openFileDialog.ShowDialog() != true)
@@ -125,7 +137,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
         private void Save()
         {
-            EventDispatcher.Publish(EventType.SaveFile, _fileName);
+            EventDispatcher.Publish(EventType.SaveFile);
         }
 
         private void RemoveID3v1()

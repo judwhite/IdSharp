@@ -14,10 +14,5 @@ namespace IdSharp.Tagging.Harness.Wpf.View
 
             DataContext = new MainWindowViewModel();
         }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
     }
 }

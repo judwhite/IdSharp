@@ -10,6 +10,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         ICommand SaveCommand { get; }
         ICommand RemoveID3v2Command { get; }
         ICommand RemoveID3v1Command { get; }
+        ICommand CloseCommand { get; }
         bool CanSave { get; }
         bool CanRemoveID3v1 { get; }
         bool CanRemoveID3v2 { get; }

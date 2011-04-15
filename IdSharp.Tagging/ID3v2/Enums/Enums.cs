@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using IdSharp.Tagging.ID3v2.Frames;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 
@@ -505,16 +506,19 @@ namespace IdSharp.Tagging.ID3v2
     public enum ID3v2TagVersion : byte
     {
         /// <summary>
-        /// ID3v2.2.
+        /// ID3v2.2
         /// </summary>
+        [Description("ID3v2.2")]
         ID3v22 = 2,
         /// <summary>
-        /// ID3v2.3.
+        /// ID3v2.3
         /// </summary>
+        [Description("ID3v2.3")]
         ID3v23 = 3,
         /// <summary>
-        /// ID3v2.4.
+        /// ID3v2.4
         /// </summary>
+        [Description("ID3v2.4")]
         ID3v24 = 4
     }
 

@@ -59,6 +59,8 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandOfT.cs" />
     <Compile Include="Commands\WpfApplicationHelper.cs" />
+    <Compile Include="Converters\BitrateConverter.cs" />
+    <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\PlayLengthConverter.cs" />
     <Compile Include="Events\EventDispatcher.cs" />
     <Compile Include="Events\EventType.cs" />
@@ -80,6 +82,14 @@
     <Compile Include="View\ScanView.xaml.cs">
       <DependentUpon>ScanView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ID3v1View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

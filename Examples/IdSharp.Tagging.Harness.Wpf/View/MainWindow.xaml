@@ -21,7 +21,7 @@
                 
                 <TabItem Header="File">
                     
-                    <Grid>
+                    <Grid Margin="4,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
@@ -68,7 +68,7 @@
             </TabControl.Items>
         </TabControl>
         
-        <Button x:Name="CloseButton" Grid.Row="2" Content="Close" Padding="20,2" HorizontalAlignment="Right" Click="CloseButton_Click" />
+        <Button x:Name="CloseButton" Grid.Row="2" Content="Close" Padding="20,2" HorizontalAlignment="Right" Command="{Binding CloseCommand}" />
         
     </Grid>
 </Window>
