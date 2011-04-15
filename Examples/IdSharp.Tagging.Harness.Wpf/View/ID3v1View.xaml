@@ -1,11 +1,56 @@
-﻿<UserControl x:Class="IdSharp.Tagging.Harness.Wpf.View.ID3v1View"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+﻿<UserControl 
+    x:Class="IdSharp.Tagging.Harness.Wpf.View.ID3v1View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    d:DesignHeight="300" 
+    d:DesignWidth="300"
+>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="File name" />
+            <TextBlock Grid.Row="1" Text="ID3v1" />
+            <TextBlock Grid.Row="2" Text="Artist" />
+            <TextBlock Grid.Row="3" Text="Title" />
+            <TextBlock Grid.Row="4" Text="Album" />
+            <TextBlock Grid.Row="5" Text="Genre" />
+            <TextBlock Grid.Row="6" Text="Year" />
+            <TextBlock Grid.Row="7" Text="Track" />
+            <TextBlock Grid.Row="8" Text="Comment" />
+
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FileName, Mode=OneWay}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="30" />
+            <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ID3v1VersionCollection, Converter={StaticResource EnumDescriptionConverter}}" SelectedItem="{Binding ID3v1Version, Mode=TwoWay, Converter={StaticResource EnumDescriptionConverter}}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Artist, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="30" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Title, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="30" />
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Album, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="30" />
+            <ComboBox Grid.Row="5" Grid.Column="1" IsEditable="False" ItemsSource="{Binding GenreCollection}" Text="{Binding Genre, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Year, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="4" />
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Track, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}" IsEnabled="{Binding ID3v1Version, Mode=OneWay, Converter={StaticResource IsEnumEqualConverter}, ConverterParameter=ID3v11}" />
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Comment, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" MaxLength="{Binding ID3v1Version, Converter={StaticResource ID3v1CommentLengthConverter}}" />
+        </Grid>
+
     </Grid>
 </UserControl>

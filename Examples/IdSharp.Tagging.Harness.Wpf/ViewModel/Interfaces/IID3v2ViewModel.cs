@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using IdSharp.Tagging.Harness.Wpf.Model;
 using IdSharp.Tagging.ID3v2;
 
 namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
@@ -20,5 +21,6 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         ObservableCollection<string> GenreCollection { get; }
         ObservableCollection<ID3v2TagVersion> ID3v2VersionCollection { get; }
         ID3v2TagVersion? ID3v2Version { get; }
+        Picture CurrentPicture { get; set; }
     }
 }

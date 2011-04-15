@@ -7,7 +7,7 @@ namespace IdSharp.Tagging.ID3v2
     /// <summary>
     /// Provides methods for reading, writing, and updating ID3v2 tags.
     /// </summary>
-    public interface IID3v2 : IFrameContainer
+    public interface IID3v2Tag : IFrameContainer
     {
         /// <summary>
         /// Gets the ID3v2 header.

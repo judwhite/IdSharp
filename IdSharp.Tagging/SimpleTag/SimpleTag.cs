@@ -186,9 +186,9 @@ namespace IdSharp.Tagging.SimpleTag
             String tagVersion = String.Empty;
 
             // ID3v2
-            if (ID3v2.ID3v2.DoesTagExist(stream))
+            if (ID3v2.ID3v2Tag.DoesTagExist(stream))
             {
-                ID3v2.ID3v2 id3v2 = new ID3v2.ID3v2(stream);
+                ID3v2.ID3v2Tag id3v2 = new ID3v2.ID3v2Tag(stream);
                 Title = id3v2.Title;
                 Artist = id3v2.Artist;
                 Album = id3v2.Album;
@@ -221,9 +221,9 @@ namespace IdSharp.Tagging.SimpleTag
             }
 
             // ID3v1
-            if (ID3v1.ID3v1.DoesTagExist(stream))
+            if (ID3v1.ID3v1Tag.DoesTagExist(stream))
             {
-                ID3v1.ID3v1 id3v1 = new ID3v1.ID3v1(stream);
+                ID3v1.ID3v1Tag id3v1 = new ID3v1.ID3v1Tag(stream);
 
                 // Use ID3v1 fields if ID3v2 doesn't exist or field is blank
                 if (!id3v2Found || String.IsNullOrEmpty(Title)) Title = id3v1.Title;
@@ -300,12 +300,12 @@ namespace IdSharp.Tagging.SimpleTag
                 vc.Comment = Comment;
                 vc.Write(path);
 
-                ID3v2.ID3v2.RemoveTag(path);
-                ID3v1.ID3v1.RemoveTag(path);
+                ID3v2.ID3v2Tag.RemoveTag(path);
+                ID3v1.ID3v1Tag.RemoveTag(path);
             }
             else
             {
-                ID3v2.ID3v2 id3v2 = new ID3v2.ID3v2(path);
+                ID3v2.ID3v2Tag id3v2 = new ID3v2.ID3v2Tag(path);
                 id3v2.Title = Title;
                 id3v2.Artist = Artist;
                 id3v2.Album = Album;
@@ -323,7 +323,7 @@ namespace IdSharp.Tagging.SimpleTag
                         id3v2.CommentsList.AddNew().Description = Comment;
                 }
 
-                ID3v1.ID3v1 id3v1 = new ID3v1.ID3v1(path);
+                ID3v1.ID3v1Tag id3v1 = new ID3v1.ID3v1Tag(path);
                 id3v1.Title = Title;
                 id3v1.Artist = Artist;
                 id3v1.Album = Album;

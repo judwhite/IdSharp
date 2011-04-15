@@ -11,7 +11,7 @@ namespace IdSharp.Tagging.Lyrics3
     /// <summary>
     /// Lyrics3
     /// </summary>
-    public partial class Lyrics3
+    public partial class Lyrics3Tag
     {
         private readonly byte[] _lyrics200 = Encoding.ASCII.GetBytes("LYRICS200");
         private readonly byte[] _lyricsBegin = Encoding.ASCII.GetBytes("LYRICSBEGIN");
@@ -20,17 +20,17 @@ namespace IdSharp.Tagging.Lyrics3
         private readonly Dictionary<string, string> _keyValues = new Dictionary<string, string>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Lyrics3"/> class.
+        /// Initializes a new instance of the <see cref="Lyrics3Tag"/> class.
         /// </summary>
-        public Lyrics3()
+        public Lyrics3Tag()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Lyrics3"/> class.
+        /// Initializes a new instance of the <see cref="Lyrics3Tag"/> class.
         /// </summary>
         /// <param name="path">The full path of the file.</param>
-        public Lyrics3(string path)
+        public Lyrics3Tag(string path)
             : this()
         {
             if (string.IsNullOrEmpty(path))
@@ -43,10 +43,10 @@ namespace IdSharp.Tagging.Lyrics3
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Lyrics3"/> class.
+        /// Initializes a new instance of the <see cref="Lyrics3Tag"/> class.
         /// </summary>
         /// <param name="stream">The stream from which to read the tag.</param>
-        public Lyrics3(Stream stream)
+        public Lyrics3Tag(Stream stream)
             : this()
         {
             if (stream == null)

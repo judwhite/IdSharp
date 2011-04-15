@@ -3,9 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:Converters="clr-namespace:IdSharp.Tagging.Harness.Wpf.Converters"
 >
-    
+
     <Converters:PlayLengthConverter x:Key="PlayLengthConverter" />
     <Converters:BitrateConverter x:Key="BitrateConverter" />
     <Converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
-    
+    <Converters:ID3v1CommentLengthConverter x:Key="ID3v1CommentLengthConverter" />
+    <Converters:NullableIntConverter x:Key="NullableIntConverter" />
+    <Converters:IsEnumEqualConverter x:Key="IsEnumEqualConverter" />
+
 </ResourceDictionary>

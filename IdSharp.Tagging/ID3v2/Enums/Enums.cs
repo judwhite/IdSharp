@@ -374,86 +374,107 @@ namespace IdSharp.Tagging.ID3v2
         /// <summary>
         /// Other.
         /// </summary>
+        [Description("Other")]
         Other = 0x00,
         /// <summary>
         /// 32x32 pixels 'file icon' (PNG only).
         /// </summary>
+        [Description("File icon (32x32 PNG)")]
         FileIcon32x32Png = 0x01,
         /// <summary>
         /// Other file icon.
         /// </summary>
+        [Description("Other file icon")]
         OtherFileIcon = 0x02,
         /// <summary>
         /// Cover (front).
         /// </summary>
+        [Description("Cover (front)")]
         CoverFront = 0x03,
         /// <summary>
         /// Cover (back).
         /// </summary>
+        [Description("Cover (back)")]
         CoverBack = 0x04,
         /// <summary>
         /// Leaflet page.
         /// </summary>
+        [Description("Leaflet page")]
         LeafletPage = 0x05,
         /// <summary>
         /// Media (e.g. label side of CD).
         /// </summary>
+        [Description("Media (e.g. label side of CD)")]
         MediaLabelSideOfCD = 0x06,
         /// <summary>
         /// Lead artist/lead performer/soloist.
         /// </summary>
+        [Description("Lead artist/performer")]
         LeadArtistPerformer = 0x07,
         /// <summary>
         /// Artist/performer.
         /// </summary>
+        [Description("Artist/performer")]
         ArtistPerformer = 0x08,
         /// <summary>
         /// Conductor.
         /// </summary>
+        [Description("Conductor")]
         Conductor = 0x09,
         /// <summary>
         /// Band/Orchestra.
         /// </summary>
+        [Description("Band/orchestra")]
         BandOrchestra = 0x0A,
         /// <summary>
         /// Composer.
         /// </summary>
+        [Description("Composer")]
         Composer = 0x0B,
         /// <summary>
         /// Lyricist/text writer.
         /// </summary>
+        [Description("Lyricist")]
         Lyricist = 0x0C,
         /// <summary>
         /// Recording location.
         /// </summary>
+        [Description("Recording location")]
         RecordingLocation = 0x0D,
         /// <summary>
         /// During recording.
         /// </summary>
+        [Description("During recording")]
         DuringRecording = 0x0E,
         /// <summary>
         /// During performance.
         /// </summary>
+        [Description("During performance")]
         DuringPerformance = 0x0F,
         /// <summary>
         /// Movie/video screen capture.
         /// </summary>
+        [Description("Movie/video screen capture")]
         MovieVideoScreenCapture = 0x10,
         /// <summary>
         /// A bright colored fish.
         /// </summary>
+        [Description("A bright colored fish")]
         ABrightColoredFish = 0x11,
         /// <summary>
         /// Illustration.
         /// </summary>
+        [Description("Illustration")]
         Illustration = 0x12,
         /// <summary>
         /// Band/artist logotype.
         /// </summary>
+        [Description("Band/artist logo")]
         BandArtistLogo = 0x13,
         /// <summary>
         /// Publisher/Studio logotype.
         /// </summary>
+        [Description("Publisher/studio logo")]
         PublisherStudioLogo = 0x14
     }
 

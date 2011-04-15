@@ -3,7 +3,7 @@ using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.APEv2
 {
-    public partial class APEv2
+    public partial class APEv2Tag
     {
         /// <summary>
         /// Gets the APEv2 tag size from a specified stream. Returns 0 if no tag exists.
@@ -14,7 +14,7 @@ namespace IdSharp.Tagging.APEv2
             long currentPosition = stream.Position;
             try
             {
-                APEv2 apev2 = new APEv2();
+                APEv2Tag apev2 = new APEv2Tag();
                 apev2.ReadStream(stream, false);
                 return apev2.TagSize;
             }
@@ -61,7 +61,7 @@ namespace IdSharp.Tagging.APEv2
         /// <returns><c>true</c> if an APEv2 tag was removed; otherwise, <c>false</c>.</returns>
         public static bool RemoveTag(string path)
         {
-            APEv2 apev2 = new APEv2();
+            APEv2Tag apev2 = new APEv2Tag();
             using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 apev2.ReadStream(fileStream, false);

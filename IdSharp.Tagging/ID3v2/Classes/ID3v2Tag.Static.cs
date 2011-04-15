@@ -3,7 +3,7 @@ using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2
 {
-    public partial class ID3v2
+    public partial class ID3v2Tag
     {
         /// <summary>
         /// Gets the ID3v2 tag size from a specified stream.  Returns 0 if no tag exists.

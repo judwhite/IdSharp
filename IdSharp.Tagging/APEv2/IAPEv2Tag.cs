@@ -6,7 +6,7 @@ namespace IdSharp.Tagging.APEv2
     /// <summary>
     /// Provides methods for reading, writing, and updating APEv2 tags.
     /// </summary>
-    public interface IAPEv2 : INotifyPropertyChanged
+    public interface IAPEv2Tag : INotifyPropertyChanged
     {
         /// <summary>
         /// Reads the raw data from a specified file.

@@ -85,27 +85,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APEv2\APEv2Tag.cs" />
+    <Compile Include="APEv2\APEv2Tag.Static.cs" />
+    <Compile Include="APEv2\IAPEv2Tag.cs" />
+    <Compile Include="ID3v1\ID3v1Tag.cs" />
+    <Compile Include="ID3v1\ID3v1Tag.Static.cs" />
+    <Compile Include="ID3v1\IID3v1Tag.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2Tag.cs" />
+    <Compile Include="ID3v2\Classes\ID3v2Tag.Static.cs" />
+    <Compile Include="ID3v2\Interfaces\IID3v2Tag.cs" />
+    <Compile Include="Lyrics3\Lyrics3Tag.cs" />
+    <Compile Include="Lyrics3\Lyrics3Tag.Static.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="APEv2\APEv2.Static.cs" />
-    <Compile Include="ID3v1\ID3v1.Static.cs" />
     <Compile Include="ID3v2\Classes\Frame.cs" />
-    <Compile Include="ID3v2\Classes\ID3v2.Static.cs" />
-    <Compile Include="Lyrics3\Lyrics3.cs" />
-    <Compile Include="Lyrics3\Lyrics3.Static.cs" />
     <Compile Include="Mpeg4Tag\Mpeg4Tag.cs" />
-    <Compile Include="APEv2\APEv2.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="APEv2\IAPEv2.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ID3v1\ID3v1.cs" />
     <Compile Include="ID3v1\ID3v1TagVersion.cs" />
-    <Compile Include="ID3v1\IID3v1.cs" />
     <Compile Include="ID3v1\GenreHelper.cs" />
     <Compile Include="ID3v2\Classes\FrameContainer.cs" />
     <Compile Include="ID3v2\Classes\Frames\AudioEncryption.cs" />
@@ -233,7 +231,6 @@
     <Compile Include="ID3v2\Interfaces\Frames\IWXXXFrame.cs" />
     <Compile Include="ID3v2\Interfaces\IFrameContainer.cs" />
     <Compile Include="ID3v2\Interfaces\IFrameHeader.cs" />
-    <Compile Include="ID3v2\Interfaces\IID3v2.cs" />
     <Compile Include="ID3v2\Interfaces\IID3v2ExtendedHeader.cs" />
     <Compile Include="ID3v2\Interfaces\IID3v2Header.cs" />
     <Compile Include="ID3v2\Interfaces\ITagRestrictions.cs" />
@@ -244,7 +241,6 @@
     <Compile Include="ID3v2\Classes\Frames\Lists\AttachedPictureBindingList.cs" />
     <Compile Include="ID3v2\Classes\Frames\TextFrame.cs" />
     <Compile Include="ID3v2\Classes\Frames\UnknownFrame.cs" />
-    <Compile Include="ID3v2\Classes\ID3v2.cs" />
     <Compile Include="ID3v2\Classes\ID3v2ExtendedHeader.cs" />
     <Compile Include="ID3v2\Classes\ID3v2Header.cs" />
     <Compile Include="ID3v2\ID3v2Utils.cs" />

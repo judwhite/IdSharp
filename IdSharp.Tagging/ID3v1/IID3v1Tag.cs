@@ -6,7 +6,7 @@ namespace IdSharp.Tagging.ID3v1
     /// <summary>
     /// ID3v1 interface.
     /// </summary>
-    public interface IID3v1 : INotifyPropertyChanged
+    public interface IID3v1Tag : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets or sets the title.

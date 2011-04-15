@@ -83,7 +83,7 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Picture Type" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Description" />
 
-                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding PicturesTypes}" SelectedItem="{Binding Path=CurrentPicture.PictureType, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding PictureTypeCollection, Converter={StaticResource EnumDescriptionConverter}}" SelectedItem="{Binding Path=CurrentPicture.PictureType, Mode=TwoWay, Converter={StaticResource EnumDescriptionConverter}}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CurrentPicture.Description, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
             </Grid>
         </Grid>

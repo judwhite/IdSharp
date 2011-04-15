@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace IdSharp.Tagging.ID3v2
 {
@@ -8,13 +9,23 @@ namespace IdSharp.Tagging.ID3v2
     public static class PictureTypeHelper
     {
         private static readonly SortedDictionary<string, PictureType> m_PictureTypeDictionary;
-        private static readonly string[] m_PictureTypes;
+        private static readonly string[] m_PictureTypeStrings;
+        private static readonly PictureType[] m_PictureTypes;
+
+        /// <summary>
+        /// Gets the picture type strings.
+        /// </summary>
+        /// <value>The picture type strings.</value>
+        public static string[] PictureTypeStrings
+        {
+            get { return m_PictureTypeStrings; }
+        }
 
         /// <summary>
         /// Gets the picture types.
         /// </summary>
         /// <value>The picture types.</value>
-        public static string[] PictureTypes
+        public static PictureType[] PictureTypes
         {
             get { return m_PictureTypes; }
         }
@@ -51,33 +62,50 @@ namespace IdSharp.Tagging.ID3v2
         static PictureTypeHelper()
         {
             m_PictureTypeDictionary = new SortedDictionary<string, PictureType>();
-            m_PictureTypeDictionary.Add("Other", PictureType.Other);
-            m_PictureTypeDictionary.Add("File icon (32x32 PNG)", PictureType.FileIcon32x32Png);
-            m_PictureTypeDictionary.Add("Other file icon", PictureType.OtherFileIcon);
-            m_PictureTypeDictionary.Add("Cover (front)", PictureType.CoverFront);
-            m_PictureTypeDictionary.Add("Cover (back)", PictureType.CoverBack);
-            m_PictureTypeDictionary.Add("Leaflet page", PictureType.LeafletPage);
-            m_PictureTypeDictionary.Add("Media (e.g. label side of CD)", PictureType.MediaLabelSideOfCD);
-            m_PictureTypeDictionary.Add("Lead artist/performer", PictureType.LeadArtistPerformer);
-            m_PictureTypeDictionary.Add("Artist/performer", PictureType.ArtistPerformer);
-            m_PictureTypeDictionary.Add("Conductor", PictureType.Conductor);
-            m_PictureTypeDictionary.Add("Band/orchestra", PictureType.BandOrchestra);
-            m_PictureTypeDictionary.Add("Composer", PictureType.Composer);
-            m_PictureTypeDictionary.Add("Lyricist", PictureType.Lyricist);
-            m_PictureTypeDictionary.Add("Recording location", PictureType.RecordingLocation);
-            m_PictureTypeDictionary.Add("During recording", PictureType.DuringRecording);
-            m_PictureTypeDictionary.Add("During performance", PictureType.DuringPerformance);
-            m_PictureTypeDictionary.Add("Movie/video screen capture", PictureType.MovieVideoScreenCapture);
-            m_PictureTypeDictionary.Add("Illustration", PictureType.Illustration);
-            m_PictureTypeDictionary.Add("Band/artist logo", PictureType.BandArtistLogo);
-            m_PictureTypeDictionary.Add("Publisher/studio logo", PictureType.PublisherStudioLogo);
+            
+            AddToPictureTypeDictionary(PictureType.Other);
+            AddToPictureTypeDictionary(PictureType.FileIcon32x32Png);
+            AddToPictureTypeDictionary(PictureType.OtherFileIcon);
+            AddToPictureTypeDictionary(PictureType.CoverFront);
+            AddToPictureTypeDictionary(PictureType.CoverBack);
+            AddToPictureTypeDictionary(PictureType.LeafletPage);
+            AddToPictureTypeDictionary(PictureType.MediaLabelSideOfCD);
+            AddToPictureTypeDictionary(PictureType.LeadArtistPerformer);
+            AddToPictureTypeDictionary(PictureType.ArtistPerformer);
+            AddToPictureTypeDictionary(PictureType.Conductor);
+            AddToPictureTypeDictionary(PictureType.BandOrchestra);
+            AddToPictureTypeDictionary(PictureType.Composer);
+            AddToPictureTypeDictionary(PictureType.Lyricist);
+            AddToPictureTypeDictionary(PictureType.RecordingLocation);
+            AddToPictureTypeDictionary(PictureType.DuringRecording);
+            AddToPictureTypeDictionary(PictureType.DuringPerformance);
+            AddToPictureTypeDictionary(PictureType.MovieVideoScreenCapture);
+            AddToPictureTypeDictionary(PictureType.Illustration);
+            AddToPictureTypeDictionary(PictureType.BandArtistLogo);
+            AddToPictureTypeDictionary(PictureType.PublisherStudioLogo);
 
-            m_PictureTypes = new string[m_PictureTypeDictionary.Count];
+            m_PictureTypeStrings = new string[m_PictureTypeDictionary.Count];
+            m_PictureTypes = new PictureType[m_PictureTypeDictionary.Count];
+            
             int i = 0;
-            foreach (string pictureType in m_PictureTypeDictionary.Keys)
+            foreach (KeyValuePair<string, PictureType> kvp in m_PictureTypeDictionary)
             {
-                m_PictureTypes[i++] = pictureType;
+                m_PictureTypeStrings[i] = kvp.Key;
+                m_PictureTypes[i] = kvp.Value;
+
+                i++;
             }
+        }
+
+        private static void AddToPictureTypeDictionary(PictureType pictureType)
+        {
+            string enumString = pictureType.ToString();
+
+            object[] descriptions = typeof(PictureType).GetField(enumString).GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (descriptions.Length == 1)
+                enumString = ((DescriptionAttribute)descriptions[0]).Description;
+
+            m_PictureTypeDictionary.Add(enumString, pictureType);
         }
     }
 }

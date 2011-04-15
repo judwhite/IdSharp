@@ -16,7 +16,7 @@ namespace IdSharp.Tagging.APEv2
     /// Doesn't handle binary encoded fields
     /// Doesn't provide mappings from standard field keys to properties
     /// </summary>
-    public partial class APEv2 : IAPEv2
+    public partial class APEv2Tag : IAPEv2Tag
     {
         /// <summary>
         /// Occurs when a property value changes.
@@ -43,27 +43,27 @@ namespace IdSharp.Tagging.APEv2
         private string _language;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="APEv2"/> class.
+        /// Initializes a new instance of the <see cref="APEv2Tag"/> class.
         /// </summary>
-        public APEv2()
+        public APEv2Tag()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="APEv2"/> class.
+        /// Initializes a new instance of the <see cref="APEv2Tag"/> class.
         /// </summary>
         /// <param name="path">The full path of the file.</param>
-        public APEv2(string path)
+        public APEv2Tag(string path)
             : this()
         {
             Read(path);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="APEv2"/> class.
+        /// Initializes a new instance of the <see cref="APEv2Tag"/> class.
         /// </summary>
         /// <param name="stream">The stream to read from.</param>
-        public APEv2(Stream stream)
+        public APEv2Tag(Stream stream)
             : this()
         {
             ReadStream(stream);

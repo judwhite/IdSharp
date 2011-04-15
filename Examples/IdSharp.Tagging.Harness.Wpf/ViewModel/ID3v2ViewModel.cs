@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
 using IdSharp.AudioInfo;
 using IdSharp.AudioInfo.Inspection;
 using IdSharp.Tagging.Harness.Wpf.Events;
+using IdSharp.Tagging.Harness.Wpf.Model;
 using IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
@@ -12,8 +14,10 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
     {
         private static readonly ObservableCollection<string> _genreCollection;
         private static readonly ObservableCollection<ID3v2TagVersion> _id3v2VersionCollection;
+        private static readonly ObservableCollection<PictureType> _pictureTypeCollection;
 
-        private ID3v2.ID3v2 _id3v2;
+        private IID3v2Tag _id3v2;
+        private string _fullFileName;
         private string _fileName;
         private string _artist;
         private string _title;
@@ -25,12 +29,14 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         private decimal? _bitrate;
         private string _encoderPreset;
         private ID3v2TagVersion? _id3v2Version;
+        private Picture _currentPicture;
         private bool _canSave;
 
         static ID3v2ViewModel()
         {
             _genreCollection = new ObservableCollection<string>(GenreHelper.GetSortedGenreList());
             _id3v2VersionCollection = new ObservableCollection<ID3v2TagVersion> { ID3v2TagVersion.ID3v22, ID3v2TagVersion.ID3v23, ID3v2TagVersion.ID3v24 };
+            _pictureTypeCollection = new ObservableCollection<PictureType>(PictureTypeHelper.PictureTypes);
         }
 
         public ID3v2ViewModel()
@@ -205,13 +211,33 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             get { return _id3v2VersionCollection; }
         }
 
+        public ObservableCollection<PictureType> PictureTypeCollection
+        {
+            get { return _pictureTypeCollection; }
+        }
+
+        public Picture CurrentPicture
+        {
+            get { return _currentPicture; }
+            set
+            {
+                if (_currentPicture != value)
+                {
+                    _currentPicture = value;
+                    SendPropertyChanged("CurrentPicture");
+                }
+            }
+        }
+
         private void OnLoadFile(string fileName)
         {
-            _id3v2 = new ID3v2.ID3v2(fileName);
+            _id3v2 = new ID3v2Tag(fileName);
             IAudioFile audioFile = AudioFile.Create(fileName, true);
             DescriptiveLameTagReader lameTagReader = new DescriptiveLameTagReader(fileName);
 
-            FileName = fileName;
+            _fullFileName = fileName;
+
+            FileName = Path.GetFileName(fileName);
             Artist = _id3v2.Artist;
             Title = _id3v2.Title;
             Album = _id3v2.Album;
@@ -220,13 +246,22 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             Track = _id3v2.TrackNumber;
             ID3v2Version = _id3v2.Header.TagVersion;
 
+            if (_id3v2.PictureList == null || _id3v2.PictureList.Count == 0)
+            {
+                CurrentPicture = null;
+            }
+            else
+            {
+                CurrentPicture = new Picture(_id3v2.PictureList[0]);
+            }
+
             PlayLength = audioFile.TotalSeconds;
             Bitrate = audioFile.Bitrate;
             EncoderPreset = string.Format("{0} {1}", lameTagReader.LameTagInfoEncoder, lameTagReader.UsePresetGuess == UsePresetGuess.NotNeeded ? lameTagReader.Preset : lameTagReader.PresetGuess);
 
             CanSave = true;
 
-            // TODO: Pictures
+            // TODO: Picture collection
         }
 
         private void OnSaveFile()
@@ -239,11 +274,9 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             _id3v2.TrackNumber = Track;
             _id3v2.Header.TagVersion = ID3v2Version.Value;
 
-            // TODO: Pictures
+            // TODO: Picture collection
 
-            _id3v2.Save(_fileName);
-
-            OnLoadFile(_fileName);
+            _id3v2.Save(_fullFileName);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace IdSharp.Tagging.ID3v1
     /// <summary>
     /// ID3v1
     /// </summary>
-    public partial class ID3v1 : IID3v1
+    public partial class ID3v1Tag : IID3v1Tag
     {
         private string _title;
         private string _artist;
@@ -20,19 +20,19 @@ namespace IdSharp.Tagging.ID3v1
         private ID3v1TagVersion _tagVersion;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v1"/> class.
+        /// Initializes a new instance of the <see cref="ID3v1Tag"/> class.
         /// </summary>
-        public ID3v1()
+        public ID3v1Tag()
         {
             _tagVersion = ID3v1TagVersion.ID3v11;
             _genreIndex = 12; // Other
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v1"/> class.
+        /// Initializes a new instance of the <see cref="ID3v1Tag"/> class.
         /// </summary>
         /// <param name="path">The full path of the file.</param>
-        public ID3v1(string path)
+        public ID3v1Tag(string path)
         {
             _tagVersion = ID3v1TagVersion.ID3v11;
             _genreIndex = 12; // Other
@@ -40,10 +40,10 @@ namespace IdSharp.Tagging.ID3v1
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v1"/> class.
+        /// Initializes a new instance of the <see cref="ID3v1Tag"/> class.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        public ID3v1(Stream stream)
+        public ID3v1Tag(Stream stream)
         {
             _tagVersion = ID3v1TagVersion.ID3v11;
             _genreIndex = 12; // Other
@@ -224,15 +224,15 @@ namespace IdSharp.Tagging.ID3v1
                     // ID3v1.1
                     if (buf[28] == 0 && buf[29] != 0)
                     {
+                        TagVersion = ID3v1TagVersion.ID3v11;
                         Comment = comment.Substring(0, 28).TrimEnd('\0').TrimEnd(' ');
                         TrackNumber = buf[29];
-                        TagVersion = ID3v1TagVersion.ID3v11;
                     }
                     else
                     {
+                        TagVersion = ID3v1TagVersion.ID3v10;
                         Comment = comment;
                         TrackNumber = null;
-                        TagVersion = ID3v1TagVersion.ID3v10;
                     }
 
                     int genreIndex = stream.Read1();

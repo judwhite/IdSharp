@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
 
 namespace IdSharp.Tagging.Harness.WinForms
@@ -73,7 +74,7 @@ namespace IdSharp.Tagging.Harness.WinForms
                 DialogResult result = MessageBox.Show(string.Format("Remove ID3v2 tag from '{0}'?", Path.GetFileName(m_Filename)), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Boolean success = ID3v2.ID3v2.RemoveTag(m_Filename);
+                    bool success = ID3v2Tag.RemoveTag(m_Filename);
                     if (success)
                         MessageBox.Show("ID3v2 tag successfully removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -81,7 +82,7 @@ namespace IdSharp.Tagging.Harness.WinForms
                 }
             }
 
-            btnRemoveID3v2.Enabled = ID3v2.ID3v2.DoesTagExist(m_Filename);
+            btnRemoveID3v2.Enabled = ID3v2Tag.DoesTagExist(m_Filename);
             ucID3v2.LoadFile(m_Filename);
         }
 
@@ -96,7 +97,7 @@ namespace IdSharp.Tagging.Harness.WinForms
                 DialogResult result = MessageBox.Show(string.Format("Remove ID3v1 tag from '{0}'?", Path.GetFileName(m_Filename)), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Boolean success = ID3v1.ID3v1.RemoveTag(m_Filename);
+                    Boolean success = ID3v1Tag.RemoveTag(m_Filename);
                     if (success)
                         MessageBox.Show("ID3v1 tag successfully removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -104,7 +105,7 @@ namespace IdSharp.Tagging.Harness.WinForms
                 }
             }
 
-            btnRemoveID3v1.Enabled = ID3v1.ID3v1.DoesTagExist(m_Filename);
+            btnRemoveID3v1.Enabled = ID3v1Tag.DoesTagExist(m_Filename);
             ucID3v1.LoadFile(m_Filename);
         }
 
@@ -145,7 +146,7 @@ namespace IdSharp.Tagging.Harness.WinForms
                         break;
                     }
 
-                    IID3v2 id3 = new ID3v2.ID3v2(fileList[i].FullName);
+                    IID3v2Tag id3 = new ID3v2Tag(fileList[i].FullName);
 
                     trackList.Add(new Track(id3.Artist, id3.Title, id3.Album, id3.Year, id3.Genre, fileList[i].Name));
 
@@ -207,8 +208,8 @@ namespace IdSharp.Tagging.Harness.WinForms
             ucID3v1.LoadFile(m_Filename);
 
             btnSave.Enabled = true;
-            btnRemoveID3v2.Enabled = ID3v2.ID3v2.DoesTagExist(m_Filename);
-            btnRemoveID3v1.Enabled = ID3v1.ID3v1.DoesTagExist(m_Filename);
+            btnRemoveID3v2.Enabled = ID3v2Tag.DoesTagExist(m_Filename);
+            btnRemoveID3v1.Enabled = ID3v1Tag.DoesTagExist(m_Filename);
         }
 
         private void SaveFile(string path)

@@ -127,8 +127,8 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             EventDispatcher.Publish(EventType.LoadFile, _fileName);
 
             CanSave = true;
-            CanRemoveID3v2 = ID3v2.ID3v2.DoesTagExist(_fileName);
-            CanRemoveID3v1 = ID3v1.ID3v1.DoesTagExist(_fileName);
+            CanRemoveID3v2 = ID3v2.ID3v2Tag.DoesTagExist(_fileName);
+            CanRemoveID3v1 = ID3v1.ID3v1Tag.DoesTagExist(_fileName);
 
             _saveCommand.RaiseCanExecuteChanged();
             _removeID3v2Command.RaiseCanExecuteChanged();
@@ -138,6 +138,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         private void Save()
         {
             EventDispatcher.Publish(EventType.SaveFile);
+            LoadFile(_fileName);
         }
 
         private void RemoveID3v1()
@@ -145,7 +146,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             if (MessageBox.Show("Remove ID3v1 tag?", "Remove ID3v1 tag", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
                 return;
 
-            ID3v1.ID3v1.RemoveTag(_fileName);
+            ID3v1.ID3v1Tag.RemoveTag(_fileName);
 
             LoadFile(_fileName);
         }
@@ -155,7 +156,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             if (MessageBox.Show("Remove ID3v2 tag?", "Remove ID3v2 tag", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
                 return;
 
-            ID3v2.ID3v2.RemoveTag(_fileName);
+            ID3v2.ID3v2Tag.RemoveTag(_fileName);
 
             LoadFile(_fileName);
         }

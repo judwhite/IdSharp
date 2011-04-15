@@ -11,7 +11,7 @@ namespace IdSharp.Tagging.ID3v2
     /// <summary>
     /// ID3v2
     /// </summary>
-    public partial class ID3v2 : FrameContainer, IID3v2
+    public partial class ID3v2Tag : FrameContainer, IID3v2Tag
     {
         private ID3v2Header _id3v2Header;
         private ID3v2ExtendedHeader _id3v2ExtendedHeader;
@@ -19,29 +19,29 @@ namespace IdSharp.Tagging.ID3v2
         #region <<< Constructor >>>
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v2"/> class.
+        /// Initializes a new instance of the <see cref="ID3v2Tag"/> class.
         /// </summary>
-        public ID3v2()
+        public ID3v2Tag()
         {
             _id3v2Header = new ID3v2Header();
             _id3v2ExtendedHeader = new ID3v2ExtendedHeader();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v2"/> class.
+        /// Initializes a new instance of the <see cref="ID3v2Tag"/> class.
         /// </summary>
         /// <param name="path">The full path of the file.</param>
-        public ID3v2(string path)
+        public ID3v2Tag(string path)
             : this()
         {
             Read(path);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ID3v2"/> class.
+        /// Initializes a new instance of the <see cref="ID3v2Tag"/> class.
         /// </summary>
         /// <param name="stream">The stream to read from.</param>
-        public ID3v2(Stream stream)
+        public ID3v2Tag(Stream stream)
             : this()
         {
             ReadStream(stream);
@@ -215,7 +215,7 @@ namespace IdSharp.Tagging.ID3v2
                 // Make sure WE can read it without throwing errors
                 // TODO: Take this out eventually, this is just a precaution.
                 tag.Position = 0;
-                ID3v2 newID3v2 = new ID3v2();
+                ID3v2Tag newID3v2 = new ID3v2Tag();
                 newID3v2.ReadStream(tag);
 
                 return tag.ToArray();

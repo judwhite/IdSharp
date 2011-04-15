@@ -7,7 +7,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
 {
     public partial class ID3v1UserControl : UserControl
     {
-        private IID3v1 _id3v1;
+        private IID3v1Tag _id3v1;
 
         public ID3v1UserControl()
         {
@@ -41,7 +41,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
 
         public void LoadFile(string path)
         {
-            _id3v1 = new ID3v1.ID3v1(path);
+            _id3v1 = new ID3v1Tag(path);
 
             txtFilename.Text = Path.GetFileName(path);
             txtArtist.Text = _id3v1.Artist;

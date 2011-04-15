@@ -4,7 +4,7 @@ using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.Lyrics3
 {
-    public partial class Lyrics3
+    public partial class Lyrics3Tag
     {
         /// <summary>
         /// Gets the Lyrics3 tag size from a specified stream. Returns 0 if no tag exists.
@@ -15,7 +15,7 @@ namespace IdSharp.Tagging.Lyrics3
             if (stream == null)
                 throw new ArgumentNullException("stream");
 
-            return new Lyrics3(stream).TotalTagSize;
+            return new Lyrics3Tag(stream).TotalTagSize;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace IdSharp.Tagging.Lyrics3
             if (string.IsNullOrEmpty(path))
                 throw new ArgumentNullException("path");
 
-            Lyrics3 lyrics3 = new Lyrics3(path);
+            Lyrics3Tag lyrics3 = new Lyrics3Tag(path);
             int tagSize = lyrics3.TotalTagSize;
 
             if (tagSize > 0)

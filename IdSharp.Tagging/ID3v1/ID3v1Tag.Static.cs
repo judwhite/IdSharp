@@ -3,7 +3,7 @@ using System.IO;
 
 namespace IdSharp.Tagging.ID3v1
 {
-    public partial class ID3v1
+    public partial class ID3v1Tag
     {
         /// <summary>
         /// Gets the ID3v1 tag size from a specified stream.  Returns 128 if an ID3v1 tag exists; otherwise, 0.

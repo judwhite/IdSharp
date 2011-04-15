@@ -402,7 +402,7 @@ namespace IdSharp.Tagging.VorbisComment
                 using (FileStream fsWrite = File.Open(path, FileMode.CreateNew, FileAccess.Write, FileShare.None))
                 {
                     // copy ID3v2 tag.. technically there shouldn't be one, but we don't want to destroy data
-                    int tmpID3v2TagSize = ID3v2.ID3v2.GetTagSize(fsRead);
+                    int tmpID3v2TagSize = ID3v2.ID3v2Tag.GetTagSize(fsRead);
                     if (tmpID3v2TagSize != 0)
                     {
                         byte[] id3v2 = fsRead.Read(tmpID3v2TagSize);
@@ -434,7 +434,7 @@ namespace IdSharp.Tagging.VorbisComment
             using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
             {
                 // skip fLaC marker and ID3v2 tag size
-                int tmpID3v2TagSize = ID3v2.ID3v2.GetTagSize(fs);
+                int tmpID3v2TagSize = ID3v2.ID3v2Tag.GetTagSize(fs);
                 fs.Position = tmpID3v2TagSize + 4;
 
                 byte blockType;
@@ -716,7 +716,7 @@ namespace IdSharp.Tagging.VorbisComment
             info.OrigVorbisCommentSize = 0;
 
             // Skip ID3v2 tag
-            int tmpID3v2TagSize = ID3v2.ID3v2.GetTagSize(stream);
+            int tmpID3v2TagSize = ID3v2.ID3v2Tag.GetTagSize(stream);
             stream.Seek(tmpID3v2TagSize, SeekOrigin.Begin);
 
             if (IsFlac(stream))

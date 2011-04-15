@@ -14,7 +14,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
 {
     public partial class ID3v2UserControl : UserControl
     {
-        private IID3v2 _id3v2;
+        private IID3v2Tag _id3v2;
 
         public ID3v2UserControl()
         {
@@ -23,7 +23,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             cmbGenre.Sorted = true;
             cmbGenre.Items.AddRange(GenreHelper.GenreByIndex);
 
-            cmbImageType.Items.AddRange(PictureTypeHelper.PictureTypes);
+            cmbImageType.Items.AddRange(PictureTypeHelper.PictureTypeStrings);
         }
 
         private void bindingSource_CurrentChanged(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         {
             ClearImageData();
 
-            _id3v2 = new ID3v2.ID3v2(path);
+            _id3v2 = new ID3v2Tag(path);
 
             txtFilename.Text = Path.GetFileName(path);
             txtArtist.Text = _id3v2.Artist;
