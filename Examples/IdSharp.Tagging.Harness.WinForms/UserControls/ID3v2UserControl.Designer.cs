@@ -72,7 +72,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.label7 = new System.Windows.Forms.Label();
             this.txtBitrate = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtFrequency = new System.Windows.Forms.TextBox();
+            this.txtEncoderPreset = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).BeginInit();
             this.imageBindingNavigator.SuspendLayout();
@@ -82,10 +82,10 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtFilename
             // 
-            this.txtFilename.Location = new System.Drawing.Point(94, 9);
+            this.txtFilename.Location = new System.Drawing.Point(98, 9);
             this.txtFilename.Name = "txtFilename";
             this.txtFilename.ReadOnly = true;
-            this.txtFilename.Size = new System.Drawing.Size(310, 20);
+            this.txtFilename.Size = new System.Drawing.Size(300, 20);
             this.txtFilename.TabIndex = 101;
             this.txtFilename.TabStop = false;
             // 
@@ -237,16 +237,16 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtArtist
             // 
-            this.txtArtist.Location = new System.Drawing.Point(94, 62);
+            this.txtArtist.Location = new System.Drawing.Point(98, 62);
             this.txtArtist.Name = "txtArtist";
-            this.txtArtist.Size = new System.Drawing.Size(310, 20);
+            this.txtArtist.Size = new System.Drawing.Size(300, 20);
             this.txtArtist.TabIndex = 104;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(94, 88);
+            this.txtTitle.Location = new System.Drawing.Point(98, 88);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(310, 20);
+            this.txtTitle.Size = new System.Drawing.Size(300, 20);
             this.txtTitle.TabIndex = 105;
             // 
             // txtImageDescription
@@ -262,9 +262,9 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtAlbum
             // 
-            this.txtAlbum.Location = new System.Drawing.Point(94, 114);
+            this.txtAlbum.Location = new System.Drawing.Point(98, 114);
             this.txtAlbum.Name = "txtAlbum";
-            this.txtAlbum.Size = new System.Drawing.Size(310, 20);
+            this.txtAlbum.Size = new System.Drawing.Size(300, 20);
             this.txtAlbum.TabIndex = 107;
             // 
             // pictureBox1
@@ -287,7 +287,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.miLoadImage,
             this.miSaveImage});
             this.imageContextMenu.Name = "contextMenuStrip1";
-            this.imageContextMenu.Size = new System.Drawing.Size(99, 48);
+            this.imageContextMenu.Size = new System.Drawing.Size(101, 48);
             this.imageContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.imageContextMenu_Opening);
             // 
             // miLoadImage
@@ -295,7 +295,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.miLoadImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.open_image16_h;
             this.miLoadImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.miLoadImage.Name = "miLoadImage";
-            this.miLoadImage.Size = new System.Drawing.Size(98, 22);
+            this.miLoadImage.Size = new System.Drawing.Size(100, 22);
             this.miLoadImage.Text = "Load";
             this.miLoadImage.Click += new System.EventHandler(this.miLoadImage_Click);
             // 
@@ -304,13 +304,13 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.miSaveImage.Image = global::IdSharp.Tagging.Harness.WinForms.Properties.Resources.save16_h;
             this.miSaveImage.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.miSaveImage.Name = "miSaveImage";
-            this.miSaveImage.Size = new System.Drawing.Size(98, 22);
+            this.miSaveImage.Size = new System.Drawing.Size(100, 22);
             this.miSaveImage.Text = "Save";
             this.miSaveImage.Click += new System.EventHandler(this.miSaveImage_Click);
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(94, 166);
+            this.txtYear.Location = new System.Drawing.Point(98, 166);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(75, 20);
             this.txtYear.TabIndex = 114;
@@ -366,7 +366,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtTrackNumber
             // 
-            this.txtTrackNumber.Location = new System.Drawing.Point(94, 192);
+            this.txtTrackNumber.Location = new System.Drawing.Point(98, 192);
             this.txtTrackNumber.Name = "txtTrackNumber";
             this.txtTrackNumber.Size = new System.Drawing.Size(75, 20);
             this.txtTrackNumber.TabIndex = 115;
@@ -388,7 +388,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             "ID3v2.2",
             "ID3v2.3",
             "ID3v2.4"});
-            this.cmbID3v2.Location = new System.Drawing.Point(94, 35);
+            this.cmbID3v2.Location = new System.Drawing.Point(98, 35);
             this.cmbID3v2.Name = "cmbID3v2";
             this.cmbID3v2.Size = new System.Drawing.Size(75, 21);
             this.cmbID3v2.TabIndex = 103;
@@ -414,7 +414,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // cmbGenre
             // 
             this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(94, 140);
+            this.cmbGenre.Location = new System.Drawing.Point(98, 140);
             this.cmbGenre.Name = "cmbGenre";
             this.cmbGenre.Size = new System.Drawing.Size(146, 21);
             this.cmbGenre.TabIndex = 111;
@@ -425,7 +425,8 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtPlayLength
             // 
-            this.txtPlayLength.Location = new System.Drawing.Point(94, 247);
+            this.txtPlayLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPlayLength.Location = new System.Drawing.Point(98, 247);
             this.txtPlayLength.Name = "txtPlayLength";
             this.txtPlayLength.ReadOnly = true;
             this.txtPlayLength.Size = new System.Drawing.Size(146, 20);
@@ -434,6 +435,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(10, 250);
             this.label7.Name = "label7";
@@ -443,7 +445,8 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtBitrate
             // 
-            this.txtBitrate.Location = new System.Drawing.Point(94, 273);
+            this.txtBitrate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtBitrate.Location = new System.Drawing.Point(98, 273);
             this.txtBitrate.Name = "txtBitrate";
             this.txtBitrate.ReadOnly = true;
             this.txtBitrate.Size = new System.Drawing.Size(146, 20);
@@ -452,6 +455,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(10, 276);
             this.label11.Name = "label11";
@@ -459,29 +463,31 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.label11.TabIndex = 130;
             this.label11.Text = "Bitrate";
             // 
-            // txtFrequency
+            // txtEncoderPreset
             // 
-            this.txtFrequency.Location = new System.Drawing.Point(94, 299);
-            this.txtFrequency.Name = "txtFrequency";
-            this.txtFrequency.ReadOnly = true;
-            this.txtFrequency.Size = new System.Drawing.Size(146, 20);
-            this.txtFrequency.TabIndex = 131;
-            this.txtFrequency.TabStop = false;
+            this.txtEncoderPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtEncoderPreset.Location = new System.Drawing.Point(98, 299);
+            this.txtEncoderPreset.Name = "txtEncoderPreset";
+            this.txtEncoderPreset.ReadOnly = true;
+            this.txtEncoderPreset.Size = new System.Drawing.Size(300, 20);
+            this.txtEncoderPreset.TabIndex = 131;
+            this.txtEncoderPreset.TabStop = false;
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(10, 302);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 132;
-            this.label12.Text = "Frequency";
+            this.label12.Text = "Encoder/Preset";
             // 
             // ID3v2UserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtFrequency);
+            this.Controls.Add(this.txtEncoderPreset);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtBitrate);
             this.Controls.Add(this.label11);
@@ -565,7 +571,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBitrate;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtFrequency;
+        private System.Windows.Forms.TextBox txtEncoderPreset;
         private System.Windows.Forms.Label label12;
     }
 }

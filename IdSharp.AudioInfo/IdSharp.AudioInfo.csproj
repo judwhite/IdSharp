@@ -77,6 +77,13 @@
     <Compile Include="IAudioFile.cs" />
     <Compile Include="MonkeysAudio\MonkeysAudio.cs" />
     <Compile Include="Mpeg4\Mpeg4.cs" />
+    <Compile Include="Mpeg\Inspection\BasicLameTagReader.cs" />
+    <Compile Include="Mpeg\Inspection\DescriptiveLameTagReader.cs" />
+    <Compile Include="Mpeg\Inspection\Enums.cs" />
+    <Compile Include="Mpeg\Inspection\MpegAudio.cs" />
+    <Compile Include="Mpeg\Inspection\PresetGuesser.cs" />
+    <Compile Include="Mpeg\Inspection\PresetGuessRow.cs" />
+    <Compile Include="Mpeg\Inspection\Structs.cs" />
     <Compile Include="Mpeg\Mpeg.cs" />
     <Compile Include="Mpeg\MpegLayer.cs" />
     <Compile Include="Mpeg\MpegVersion.cs" />

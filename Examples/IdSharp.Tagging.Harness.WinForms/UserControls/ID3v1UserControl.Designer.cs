@@ -50,10 +50,10 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtFilename
             // 
-            this.txtFilename.Location = new System.Drawing.Point(94, 9);
+            this.txtFilename.Location = new System.Drawing.Point(98, 9);
             this.txtFilename.Name = "txtFilename";
             this.txtFilename.ReadOnly = true;
-            this.txtFilename.Size = new System.Drawing.Size(310, 20);
+            this.txtFilename.Size = new System.Drawing.Size(300, 20);
             this.txtFilename.TabIndex = 101;
             this.txtFilename.TabStop = false;
             // 
@@ -68,31 +68,31 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtArtist
             // 
-            this.txtArtist.Location = new System.Drawing.Point(94, 62);
+            this.txtArtist.Location = new System.Drawing.Point(98, 62);
             this.txtArtist.MaxLength = 30;
             this.txtArtist.Name = "txtArtist";
-            this.txtArtist.Size = new System.Drawing.Size(310, 20);
+            this.txtArtist.Size = new System.Drawing.Size(300, 20);
             this.txtArtist.TabIndex = 104;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(94, 88);
+            this.txtTitle.Location = new System.Drawing.Point(98, 88);
             this.txtTitle.MaxLength = 30;
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(310, 20);
+            this.txtTitle.Size = new System.Drawing.Size(300, 20);
             this.txtTitle.TabIndex = 105;
             // 
             // txtAlbum
             // 
-            this.txtAlbum.Location = new System.Drawing.Point(94, 114);
+            this.txtAlbum.Location = new System.Drawing.Point(98, 114);
             this.txtAlbum.MaxLength = 30;
             this.txtAlbum.Name = "txtAlbum";
-            this.txtAlbum.Size = new System.Drawing.Size(310, 20);
+            this.txtAlbum.Size = new System.Drawing.Size(300, 20);
             this.txtAlbum.TabIndex = 107;
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(94, 166);
+            this.txtYear.Location = new System.Drawing.Point(98, 166);
             this.txtYear.MaxLength = 4;
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(75, 20);
@@ -136,7 +136,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtTrackNumber
             // 
-            this.txtTrackNumber.Location = new System.Drawing.Point(94, 192);
+            this.txtTrackNumber.Location = new System.Drawing.Point(98, 192);
             this.txtTrackNumber.MaxLength = 3;
             this.txtTrackNumber.Name = "txtTrackNumber";
             this.txtTrackNumber.Size = new System.Drawing.Size(75, 20);
@@ -158,7 +158,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.cmbID3v1.Items.AddRange(new object[] {
             "ID3v1.0",
             "ID3v1.1"});
-            this.cmbID3v1.Location = new System.Drawing.Point(94, 35);
+            this.cmbID3v1.Location = new System.Drawing.Point(98, 35);
             this.cmbID3v1.Name = "cmbID3v1";
             this.cmbID3v1.Size = new System.Drawing.Size(75, 21);
             this.cmbID3v1.TabIndex = 103;
@@ -186,16 +186,16 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(94, 140);
+            this.cmbGenre.Location = new System.Drawing.Point(98, 140);
             this.cmbGenre.Name = "cmbGenre";
             this.cmbGenre.Size = new System.Drawing.Size(146, 21);
             this.cmbGenre.TabIndex = 111;
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(94, 218);
+            this.txtComment.Location = new System.Drawing.Point(98, 218);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(310, 20);
+            this.txtComment.Size = new System.Drawing.Size(300, 20);
             this.txtComment.TabIndex = 123;
             // 
             // lblComment

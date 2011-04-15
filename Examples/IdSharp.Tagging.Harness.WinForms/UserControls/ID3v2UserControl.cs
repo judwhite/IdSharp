@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using IdSharp.AudioInfo;
+using IdSharp.AudioInfo.Inspection;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
 using IdSharp.Tagging.ID3v2.Frames;
@@ -160,7 +161,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
 
             txtPlayLength.Text = string.Empty;
             txtBitrate.Text = string.Empty;
-            txtFrequency.Text = string.Empty;
+            txtEncoderPreset.Text = string.Empty;
 
             Thread t = new Thread(LoadAudioFileDetails);
             t.Start(path);
@@ -173,14 +174,16 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             IAudioFile audioFile = AudioFile.Create(path, false);
             decimal bitrate = audioFile.Bitrate; // force bitrate calculation
 
-            Invoke(new Action<IAudioFile>(SetAudioFileDetails), audioFile);
+            DescriptiveLameTagReader lameTagReader = new DescriptiveLameTagReader(path);
+
+            Invoke(new Action<IAudioFile, DescriptiveLameTagReader>(SetAudioFileDetails), audioFile, lameTagReader);
         }
 
-        private void SetAudioFileDetails(IAudioFile audioFile)
+        private void SetAudioFileDetails(IAudioFile audioFile, DescriptiveLameTagReader lameTagReader)
         {
             txtPlayLength.Text = string.Format("{0}:{1:00}", (int)audioFile.TotalSeconds / 60, (int)audioFile.TotalSeconds % 60);
             txtBitrate.Text = string.Format("{0:#,0} kbps", audioFile.Bitrate);
-            txtFrequency.Text = string.Format("{0:#,0} Hz", audioFile.Frequency);
+            txtEncoderPreset.Text = string.Format("{0} {1}", lameTagReader.LameTagInfoEncoder, lameTagReader.UsePresetGuess == UsePresetGuess.NotNeeded ? lameTagReader.Preset : lameTagReader.PresetGuess);
         }
 
         public void SaveFile(string path)
