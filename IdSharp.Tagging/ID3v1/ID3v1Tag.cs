@@ -138,13 +138,13 @@ namespace IdSharp.Tagging.ID3v1
             get { return _trackNumber; }
             set
             {
-                if (value == null)
+                if (value == null || value == 0)
                 {
-                    _trackNumber = value;
+                    _trackNumber = null;
                     if (_tagVersion == ID3v1TagVersion.ID3v11)
                         TagVersion = ID3v1TagVersion.ID3v10;
                 }
-                else if (value >= 0 && value <= 255)
+                else if (value > 0 && value <= 255)
                 {
                     _trackNumber = value;
                     if (_tagVersion == ID3v1TagVersion.ID3v10)
