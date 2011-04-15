@@ -9,7 +9,7 @@ namespace IdSharp.Common.Tests.Utils
     [TestFixture]
     public class CRC32Test
     {
-        // Test_1's intent is to have a leading 0 is in the result
+        // Test_1's intent is to have a leading 0 in the result
         private const string _testString_1 = "Hello World1";
         private readonly byte[] _testByteArray_1 = Encoding.ASCII.GetBytes(_testString_1);
         private const uint _crc32Result_1 = 0x019E0CC7;

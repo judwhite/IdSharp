@@ -347,11 +347,17 @@ namespace IdSharp.Common.Utils
         /// </returns>
         public static bool Compare(byte[] x, byte[] y, int maxLength)
         {
+            if (maxLength < 0)
+                throw new ArgumentOutOfRangeException("maxLength", "maxLength must be greater than or equal to 0.");
+
             if (x == null && y == null)
                 return true;
 
             if (x == null || y == null)
                 return false;
+
+            if (x == y)
+                return true;
 
             int compareTo = MathUtils.Min(x.Length, y.Length, maxLength);
 
