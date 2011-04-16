@@ -10,5 +10,7 @@
     <Converters:ID3v1CommentLengthConverter x:Key="ID3v1CommentLengthConverter" />
     <Converters:NullableIntConverter x:Key="NullableIntConverter" />
     <Converters:IsEnumEqualConverter x:Key="IsEnumEqualConverter" />
+    <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <Converters:NotBoolToVisibilityConverter x:Key="NotBoolToVisibilityConverter" />
 
 </ResourceDictionary>

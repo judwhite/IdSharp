@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,9 +61,11 @@
     <Compile Include="Commands\DelegateCommandOfT.cs" />
     <Compile Include="Commands\WpfApplicationHelper.cs" />
     <Compile Include="Converters\BitrateConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\ID3v1CommentLengthConverter.cs" />
     <Compile Include="Converters\IsEnumEqualConverter.cs" />
+    <Compile Include="Converters\NotBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\NullableIntConverter.cs" />
     <Compile Include="Converters\PlayLengthConverter.cs" />
     <Compile Include="Events\EventDispatcher.cs" />

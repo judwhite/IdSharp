@@ -6,6 +6,90 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Visibility="{Binding IsScanning, Mode=OneWay, Converter={StaticResource NotBoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
             
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="Directory" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Directory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="8,0,0,0" VerticalAlignment="Center" Width="300" />
+                <Button Content="..." ToolTipService.ToolTip="Browse for directory" Command="{Binding BrowseCommand}" Margin="8,0,0,0" VerticalAlignment="Center" Width="30" />
+            </StackPanel>
+
+            <Button Grid.Column="2" Command="{Binding ScanCommand}" Content="_Scan" VerticalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Row="0" Visibility="{Binding IsScanning, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
+            
+            <ProgressBar Grid.Column="0" Value="{Binding PercentComplete, Mode=OneWay}" Margin="0,6" />
+            
+            <Button Grid.Column="2" Command="{Binding CancelCommand}" Content="_Cancel" VerticalAlignment="Center" />
+        </Grid>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding TrackCollection}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,8,0,0">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Artist">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Artist}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Title">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Album">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Album}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Genre">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Genre}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Year">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Year}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="File name">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FileName}" Padding="4,2" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
