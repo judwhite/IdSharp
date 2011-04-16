@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2
 {
@@ -99,11 +100,7 @@ namespace IdSharp.Tagging.ID3v2
 
         private static void AddToPictureTypeDictionary(PictureType pictureType)
         {
-            string enumString = pictureType.ToString();
-
-            object[] descriptions = typeof(PictureType).GetField(enumString).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            if (descriptions.Length == 1)
-                enumString = ((DescriptionAttribute)descriptions[0]).Description;
+            string enumString = EnumUtils.GetDescription(pictureType);
 
             m_PictureTypeDictionary.Add(enumString, pictureType);
         }

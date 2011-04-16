@@ -33,7 +33,7 @@ namespace IdSharp.Tagging.APEv2
         private string _artist;
         private string _album;
         private string _publisher;
-        private string _track;
+        private string _trackNumber;
         private string _comment;
         private string _catalog;
         private string _year;
@@ -311,7 +311,7 @@ namespace IdSharp.Tagging.APEv2
                     Publisher = itemValue;
                     break;
                 case "TRACK":
-                    Track = itemValue;
+                    TrackNumber = itemValue;
                     break;
                 case "COMMENT":
                     Comment = itemValue;
@@ -381,10 +381,10 @@ namespace IdSharp.Tagging.APEv2
         /// Gets or sets the track.
         /// </summary>
         /// <value>The track.</value>
-        public string Track
+        public string TrackNumber
         {
-            get { return _track; }
-            set { _track = value; SendPropertyChanged("Track"); }
+            get { return _trackNumber; }
+            set { _trackNumber = value; SendPropertyChanged("TrackNumber"); }
         }
 
         /// <summary>

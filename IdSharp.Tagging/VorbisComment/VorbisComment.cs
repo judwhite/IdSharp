@@ -11,23 +11,17 @@ namespace IdSharp.Tagging.VorbisComment
     /// </summary>
     public class VorbisComment : IVorbisComment
     {
-        #region <<< Private Members >>>
-
-        private static readonly Byte[] FLAC_MARKER = Encoding.ASCII.GetBytes("fLaC");
-        private readonly NameValueList m_Items = new NameValueList();
-        private String m_Vendor = "";
-        private List<FlacMetaDataBlock> m_MetaDataBlockList;
-
-        #endregion <<< Private Members >>>
-
-        #region <<< Private Types >>>
+        private static readonly byte[] FLAC_MARKER = Encoding.ASCII.GetBytes("fLaC");
+        private readonly NameValueList _items = new NameValueList();
+        private string _vendor = string.Empty;
+        private List<FlacMetaDataBlock> _metaDataBlockList;
 
         private class InternalInfo
         {
             public int OrigVorbisCommentSize = 0;
             public int OrigPaddingSize = 0;
             public FileType? FileType = null;
-            public String Vendor = null;
+            public string Vendor = null;
             public IEnumerable<FlacMetaDataBlock> MetaDataBlockList = null;
         }
 
@@ -36,10 +30,6 @@ namespace IdSharp.Tagging.VorbisComment
             OggVorbis,
             Flac
         }
-
-        #endregion <<< Private Types >>>
-
-        #region <<< Constructors >>>
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VorbisComment"/> class.
@@ -69,94 +59,90 @@ namespace IdSharp.Tagging.VorbisComment
         {
         }
 
-        #endregion <<< Constructors >>>
-
-        #region <<< Public Properties >>>
-
         /// <summary>
         /// Gets or sets the vendor.
         /// </summary>
         /// <value>The vendor.</value>
-        public String Vendor
+        public string Vendor
         {
-            get { return m_Vendor; }
-            set { m_Vendor = value; }
+            get { return _vendor; }
+            set { _vendor = value; }
         }
 
         /// <summary>
         /// Gets or sets the artist.
         /// </summary>
         /// <value>The artist.</value>
-        public String Artist
+        public string Artist
         {
-            get { return m_Items.GetValue("ARTIST"); }
-            set { m_Items.SetValue("ARTIST", value); }
+            get { return _items.GetValue("ARTIST"); }
+            set { _items.SetValue("ARTIST", value); }
         }
 
         /// <summary>
         /// Gets or sets the album.
         /// </summary>
         /// <value>The album.</value>
-        public String Album
+        public string Album
         {
-            get { return m_Items.GetValue("ALBUM"); }
-            set { m_Items.SetValue("ALBUM", value); }
+            get { return _items.GetValue("ALBUM"); }
+            set { _items.SetValue("ALBUM", value); }
         }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
         /// <value>The title.</value>
-        public String Title
+        public string Title
         {
-            get { return m_Items.GetValue("TITLE"); }
-            set { m_Items.SetValue("TITLE", value); }
+            get { return _items.GetValue("TITLE"); }
+            set { _items.SetValue("TITLE", value); }
         }
 
         /// <summary>
         /// Gets or sets the year.
         /// </summary>
         /// <value>The year.</value>
-        public String Year
+        public string Year
         {
             get
             {
-                String value = m_Items.GetValue("DATE");
-                if (String.IsNullOrEmpty(value))
-                    value = m_Items.GetValue("YEAR");
+                string value = _items.GetValue("DATE");
+                if (string.IsNullOrEmpty(value))
+                    value = _items.GetValue("YEAR");
                 return value;
             }
-            set { m_Items.SetValue("DATE", value); }
+            set { _items.SetValue("DATE", value); }
         }
 
         /// <summary>
         /// Gets or sets the genre.
         /// </summary>
         /// <value>The genre.</value>
-        public String Genre
+        public string Genre
         {
-            get { return m_Items.GetValue("GENRE"); }
-            set { m_Items.SetValue("GENRE", value); }
+            get { return _items.GetValue("GENRE"); }
+            set { _items.SetValue("GENRE", value); }
         }
 
         /// <summary>
         /// Gets or sets the track number.
         /// </summary>
         /// <value>The track number.</value>
-        public String TrackNumber
+        public string TrackNumber
         {
-            get { return m_Items.GetValue("TRACKNUMBER"); }
-            set { m_Items.SetValue("TRACKNUMBER", value); }
+            get { return _items.GetValue("TRACKNUMBER"); }
+            set { _items.SetValue("TRACKNUMBER", value); }
         }
 
         /// <summary>
         /// Gets or sets the comment.
         /// </summary>
         /// <value>The comment.</value>
-        public String Comment
+        public string Comment
         {
-            get { return m_Items.GetValue("COMMENT"); }
-            set { m_Items.SetValue("COMMENT", value); }
+            get { return _items.GetValue("COMMENT"); }
+            set { _items.SetValue("COMMENT", value); }
         }
 
         /// <summary>
@@ -165,18 +151,14 @@ namespace IdSharp.Tagging.VorbisComment
         /// <value>The Name/Value item list.</value>
         public NameValueList Items
         {
-            get { return m_Items; }
+            get { return _items; }
         }
-
-        #endregion <<< Public Properties >>>
-
-        #region <<< Public Methods >>>
 
         /// <summary>
         /// Writes the tag.
         /// </summary>
         /// <param name="path">The path.</param>
-        public void Write(String path)
+        public void Write(string path)
         {
             VorbisComment vorbisComment = new VorbisComment();
             InternalInfo info;
@@ -186,10 +168,10 @@ namespace IdSharp.Tagging.VorbisComment
                 info = vorbisComment.ReadTagInternal(fs);
             }
 
-            m_Vendor = info.Vendor; // keep the vendor of the original file, don't copy it from another source
-            if (String.IsNullOrEmpty(m_Vendor))
+            _vendor = info.Vendor; // keep the vendor of the original file, don't copy it from another source
+            if (string.IsNullOrEmpty(_vendor))
             {
-                m_Vendor = "idsharp library";
+                _vendor = "idsharp library";
             }
 
             if (info.FileType == FileType.Flac)
@@ -209,7 +191,7 @@ namespace IdSharp.Tagging.VorbisComment
         /// Reads the tag.
         /// </summary>
         /// <param name="path">The path.</param>
-        public void Read(String path)
+        public void Read(string path)
         {
             try
             {
@@ -233,49 +215,45 @@ namespace IdSharp.Tagging.VorbisComment
             ReadTagInternal(stream);
         }
 
-        #endregion <<< Public Methods >>>
-
-        #region <<< Private Methods >>>
-
-        private void WriteTagFlac(String path, InternalInfo targetFile)
+        private void WriteTagFlac(string path, InternalInfo targetFile)
         {
             // This will store the metadata blocks we're actually going to write
             List<FlacMetaDataBlock> myMetaDataBlocks = new List<FlacMetaDataBlock>();
 
             // Get byte array of new vorbis comment block
-            Byte[] newTagArray;
+            byte[] newTagArray;
             using (MemoryStream newTag = new MemoryStream())
             {
                 // Write vendor
-                Byte[] vendorBytes = Encoding.UTF8.GetBytes(m_Vendor);
+                byte[] vendorBytes = Encoding.UTF8.GetBytes(_vendor);
                 newTag.WriteInt32LittleEndian(vendorBytes.Length);
                 newTag.Write(vendorBytes);
 
                 // Remove dead items and replace commonly misnamed items
-                foreach (NameValueItem item in new List<NameValueItem>(m_Items))
+                foreach (NameValueItem item in new List<NameValueItem>(_items))
                 {
                     if (string.IsNullOrEmpty(item.Value))
                     {
-                        m_Items.Remove(item);
+                        _items.Remove(item);
                     }
                     else if (string.Compare(item.Name, "YEAR", true) == 0)
                     {
-                        if (string.IsNullOrEmpty(m_Items.GetValue("DATE")))
-                            m_Items.SetValue("DATE", item.Value);
-                        m_Items.Remove(item);
+                        if (string.IsNullOrEmpty(_items.GetValue("DATE")))
+                            _items.SetValue("DATE", item.Value);
+                        _items.Remove(item);
                     }
                 }
 
                 // Write item count
-                newTag.WriteInt32LittleEndian(m_Items.Count);
+                newTag.WriteInt32LittleEndian(_items.Count);
 
                 // Write items
-                foreach (NameValueItem item in m_Items)
+                foreach (NameValueItem item in _items)
                 {
-                    if (String.IsNullOrEmpty(item.Value)) continue;
+                    if (string.IsNullOrEmpty(item.Value)) continue;
 
-                    Byte[] keyBytes = Encoding.ASCII.GetBytes(item.Name);
-                    Byte[] valueBytes = Encoding.UTF8.GetBytes(item.Value);
+                    byte[] keyBytes = Encoding.ASCII.GetBytes(item.Name);
+                    byte[] valueBytes = Encoding.UTF8.GetBytes(item.Value);
 
                     newTag.WriteInt32LittleEndian(keyBytes.Length + 1 + valueBytes.Length);
                     newTag.Write(keyBytes);
@@ -293,7 +271,7 @@ namespace IdSharp.Tagging.VorbisComment
             FlacMetaDataBlock paddingBlock = null;
             FlacMetaDataBlock streamInfoBlock = null;
             FlacMetaDataBlock seekTableBlock = null;
-            Int64 origMetaDataSize = 0;
+            long origMetaDataSize = 0;
             foreach (FlacMetaDataBlock metaDataBlock in targetFile.MetaDataBlockList)
             {
                 origMetaDataSize += 4; // Identifier + Size
@@ -305,12 +283,14 @@ namespace IdSharp.Tagging.VorbisComment
                 }
                 else if (metaDataBlock.BlockType == FlacMetaDataBlockType.StreamInfo)
                 {
-                    if (streamInfoBlock != null) throw new InvalidDataException("Multiple stream info blocks");
+                    if (streamInfoBlock != null) 
+                        throw new InvalidDataException("Multiple stream info blocks");
                     streamInfoBlock = metaDataBlock;
                 }
                 else if (metaDataBlock.BlockType == FlacMetaDataBlockType.SeekTable)
                 {
-                    if (seekTableBlock != null) throw new InvalidDataException("Multiple seek tables");
+                    if (seekTableBlock != null) 
+                        throw new InvalidDataException("Multiple seek tables");
                     seekTableBlock = metaDataBlock;
                 }
             }
@@ -329,7 +309,8 @@ namespace IdSharp.Tagging.VorbisComment
                 // same file read/write this works.  Not high priority.
                 int adjustPadding = targetFile.OrigVorbisCommentSize - newTagArray.Length;
                 int newSize = paddingBlock.Size + adjustPadding;
-                if (newSize < 10) paddingBlock.SetBlockDataZeroed(2000);
+                if (newSize < 10) 
+                    paddingBlock.SetBlockDataZeroed(2000);
                 else paddingBlock.SetBlockDataZeroed(newSize);
             }
 
@@ -339,10 +320,11 @@ namespace IdSharp.Tagging.VorbisComment
 
             // Create list of blocks to write
             myMetaDataBlocks.Add(streamInfoBlock); // StreamInfo MUST be first
-            if (seekTableBlock != null) myMetaDataBlocks.Add(seekTableBlock);
+            if (seekTableBlock != null) 
+                myMetaDataBlocks.Add(seekTableBlock);
 
             // Add other blocks we read from the original file.
-            foreach (FlacMetaDataBlock metaDataBlock in m_MetaDataBlockList)
+            foreach (FlacMetaDataBlock metaDataBlock in _metaDataBlockList)
             {
                 if (metaDataBlock.BlockType == FlacMetaDataBlockType.Application ||
                     metaDataBlock.BlockType == FlacMetaDataBlockType.CueSheet ||
@@ -357,7 +339,7 @@ namespace IdSharp.Tagging.VorbisComment
             myMetaDataBlocks.Add(paddingBlock);
 
             // Get new size of metadata blocks
-            Int64 newMetaDataSize = 0;
+            long newMetaDataSize = 0;
             foreach (FlacMetaDataBlock metaDataBlock in myMetaDataBlocks)
             {
                 newMetaDataSize += 4; // Identifier + Size
@@ -716,8 +698,8 @@ namespace IdSharp.Tagging.VorbisComment
             info.OrigVorbisCommentSize = 0;
 
             // Skip ID3v2 tag
-            int tmpID3v2TagSize = ID3v2.ID3v2Tag.GetTagSize(stream);
-            stream.Seek(tmpID3v2TagSize, SeekOrigin.Begin);
+            int id3v2TagSize = ID3v2.ID3v2Tag.GetTagSize(stream);
+            stream.Seek(id3v2TagSize, SeekOrigin.Begin);
 
             if (IsFlac(stream))
             {
@@ -733,17 +715,17 @@ namespace IdSharp.Tagging.VorbisComment
                 //throw new InvalidDataException(String.Format("File '{0}' is not a valid FLAC or Ogg-Vorbis file", path));
             }
 
-            info.Vendor = m_Vendor;
+            info.Vendor = _vendor;
 
             return info;
         }
 
         private void ReadTag_VorbisComment(Stream stream)
         {
-            m_Items.Clear();
+            _items.Clear();
 
             int size = stream.ReadInt32LittleEndian();
-            m_Vendor = stream.ReadUTF8(size);
+            _vendor = stream.ReadUTF8(size);
 
             int elements = stream.ReadInt32LittleEndian();
 
@@ -751,15 +733,15 @@ namespace IdSharp.Tagging.VorbisComment
             {
                 size = stream.ReadInt32LittleEndian();
 
-                String text = stream.ReadUTF8(size);
-                String[] nameValue = text.Split("=".ToCharArray(), 2, StringSplitOptions.RemoveEmptyEntries);
+                string text = stream.ReadUTF8(size);
+                string[] nameValue = text.Split("=".ToCharArray(), 2, StringSplitOptions.RemoveEmptyEntries);
 
                 if (nameValue.Length == 2)
                 {
-                    String name = nameValue[0];
-                    String value = nameValue[1];
+                    string name = nameValue[0];
+                    string value = nameValue[1];
 
-                    m_Items.Add(new NameValueItem(name, value));
+                    _items.Add(new NameValueItem(name, value));
                 }
             }
         }
@@ -787,7 +769,7 @@ namespace IdSharp.Tagging.VorbisComment
                 if (blockType == FlacMetaDataBlockType.VorbisComment) // Vorbis comment
                 {
                     info.OrigVorbisCommentSize = blocksize;
-                    Int64 mvcoffset = stream.Position - 4;
+                    long mvcoffset = stream.Position - 4;
                     ReadTag_VorbisComment(stream);
                     stream.Seek(mvcoffset + 4, SeekOrigin.Begin);
                 }
@@ -798,7 +780,7 @@ namespace IdSharp.Tagging.VorbisComment
             } while (isLastMetaDataBlock == false);
 
             info.MetaDataBlockList = metaDataBlockList;
-            m_MetaDataBlockList = metaDataBlockList;
+            _metaDataBlockList = metaDataBlockList;
         }
 
         /*private void ReadTag_OGG(FILE *fp)
@@ -849,7 +831,7 @@ namespace IdSharp.Tagging.VorbisComment
             }
         }*/
 
-        internal static bool IsFlac(String path)
+        internal static bool IsFlac(string path)
         {
             using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -860,12 +842,10 @@ namespace IdSharp.Tagging.VorbisComment
         internal static bool IsFlac(Stream stream)
         {
             // Read flac marker
-            Byte[] flacMarker = new Byte[4];
+            byte[] flacMarker = new byte[4];
             stream.Read(flacMarker, 0, 4);
             stream.Seek(-4, SeekOrigin.Current);
             return ByteUtils.Compare(flacMarker, FLAC_MARKER);
         }
-
-        #endregion <<< Private Methods >>>
     }
 }
