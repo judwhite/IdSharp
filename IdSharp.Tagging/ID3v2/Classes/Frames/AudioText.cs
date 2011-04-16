@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {
@@ -205,8 +206,14 @@ namespace IdSharp.Tagging.ID3v2.Frames
             using (MemoryStream frameData = new MemoryStream())
             {
                 byte[] mimeType = ID3v2Utils.GetStringBytes(tagVersion, EncodingType.ISO88591, MimeType, true);
-                byte[] equivText = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, EquivalentText, true);
+                
+                byte[] equivText;
+                do
+                {
+                    equivText = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, EquivalentText, true);
+                } while (this.RequiresFix(tagVersion, EquivalentText, equivText));
 
+                frameData.WriteByte((byte)TextEncoding);
                 frameData.Write(mimeType, 0, mimeType.Length);
                 frameData.WriteByte((byte)(_isMpegOrAac ? 0 : 1));
                 frameData.Write(equivText, 0, equivText.Length);

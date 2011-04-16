@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {
@@ -28,7 +29,9 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 if (string.IsNullOrEmpty(value))
+                {
                     _languageCode = "eng";
+                }
                 else
                 {
                     _languageCode = value.ToLower().Trim();
@@ -182,17 +185,24 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (LanguageCode == null || LanguageCode.Length != 3)
                 LanguageCode = "eng";
 
-            byte[] textEncodingData = new[] { (byte)TextEncoding };
-            byte[] languageData = ByteUtils.ISO88591GetBytes(LanguageCode);
-            byte[] descriptionData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Description, true);
-            byte[] valueData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Value, false);
+            byte[] descriptionData;
+            byte[] valueData;
+
+            do
+            {
+                descriptionData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Description, true);
+                valueData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Value, false);
+            } while (
+                this.RequiresFix(tagVersion, Description, descriptionData) ||
+                this.RequiresFix(tagVersion, Value, valueData)
+            );
 
             using (MemoryStream frameData = new MemoryStream())
             {
-                frameData.Write(textEncodingData, 0, textEncodingData.Length);
-                frameData.Write(languageData, 0, languageData.Length);
-                frameData.Write(descriptionData, 0, descriptionData.Length);
-                frameData.Write(valueData, 0, valueData.Length);
+                frameData.WriteByte((byte)TextEncoding);
+                frameData.Write(ByteUtils.ISO88591GetBytes(LanguageCode));
+                frameData.Write(descriptionData);
+                frameData.Write(valueData);
                 return _frameHeader.GetBytes(frameData, tagVersion, GetFrameID(tagVersion));
             }
         }

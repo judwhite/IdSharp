@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
 
@@ -100,6 +101,16 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (Items.Count == 0)
                 return new byte[0];
 
+            // Set TextEncoding to Unicode/UTF8 if required
+            if (TextEncoding == EncodingType.ISO88591)
+            {
+                foreach (ILanguageItem languageItem in Items)
+                {
+                    byte[] languageCodeData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, languageItem.LanguageCode, true);
+                    this.RequiresFix(tagVersion, languageItem.LanguageCode, languageCodeData);
+                }
+            }
+
             using (MemoryStream frameData = new MemoryStream())
             {
                 frameData.WriteByte((byte)TextEncoding);
@@ -107,7 +118,8 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 for (int i = 0; i < Items.Count; i++)
                 {
                     ILanguageItem languageItem = Items[i];
-                    if (i == Items.Count - 1) isTerminated = false;
+                    if (i == Items.Count - 1) 
+                        isTerminated = false;
                     frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, languageItem.LanguageCode, isTerminated));
                 }
                 return _frameHeader.GetBytes(frameData, tagVersion, GetFrameID(tagVersion));

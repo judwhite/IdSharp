@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
 
@@ -75,6 +76,24 @@ namespace IdSharp.Tagging.ID3v2.Frames
         {
             if (Items.Count == 0)
                 return new byte[0];
+
+            // Sets appropriate TextEncoding if ISO-8859-1 is insufficient
+            if (TextEncoding == EncodingType.ISO88591)
+            {
+                foreach (IInvolvedPerson involvedPerson in Items)
+                {
+                    if (string.IsNullOrEmpty(involvedPerson.Involvement) && string.IsNullOrEmpty(involvedPerson.Name))
+                        continue;
+
+                    byte[] involvementData = ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, involvedPerson.Involvement, true);
+                    byte[] nameData = ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, involvedPerson.Name, true);
+
+                    if (this.RequiresFix(tagVersion, involvedPerson.Involvement, involvementData))
+                        break;
+                    if (this.RequiresFix(tagVersion, involvedPerson.Name, nameData))
+                        break;
+                }
+            }
 
             using (MemoryStream frameData = new MemoryStream())
             {

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using IdSharp.AudioInfo;
 using IdSharp.AudioInfo.Inspection;
@@ -7,6 +8,7 @@ using IdSharp.Tagging.Harness.Wpf.Model;
 using IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
+using IdSharp.Tagging.ID3v2.Frames;
 
 namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 {
@@ -25,11 +27,13 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         private string _genre;
         private string _year;
         private string _track;
+        private string _comment;
         private decimal? _playLength;
         private decimal? _bitrate;
         private string _encoderPreset;
         private ID3v2TagVersion? _id3v2Version;
         private Picture _currentPicture;
+        private ObservableCollection<Picture> _pictureCollection;
         private bool _canSave;
 
         static ID3v2ViewModel()
@@ -154,6 +158,19 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             }
         }
 
+        public string Comment
+        {
+            get { return _comment; }
+            set
+            {
+                if (_comment != value)
+                {
+                    _comment = value;
+                    SendPropertyChanged("Comment");
+                }
+            }
+        }
+
         public decimal? PlayLength
         {
             get { return _playLength; }
@@ -216,6 +233,19 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             get { return _pictureTypeCollection; }
         }
 
+        public ObservableCollection<Picture> PictureCollection
+        {
+            get { return _pictureCollection; }
+            set
+            {
+                if (_pictureCollection != value)
+                {
+                    _pictureCollection = value;
+                    SendPropertyChanged("PictureCollection");
+                }
+            }
+        }
+
         public Picture CurrentPicture
         {
             get { return _currentPicture; }
@@ -248,11 +278,29 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
             if (_id3v2.PictureList == null || _id3v2.PictureList.Count == 0)
             {
-                CurrentPicture = null;
+                PictureCollection = new ObservableCollection<Picture>();
             }
             else
             {
-                CurrentPicture = new Picture(_id3v2.PictureList[0]);
+                var pictureCollection = new ObservableCollection<Picture>();
+                foreach (var apic in _id3v2.PictureList)
+                {
+                    pictureCollection.Add(new Picture(apic));
+                }
+                PictureCollection = pictureCollection;
+            }
+
+            Comment = null;
+            if (_id3v2.CommentsList != null)
+            {
+                foreach (var item in _id3v2.CommentsList)
+                {
+                    if (item.Description != "iTunNORM")
+                    {
+                        Comment = item.Value;
+                        break;
+                    }
+                }
             }
 
             PlayLength = audioFile.TotalSeconds;
@@ -260,8 +308,6 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             EncoderPreset = string.Format("{0} {1}", lameTagReader.LameTagInfoEncoder, lameTagReader.UsePresetGuess == UsePresetGuess.NotNeeded ? lameTagReader.Preset : lameTagReader.PresetGuess);
 
             CanSave = true;
-
-            // TODO: Picture collection
         }
 
         private void OnSaveFile()
@@ -274,7 +320,55 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             _id3v2.TrackNumber = Track;
             _id3v2.Header.TagVersion = ID3v2Version.Value;
 
-            // TODO: Picture collection
+            List<IAttachedPicture> deleteList = new List<IAttachedPicture>(_id3v2.PictureList);
+
+            foreach (var picture in PictureCollection)
+            {
+                if (picture.AttachedPicture != null)
+                {
+                    picture.AttachedPicture.Description = picture.Description;
+                    picture.AttachedPicture.PictureType = picture.PictureType;
+                    deleteList.Remove(picture.AttachedPicture);
+                }
+                else
+                {
+                    IAttachedPicture apic = _id3v2.PictureList.AddNew();
+                    apic.Description = picture.Description;
+                    apic.PictureType = picture.PictureType;
+                    apic.PictureData = picture.PictureBytes;
+                }
+            }
+
+            foreach (var deletePicture in deleteList)
+            {
+                _id3v2.PictureList.Remove(deletePicture);
+            }
+
+            IComments comments = null;
+            foreach (var item in _id3v2.CommentsList)
+            {
+                if (item.Description != "iTunNORM")
+                {
+                    comments = item;
+                    break;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(Comment))
+            {
+                if (comments == null)
+                {
+                    comments = _id3v2.CommentsList.AddNew();
+                }
+                comments.Value = Comment;
+            }
+            else
+            {
+                if (comments != null)
+                    _id3v2.CommentsList.Remove(comments);
+            }
+
+            // TODO: Comments
 
             _id3v2.Save(_fullFileName);
         }

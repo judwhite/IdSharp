@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Threading;
-using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using IdSharp.Tagging.Harness.Wpf.Commands;
@@ -12,7 +11,6 @@ using IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces;
 using IdSharp.Tagging.ID3v2;
 using IdSharp.Tagging.ID3v2.Frames;
 using Application = System.Windows.Application;
-using GiveFeedbackEventArgs = System.Windows.GiveFeedbackEventArgs;
 
 namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 {
@@ -26,7 +24,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
         private string _directory;
         private bool _isScanning;
-        private int _percentComplete;
+        private double _percentComplete;
         private bool _cancelScanning;
         private ObservableCollection<Track> _trackCollection;
 
@@ -96,7 +94,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             get { return _browseCommand; }
         }
 
-        public int PercentComplete
+        public double PercentComplete
         {
             get { return _percentComplete; }
             private set
@@ -204,8 +202,8 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
                     trackList.Add(track);
 
-                    int percent = i * 100 / totalFiles;
-                    if (percent > PercentComplete)
+                    double percent = i * 100.0 / totalFiles;
+                    if (percent - PercentComplete >= 0.9 || (i % 100) == 0)
                     {
                         UpdateProgress(percent);
                     }
@@ -222,7 +220,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             }
         }
 
-        private void CreatePictureOnUIThread(Track track, IAttachedPicture picture)
+        private static void CreatePictureOnUIThread(Track track, IAttachedPicture picture)
         {
             if (track == null)
                 throw new ArgumentNullException("track");
@@ -250,11 +248,11 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             IsScanning = false;
         }
 
-        private void UpdateProgress(int percent)
+        private void UpdateProgress(double percent)
         {
             if (!Application.Current.Dispatcher.CheckAccess())
             {
-                Application.Current.Dispatcher.Invoke(new Action<int>(UpdateProgress), percent);
+                Application.Current.Dispatcher.Invoke(new Action<double>(UpdateProgress), percent);
                 return;
             }
 

@@ -93,6 +93,7 @@
     <Compile Include="ID3v1\IID3v1Tag.cs" />
     <Compile Include="ID3v2\Classes\ID3v2Tag.cs" />
     <Compile Include="ID3v2\Classes\ID3v2Tag.Static.cs" />
+    <Compile Include="ID3v2\Extensions\ITextEncodingExtensions.cs" />
     <Compile Include="ID3v2\Interfaces\IID3v2Tag.cs" />
     <Compile Include="Lyrics3\Lyrics3Tag.cs" />
     <Compile Include="Lyrics3\Lyrics3Tag.Static.cs" />

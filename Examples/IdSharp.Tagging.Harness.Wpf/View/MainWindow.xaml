@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:View="clr-namespace:IdSharp.Tagging.Harness.Wpf.View" 
     Title="IdSharp Harness" 
-    Height="559" 
-    Width="811"
+    Height="650" 
+    Width="900"
     WindowStartupLocation="CenterScreen"
 >
     <Grid Margin="16">

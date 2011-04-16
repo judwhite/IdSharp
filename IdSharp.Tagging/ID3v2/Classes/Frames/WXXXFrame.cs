@@ -1,41 +1,42 @@
 using System;
 using System.IO;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {
     internal sealed class WXXXFrame : Frame, IWXXXFrame
     {
-        private EncodingType m_TextEncoding;
-        private string m_Description;
-        private string m_Value;
+        private EncodingType _textEncoding;
+        private string _description;
+        private string _value;
 
         public EncodingType TextEncoding
         {
-            get { return m_TextEncoding; }
+            get { return _textEncoding; }
             set
             {
-                m_TextEncoding = value;
+                _textEncoding = value;
                 SendPropertyChanged("TextEncoding");
             }
         }
 
         public string Description
         {
-            get { return m_Description; }
+            get { return _description; }
             set
             {
-                m_Description = value;
+                _description = value;
                 SendPropertyChanged("Description");
             }
         }
 
         public string Value
         {
-            get { return m_Value; }
+            get { return _value; }
             set
             {
-                m_Value = value;
+                _value = value;
                 SendPropertyChanged("Value");
             }
         }
@@ -79,15 +80,17 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (string.IsNullOrEmpty(Value))
                 return new byte[0];
 
-            byte[] textEncodingData = new[] { (byte)TextEncoding };
-            byte[] descriptionData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Description, true);
-            byte[] valueData = ByteUtils.ISO88591GetBytes(Value);
+            byte[] descriptionData;
+            do
+            {
+                descriptionData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Description, true);
+            } while (this.RequiresFix(tagVersion, Description, descriptionData));
 
             using (MemoryStream frameData = new MemoryStream())
             {
-                frameData.Write(textEncodingData, 0, textEncodingData.Length);
-                frameData.Write(descriptionData, 0, descriptionData.Length);
-                frameData.Write(valueData, 0, valueData.Length);
+                frameData.WriteByte((byte)TextEncoding);
+                frameData.Write(descriptionData);
+                frameData.Write(ByteUtils.ISO88591GetBytes(Value));
 
                 return _frameHeader.GetBytes(frameData, tagVersion, GetFrameID(tagVersion));
             }

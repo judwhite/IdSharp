@@ -12,7 +12,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         ICommand ScanCommand { get; }
         ICommand CancelCommand { get; }
         ICommand BrowseCommand { get; }
-        int PercentComplete { get; }
+        double PercentComplete { get; }
         ObservableCollection<Track> TrackCollection { get; }
     }
 }

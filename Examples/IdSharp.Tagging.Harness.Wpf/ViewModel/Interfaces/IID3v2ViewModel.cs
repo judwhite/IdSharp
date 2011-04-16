@@ -14,6 +14,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         string Genre { get; set; }
         string Year { get; set; }
         string Track { get; set; }
+        string Comment { get; set; }
         decimal? PlayLength { get; }
         decimal? Bitrate { get; }
         string EncoderPreset { get; }
@@ -22,5 +23,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         ObservableCollection<ID3v2TagVersion> ID3v2VersionCollection { get; }
         ID3v2TagVersion? ID3v2Version { get; }
         Picture CurrentPicture { get; set; }
+        ObservableCollection<Picture> PictureCollection { get; }
+        ObservableCollection<PictureType> PictureTypeCollection { get; }
     }
 }

@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {
@@ -23,7 +24,6 @@ namespace IdSharp.Tagging.ID3v2.Frames
 
         public AttachedPicture()
         {
-            _textEncoding = EncodingType.Unicode;
             _pictureType = PictureType.CoverFront;
         }
 
@@ -330,6 +330,15 @@ namespace IdSharp.Tagging.ID3v2.Frames
 
             using (MemoryStream stream = new MemoryStream())
             {
+                byte[] descriptionData;
+
+                do
+                {
+                    descriptionData = ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _description, true);
+                } while (
+                    this.RequiresFix(tagVersion, _description, descriptionData)
+                );
+
                 stream.WriteByte((byte)_textEncoding);
                 if (tagVersion == ID3v2TagVersion.ID3v22)
                 {
@@ -348,7 +357,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     stream.WriteByte(0); // terminator
                 }
                 stream.WriteByte((byte)_pictureType);
-                stream.Write(ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _description, true));
+                stream.Write(descriptionData);
                 stream.Write(_pictureData);
                 return _frameHeader.GetBytes(stream, tagVersion, GetFrameID(tagVersion));
             }

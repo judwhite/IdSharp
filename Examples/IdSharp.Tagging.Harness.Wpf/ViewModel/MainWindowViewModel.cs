@@ -139,6 +139,8 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         {
             EventDispatcher.Publish(EventType.SaveFile);
             LoadFile(_fileName);
+
+            MessageBox.Show(string.Format("\"{0}\" saved.", System.IO.Path.GetFileName(_fileName)), "File saved", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void RemoveID3v1()

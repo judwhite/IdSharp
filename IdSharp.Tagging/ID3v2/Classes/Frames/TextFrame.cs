@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
@@ -83,10 +84,16 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (string.IsNullOrEmpty(Value))
                 return new byte[0];
 
+            byte[] valueData;
+            do
+            {
+                valueData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Value, false);
+            } while (this.RequiresFix(tagVersion, Value, valueData));
+
             using (MemoryStream stream = new MemoryStream())
             {
                 stream.WriteByte((byte)_textEncoding);
-                stream.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Value, false));
+                stream.Write(valueData);
                 return _frameHeader.GetBytes(stream, tagVersion, GetFrameID(tagVersion));
             }
         }

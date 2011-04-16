@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
 
@@ -171,13 +172,29 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (Items.Count == 0)
                 return new byte[0];
 
+            if (TextEncoding == EncodingType.ISO88591)
+            {
+                foreach (ISynchronizedTextItem item in Items)
+                {
+                    byte[] textData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, item.Text, true);
+                    if (this.RequiresFix(tagVersion, item.Text, textData))
+                        break;
+                }
+            }
+
+            byte[] contentDescriptorData;
+            do
+            {
+                contentDescriptorData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, ContentDescriptor, true);
+            } while (this.RequiresFix(tagVersion, ContentDescriptor, contentDescriptorData));
+
             using (MemoryStream frameData = new MemoryStream())
             {
                 frameData.WriteByte((byte)TextEncoding);
                 frameData.Write(ByteUtils.ISO88591GetBytes(LanguageCode));
                 frameData.WriteByte((byte)TimestampFormat);
                 frameData.WriteByte((byte)ContentType);
-                frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, ContentDescriptor, true));
+                frameData.Write(contentDescriptorData);
                 foreach (ISynchronizedTextItem item in Items)
                 {
                     frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, item.Text, true));

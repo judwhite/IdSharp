@@ -175,8 +175,8 @@ namespace IdSharp.Tagging.ID3v1
         /// <value>The ID3v1 tag version.</value>
         public ID3v1TagVersion TagVersion
         {
-            get {  return _tagVersion;  }
-            set 
+            get { return _tagVersion; }
+            set
             {
                 _tagVersion = value;
                 SendPropertyChanged("TagVersion");
@@ -236,7 +236,7 @@ namespace IdSharp.Tagging.ID3v1
                     }
 
                     int genreIndex = stream.Read1();
-                    if (genreIndex < 0 || genreIndex > 147) 
+                    if (genreIndex < 0 || genreIndex > 147)
                         genreIndex = 12; // "Other"
 
                     GenreIndex = genreIndex;
@@ -350,7 +350,20 @@ namespace IdSharp.Tagging.ID3v1
         /// <param name="byteArray">The byte array.</param>
         private static string GetString(byte[] byteArray)
         {
-            string returnValue = ByteUtils.ISO88591.GetString(byteArray).TrimEnd('\0').TrimEnd(' ');
+            if (byteArray == null || byteArray.Length == 0)
+                return null;
+
+            int maxLength;
+            for (maxLength = byteArray.Length; maxLength > 0; maxLength--)
+            {
+                if (byteArray[maxLength - 1] >= 32)
+                    break;
+            }
+
+            if (maxLength == 0)
+                return null;
+
+            string returnValue = ByteUtils.ISO88591.GetString(byteArray, 0, maxLength).TrimEnd('\0').TrimEnd(' ');
             return returnValue;
         }
 

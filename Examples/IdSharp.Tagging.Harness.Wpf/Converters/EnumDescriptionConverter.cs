@@ -37,7 +37,8 @@ namespace IdSharp.Tagging.Harness.Wpf.Converters
                 return value;
 
             Type[] types = targetType.GetGenericArguments();
-            targetType = types[0];
+            if (types.Length == 1) // handle nullable enum
+                targetType = types[0];
 
             foreach (FieldInfo fieldInfo in targetType.GetFields(BindingFlags.Public | BindingFlags.Static))
             {

@@ -61,7 +61,7 @@
                                 x:Name="CurrentPositionTextBox"
                                 Grid.Column="3"
                                 Margin="0,0,4,0"
-                                Text="1"
+                                Text="{Binding Path=CurrentPosition, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Center"
                             />
@@ -70,7 +70,6 @@
                                 x:Name="ItemCountTextBlock"
                                 Grid.Column="4"
                                 Margin="0,0,4,0"
-                                Text="of 4"
                                 VerticalAlignment="Center"
                             />
 
@@ -93,11 +92,12 @@
                                 DisabledImageSource="/Themes/Navigation/Disabled/Last.png"
                             />
 
-                            <Border Style="{StaticResource SeparatorStyle}" Grid.Column="8" />
+                            <Border Style="{StaticResource SeparatorStyle}" Grid.Column="8" Margin="0,0,6,0" />
                             
                             <local:ImageButton 
                                 x:Name="AddButton"
                                 Grid.Column="9"
+                                Margin="0,-1,6,0"
                                 ToolTipService.ToolTip="Add" 
                                 RegularImageSource="/Themes/Navigation/Regular/Add.png"
                                 HotImageSource="/Themes/Navigation/Hot/Add.png"

@@ -69,6 +69,7 @@
     <Compile Include="Converters\ID3v1CommentLengthConverter.cs" />
     <Compile Include="Converters\IsEnumEqualConverter.cs" />
     <Compile Include="Converters\NotBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
     <Compile Include="Converters\NullableIntConverter.cs" />
     <Compile Include="Converters\PlayLengthConverter.cs" />
     <Compile Include="Events\EventDispatcher.cs" />

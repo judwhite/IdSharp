@@ -12,5 +12,6 @@
     <Converters:IsEnumEqualConverter x:Key="IsEnumEqualConverter" />
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     <Converters:NotBoolToVisibilityConverter x:Key="NotBoolToVisibilityConverter" />
+    <Converters:NotNullToBoolConverter x:Key="NotNullToBoolConverter" />
 
 </ResourceDictionary>

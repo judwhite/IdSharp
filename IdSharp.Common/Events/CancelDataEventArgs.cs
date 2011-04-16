@@ -10,7 +10,8 @@ namespace IdSharp.Common.Events
         /// Initializes a new instance of the <see cref="DataEventArgs&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="data">The data item to send to event handlers.</param>
-        public CancelDataEventArgs(T data) : base(data)
+        public CancelDataEventArgs(T data) 
+            : base(data)
         {
             Cancel = false;
         }

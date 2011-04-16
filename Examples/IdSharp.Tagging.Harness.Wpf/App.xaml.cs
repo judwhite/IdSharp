@@ -15,6 +15,7 @@ namespace IdSharp.Tagging.Harness.Wpf
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            e.Handled = true;
             MessageBox.Show(e.Exception.ToString(), "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }

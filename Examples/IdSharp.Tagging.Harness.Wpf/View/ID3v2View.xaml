@@ -27,6 +27,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -41,10 +42,11 @@
             <TextBlock Grid.Row="5" Text="Genre" />
             <TextBlock Grid.Row="6" Text="Year" />
             <TextBlock Grid.Row="7" Text="Track" />
+            <TextBlock Grid.Row="8" Text="Comment" VerticalAlignment="Top" Margin="0,3,0,0" />
 
-            <TextBlock Grid.Row="9" Text="Play length" />
-            <TextBlock Grid.Row="10" Text="Bitrate" />
-            <TextBlock Grid.Row="11" Text="Encoder/Preset" />
+            <TextBlock Grid.Row="10" Text="Play length" />
+            <TextBlock Grid.Row="11" Text="Bitrate" />
+            <TextBlock Grid.Row="12" Text="Encoder/Preset" />
 
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FileName, Mode=OneWay}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
             <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ID3v2VersionCollection, Converter={StaticResource EnumDescriptionConverter}}" SelectedItem="{Binding ID3v2Version, Mode=TwoWay, Converter={StaticResource EnumDescriptionConverter}}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
@@ -54,10 +56,11 @@
             <ComboBox Grid.Row="5" Grid.Column="1" IsEditable="True" ItemsSource="{Binding GenreCollection}" Text="{Binding Genre, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
             <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Year, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
             <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Track, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Comment, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" Height="70" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
 
-            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding PlayLength, Mode=OneWay, Converter={StaticResource PlayLengthConverter}}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
-            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Bitrate, Mode=OneWay, Converter={StaticResource BitrateConverter}}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
-            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding EncoderPreset, Mode=OneWay}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding PlayLength, Mode=OneWay, Converter={StaticResource PlayLengthConverter}}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Bitrate, Mode=OneWay, Converter={StaticResource BitrateConverter}}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+            <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding EncoderPreset, Mode=OneWay}" IsReadOnly="True" IsEnabled="{Binding CanSave, Mode=OneWay}" />
         </Grid>
         
         <Grid Grid.Column="1" Margin="16,0,0,0">
@@ -82,10 +85,10 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Picture Type" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Description" />
 
-                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding PictureTypeCollection, Converter={StaticResource EnumDescriptionConverter}}" SelectedItem="{Binding Path=CurrentPicture.PictureType, Mode=TwoWay, Converter={StaticResource EnumDescriptionConverter}}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CurrentPicture.Description, Mode=TwoWay}" IsEnabled="{Binding CanSave, Mode=OneWay}" />
+                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding PictureTypeCollection, Converter={StaticResource EnumDescriptionConverter}}" SelectedItem="{Binding Path=CurrentPicture.PictureType, Mode=TwoWay, Converter={StaticResource EnumDescriptionConverter}}" IsEnabled="{Binding CurrentPicture, Mode=OneWay, Converter={StaticResource NotNullToBoolConverter}}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CurrentPicture.Description, Mode=TwoWay}" IsEnabled="{Binding CurrentPicture, Mode=OneWay, Converter={StaticResource NotNullToBoolConverter}}" />
 
-                <Controls:CollectionNavigator Grid.Row="2" Grid.ColumnSpan="2" />
+                <Controls:CollectionNavigator x:Name="CollectionNavigator" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding PictureCollection}" SelectedItem="{Binding CurrentPicture, Mode=OneWayToSource}" IsEnabled="{Binding CanSave, Mode=OneWay}" Margin="0,2" />
             </Grid>
         </Grid>
             

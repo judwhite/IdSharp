@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Tagging.ID3v2.Frames.Items;
 using IdSharp.Tagging.ID3v2.Frames.Lists;
 
@@ -199,6 +200,17 @@ namespace IdSharp.Tagging.ID3v2.Frames
 
             using (MemoryStream frameData = new MemoryStream())
             {
+                byte[] nameOfSellerData;
+                byte[] descriptionData;
+                do
+                {
+                    nameOfSellerData = ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _nameOfSeller, true);
+                    descriptionData = ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _description, true);
+                } while (
+                    this.RequiresFix(tagVersion, _nameOfSeller, nameOfSellerData) ||
+                    this.RequiresFix(tagVersion, _description, descriptionData)
+                );
+
                 frameData.WriteByte((byte)_textEncoding);
 
                 string priceString = string.Empty;
@@ -222,8 +234,8 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 frameData.Write(ByteUtils.ISO88591GetBytes(_contactUrl));
                 frameData.WriteByte(0); // terminator
                 frameData.WriteByte((byte)_receivedAs);
-                frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _nameOfSeller, true));
-                frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, _textEncoding, _description, true));
+                frameData.Write(nameOfSellerData);
+                frameData.Write(descriptionData);
 
                 // This section is optional
                 if (_sellerLogo != null && _sellerLogo.Length != 0)

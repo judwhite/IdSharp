@@ -125,12 +125,12 @@ namespace IdSharp.Tagging.ID3v2
                                 byteList.Add(0xFE);
                                 byteList.AddRange(Encoding.Unicode.GetBytes(value)); // WITH BOM
                             }
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.AddRange(new byte[] { 0, 0 });
                             break;
                         default:
                             byteList.AddRange(ByteUtils.ISO88591GetBytes(value));
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.Add(0);
                             break;
                     }
@@ -146,12 +146,12 @@ namespace IdSharp.Tagging.ID3v2
                                 byteList.Add(0xFE);
                                 byteList.AddRange(Encoding.Unicode.GetBytes(value)); // WITH BOM
                             }
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.AddRange(new byte[] { 0, 0 });
                             break;
                         default:
                             byteList.AddRange(ByteUtils.ISO88591GetBytes(value));
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.Add(0);
                             break;
                     }
@@ -165,7 +165,7 @@ namespace IdSharp.Tagging.ID3v2
                             {
                                 byteList.AddRange(Encoding.UTF8.GetBytes(value));
                             }
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.Add(0);
                             break;
                         case EncodingType.UTF16BE:
@@ -173,7 +173,7 @@ namespace IdSharp.Tagging.ID3v2
                             {
                                 byteList.AddRange(Encoding.BigEndianUnicode.GetBytes(value)); // no BOM
                             }
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.AddRange(new byte[] { 0, 0 });
                             break;
                         case EncodingType.Unicode:
@@ -183,12 +183,12 @@ namespace IdSharp.Tagging.ID3v2
                                 byteList.Add(0xFE);
                                 byteList.AddRange(Encoding.Unicode.GetBytes(value)); // WITH BOM
                             }
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.AddRange(new byte[] { 0, 0 });
                             break;
                         default:
                             byteList.AddRange(ByteUtils.ISO88591GetBytes(value));
-                            if (isTerminated) 
+                            if (isTerminated)
                                 byteList.Add(0);
                             break;
                     }
@@ -221,6 +221,14 @@ namespace IdSharp.Tagging.ID3v2
                 }
 
                 return newStream.ToArray();
+            }
+        }
+
+        public static string ReadString(EncodingType textEncoding, byte[] bytes, int length)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(bytes))
+            {
+                return ReadString(textEncoding, memoryStream, length);
             }
         }
 
@@ -290,8 +298,22 @@ namespace IdSharp.Tagging.ID3v2
             return returnValue;
         }
 
+        public static string ReadString(EncodingType textEncoding, byte[] bytes)
+        {
+            if (bytes == null)
+                throw new ArgumentNullException("bytes");
+
+            using (MemoryStream memoryStream = new MemoryStream(bytes))
+            {
+                return ReadString(textEncoding, memoryStream);
+            }
+        }
+
         public static string ReadString(EncodingType textEncoding, Stream stream)
         {
+            if (stream == null)
+                throw new ArgumentNullException("stream");
+
             string returnValue;
             List<byte> byteList = new List<byte>();
 

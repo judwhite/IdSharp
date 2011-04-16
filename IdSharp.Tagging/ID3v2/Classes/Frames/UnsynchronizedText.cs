@@ -1,39 +1,40 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using IdSharp.Tagging.ID3v2.Extensions;
 using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2.Frames
 {
     internal sealed class UnsynchronizedText : Frame, IUnsynchronizedText
     {
-        private EncodingType m_TextEncoding;
-        private string m_LanguageCode;
-        private string m_ContentDescriptor;
-        private string m_Text;
+        private EncodingType _textEncoding;
+        private string _languageCode;
+        private string _contentDescriptor;
+        private string _text;
 
         public EncodingType TextEncoding
         {
-            get { return m_TextEncoding; }
-            set { m_TextEncoding = value; SendPropertyChanged("TextEncoding"); }
+            get { return _textEncoding; }
+            set { _textEncoding = value; SendPropertyChanged("TextEncoding"); }
         }
 
         public string LanguageCode
         {
-            get { return m_LanguageCode; }
-            set { m_LanguageCode = value; SendPropertyChanged("LanguageCode"); }
+            get { return _languageCode; }
+            set { _languageCode = value; SendPropertyChanged("LanguageCode"); }
         }
 
         public string ContentDescriptor
         {
-            get { return m_ContentDescriptor; }
-            set { m_ContentDescriptor = value; SendPropertyChanged("ContentDescriptor"); }
+            get { return _contentDescriptor; }
+            set { _contentDescriptor = value; SendPropertyChanged("ContentDescriptor"); }
         }
 
         public string Text
         {
-            get { return m_Text; }
-            set { m_Text = value; SendPropertyChanged("Text"); }
+            get { return _text; }
+            set { _text = value; SendPropertyChanged("Text"); }
         }
 
         public override string GetFrameID(ID3v2TagVersion tagVersion)
@@ -61,7 +62,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 int tmpBytesLeft = _frameHeader.FrameSizeExcludingAdditions - 1 /*encoding*/- 3 /*language code*/;
                 ContentDescriptor = ID3v2Utils.ReadString(TextEncoding, stream, ref tmpBytesLeft);
 
-                Text = ID3v2Utils.ReadString(m_TextEncoding, stream, tmpBytesLeft);
+                Text = ID3v2Utils.ReadString(_textEncoding, stream, tmpBytesLeft);
             }
             else
             {
@@ -81,12 +82,23 @@ namespace IdSharp.Tagging.ID3v2.Frames
             if (string.IsNullOrEmpty(Text))
                 return new byte[0];
 
+            byte[] contentDescriptorData;
+            byte[] textData;
+            do
+            {
+                contentDescriptorData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, ContentDescriptor, true);
+                textData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Text, false);
+            } while (
+                this.RequiresFix(tagVersion, ContentDescriptor, contentDescriptorData) ||
+                this.RequiresFix(tagVersion, Text, textData)
+            );
+
             using (MemoryStream frameData = new MemoryStream())
             {
                 frameData.WriteByte((byte)TextEncoding);
                 frameData.Write(ByteUtils.ISO88591GetBytes(LanguageCode));
-                frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, ContentDescriptor, true));
-                frameData.Write(ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Text, false));
+                frameData.Write(contentDescriptorData);
+                frameData.Write(textData);
                 return _frameHeader.GetBytes(frameData, tagVersion, GetFrameID(tagVersion));
             }
         }

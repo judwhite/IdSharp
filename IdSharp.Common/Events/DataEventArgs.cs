@@ -8,15 +8,13 @@ namespace IdSharp.Common.Events
     /// <typeparam name="T">The type of the <see cref="DataEventArgs{T}.Data"/> property.</typeparam>
     public class DataEventArgs<T> : EventArgs
     {
-        private readonly T m_Data;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="DataEventArgs&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="data">The data item to send to event handlers.</param>
         public DataEventArgs(T data)
         {
-            m_Data = data;
+            Data = data;
         }
 
         /// <summary>
@@ -25,7 +23,7 @@ namespace IdSharp.Common.Events
         /// <value>The data value.</value>
         public T Data
         {
-            get { return m_Data; }
+            get; set;
         }
     }
 }
