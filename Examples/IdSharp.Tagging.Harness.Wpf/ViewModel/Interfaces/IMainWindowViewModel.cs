@@ -14,5 +14,6 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces
         bool CanSave { get; }
         bool CanRemoveID3v1 { get; }
         bool CanRemoveID3v2 { get; }
+        bool IsFileTabSelected { get; }
     }
 }

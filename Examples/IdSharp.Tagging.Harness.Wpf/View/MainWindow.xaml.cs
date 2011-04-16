@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using IdSharp.Tagging.Harness.Wpf.Events;
 using IdSharp.Tagging.Harness.Wpf.ViewModel;
 
 namespace IdSharp.Tagging.Harness.Wpf.View

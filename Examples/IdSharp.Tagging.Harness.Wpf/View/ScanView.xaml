@@ -38,7 +38,7 @@
             <Button Grid.Column="2" Command="{Binding CancelCommand}" Content="_Cancel" VerticalAlignment="Center" />
         </Grid>
 
-        <DataGrid Grid.Row="1" ItemsSource="{Binding TrackCollection}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,8,0,0">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding TrackCollection}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,8,0,0" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image">
                     <DataGridTemplateColumn.CellTemplate>

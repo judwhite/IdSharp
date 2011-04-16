@@ -22,6 +22,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
         private bool _canSave;
         private bool _canRemoveID3v1;
         private bool _canRemoveID3v2;
+        private bool _isFileTabSelected = true;
 
         public MainWindowViewModel()
         {
@@ -36,6 +37,8 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             _removeID3v1Command = new DelegateCommand(RemoveID3v1, () => CanRemoveID3v1);
             _removeID3v2Command = new DelegateCommand(RemoveID3v2, () => CanRemoveID3v2);
             _closeCommand = new DelegateCommand(CloseApplication);
+
+            EventDispatcher.Subscribe(EventType.LoadFile, (string fileName) => { IsFileTabSelected = true; });
         }
 
         public string Version
@@ -108,7 +111,20 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             }
         }
 
-        private void CloseApplication()
+        public bool IsFileTabSelected
+        {
+            get { return _isFileTabSelected; }
+            set
+            {
+                if (_isFileTabSelected != value)
+                {
+                    _isFileTabSelected = value;
+                    SendPropertyChanged("IsFileTabSelected");
+                }
+            }
+        }
+
+        private static void CloseApplication()
         {
             Application.Current.MainWindow.Close();
         }

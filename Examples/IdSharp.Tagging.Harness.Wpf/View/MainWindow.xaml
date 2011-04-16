@@ -6,6 +6,8 @@
     Title="IdSharp Harness" 
     Height="650" 
     Width="900"
+    MinHeight="650" 
+    MinWidth="900"
     WindowStartupLocation="CenterScreen"
 >
     <Grid Margin="16">
@@ -21,7 +23,7 @@
         <TabControl Grid.Row="1" Margin="0,8">
             <TabControl.Items>
 
-                <TabItem Header="File">
+                <TabItem Header="File" IsSelected="{Binding IsFileTabSelected, Mode=TwoWay}">
 
                     <Grid Margin="4,0">
                         <Grid.RowDefinitions>

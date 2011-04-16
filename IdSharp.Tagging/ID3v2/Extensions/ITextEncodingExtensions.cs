@@ -17,17 +17,5 @@ namespace IdSharp.Tagging.ID3v2.Extensions
 
             return false;
         }
-
-        /*private static byte[] AddNullTerminator(byte[] bytes)
-        {
-            if (bytes == null)
-                throw new ArgumentNullException("bytes");
-
-            byte[] newBytes = new byte[bytes.Length + 1];
-            for (int i = 0; i < bytes.Length; i++)
-                newBytes[i] = bytes[i];
-
-            return newBytes;
-        }*/
     }
 }

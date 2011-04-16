@@ -59,7 +59,7 @@
     <Compile Include="Commands\CommandManagerHelper.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandOfT.cs" />
-    <Compile Include="Commands\WpfApplicationHelper.cs" />
+    <Compile Include="Helpers\WpfApplicationHelper.cs" />
     <Compile Include="Controls\CollectionNavigator.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImagePopup.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Threading;
+using IdSharp.Tagging.Harness.Wpf.Commands;
 
 namespace IdSharp.Tagging.Harness.Wpf
 {
@@ -11,6 +12,7 @@ namespace IdSharp.Tagging.Harness.Wpf
         public App()
         {
             DispatcherUnhandledException += App_DispatcherUnhandledException;
+            WpfApplicationHelper.EnabledSelectAllOnFocusOnTextBox();
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

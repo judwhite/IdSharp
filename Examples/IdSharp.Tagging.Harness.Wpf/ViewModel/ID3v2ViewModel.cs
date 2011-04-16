@@ -368,7 +368,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
                     _id3v2.CommentsList.Remove(comments);
             }
 
-            // TODO: Comments
+            // TODO: Multiple comments
 
             _id3v2.Save(_fullFileName);
         }

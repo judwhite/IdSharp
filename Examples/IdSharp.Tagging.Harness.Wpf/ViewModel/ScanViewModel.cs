@@ -179,7 +179,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
                         Album = id3.Album,
                         Year = id3.Year,
                         Genre = id3.Genre,
-                        FileName = fileList[i].Name
+                        FullFileName = fileList[i].FullName
                     };
 
                     if (id3.PictureList != null && id3.PictureList.Count > 0)

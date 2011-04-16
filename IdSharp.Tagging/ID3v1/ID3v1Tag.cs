@@ -64,7 +64,7 @@ namespace IdSharp.Tagging.ID3v1
             get { return _title; }
             set
             {
-                _title = GetString(value, 30);
+                _title = GetTrimmedString(value, 30);
                 SendPropertyChanged("Title");
             }
         }
@@ -78,7 +78,7 @@ namespace IdSharp.Tagging.ID3v1
             get { return _artist; }
             set
             {
-                _artist = GetString(value, 30);
+                _artist = GetTrimmedString(value, 30);
                 SendPropertyChanged("Artist");
             }
         }
@@ -92,7 +92,7 @@ namespace IdSharp.Tagging.ID3v1
             get { return _album; }
             set
             {
-                _album = GetString(value, 30);
+                _album = GetTrimmedString(value, 30);
                 SendPropertyChanged("Album");
             }
         }
@@ -106,7 +106,7 @@ namespace IdSharp.Tagging.ID3v1
             get { return _year; }
             set
             {
-                _year = GetString(value, 4);
+                _year = GetTrimmedString(value, 4);
                 SendPropertyChanged("Year");
             }
         }
@@ -121,9 +121,9 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 if (_tagVersion == ID3v1TagVersion.ID3v11)
-                    _comment = GetString(value, 28);
+                    _comment = GetTrimmedString(value, 28);
                 else
-                    _comment = GetString(value, 30);
+                    _comment = GetTrimmedString(value, 30);
 
                 SendPropertyChanged("Comment");
             }
@@ -225,7 +225,7 @@ namespace IdSharp.Tagging.ID3v1
                     if (buf[28] == 0 && buf[29] != 0)
                     {
                         TagVersion = ID3v1TagVersion.ID3v11;
-                        Comment = comment.Substring(0, 28).TrimEnd('\0').TrimEnd(' ');
+                        Comment = GetTrimmedString(comment, 28);
                         TrackNumber = buf[29];
                     }
                     else
@@ -360,9 +360,6 @@ namespace IdSharp.Tagging.ID3v1
                     break;
             }
 
-            if (maxLength == 0)
-                return null;
-
             string returnValue = ByteUtils.ISO88591.GetString(byteArray, 0, maxLength).TrimEnd('\0').TrimEnd(' ');
             return returnValue;
         }
@@ -372,12 +369,12 @@ namespace IdSharp.Tagging.ID3v1
         /// </summary>
         /// <param name="value">The original string value.</param>
         /// <param name="maxLength">Maximum length of the string.</param>
-        private static string GetString(string value, int maxLength)
+        private static string GetTrimmedString(string value, int maxLength)
         {
             if (value == null)
                 return null;
 
-            value = value.Trim();
+            value = value.TrimEnd('\0').Trim();
 
             if (value.Length > maxLength)
                 return value.Substring(0, maxLength).Trim();
