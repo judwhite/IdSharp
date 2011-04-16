@@ -10,7 +10,9 @@ using IdSharp.Tagging.Harness.Wpf.Commands;
 using IdSharp.Tagging.Harness.Wpf.Model;
 using IdSharp.Tagging.Harness.Wpf.ViewModel.Interfaces;
 using IdSharp.Tagging.ID3v2;
+using IdSharp.Tagging.ID3v2.Frames;
 using Application = System.Windows.Application;
+using GiveFeedbackEventArgs = System.Windows.GiveFeedbackEventArgs;
 
 namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 {
@@ -129,6 +131,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
             PercentComplete = 0;
             IsScanning = true;
+            TrackCollection = null;
             _cancelScanning = false;
 
             ThreadPool.QueueUserWorkItem(ScanDirectory, basePath);
@@ -171,7 +174,35 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
 
                     IID3v2Tag id3 = new ID3v2Tag(fileList[i].FullName);
 
-                    trackList.Add(new Track(id3.Artist, id3.Title, id3.Album, id3.Year, id3.Genre, fileList[i].Name));
+                    Track track = new Track
+                    {
+                        Artist = id3.Artist,
+                        Title = id3.Title,
+                        Album = id3.Album,
+                        Year = id3.Year,
+                        Genre = id3.Genre,
+                        FileName = fileList[i].Name
+                    };
+
+                    if (id3.PictureList != null && id3.PictureList.Count > 0)
+                    {
+                        IAttachedPicture picture = id3.PictureList[0];
+                        if (picture.PictureType != PictureType.CoverFront)
+                        {
+                            foreach (var apic in id3.PictureList)
+                            {
+                                if (apic.PictureType == PictureType.CoverFront)
+                                {
+                                    picture = apic;
+                                    break;
+                                }
+                            }
+                        }
+
+                        CreatePictureOnUIThread(track, picture);
+                    }
+
+                    trackList.Add(track);
 
                     int percent = i * 100 / totalFiles;
                     if (percent > PercentComplete)
@@ -189,6 +220,22 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             {
                 EndRecursiveScanning(totalFiles, trackList);
             }
+        }
+
+        private void CreatePictureOnUIThread(Track track, IAttachedPicture picture)
+        {
+            if (track == null)
+                throw new ArgumentNullException("track");
+            if (picture == null)
+                throw new ArgumentNullException("picture");
+
+            if (!Application.Current.Dispatcher.CheckAccess())
+            {
+                Application.Current.Dispatcher.Invoke(new Action<Track, IAttachedPicture>(CreatePictureOnUIThread), track, picture);
+                return;
+            }
+
+            track.Picture = new Picture(picture);
         }
 
         private void EndRecursiveScanning(int totalFiles, ObservableCollection<Track> trackList)

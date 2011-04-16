@@ -266,7 +266,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 if (tagReadingInfo.TagVersion == ID3v2TagVersion.ID3v22)
                 {
                     // TODO: Do something with this?
-                    String imageFormat = ID3v2Utils.ReadString(EncodingType.ISO88591, stream, 3);
+                    string imageFormat = ID3v2Utils.ReadString(EncodingType.ISO88591, stream, 3);
                     bytesLeft -= 3;
                 }
                 else

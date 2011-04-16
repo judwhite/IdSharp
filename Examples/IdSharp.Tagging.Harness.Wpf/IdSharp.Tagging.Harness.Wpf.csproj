@@ -60,6 +60,9 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandOfT.cs" />
     <Compile Include="Commands\WpfApplicationHelper.cs" />
+    <Compile Include="Controls\CollectionNavigator.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\ImagePopup.cs" />
     <Compile Include="Converters\BitrateConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
@@ -96,6 +99,10 @@
     <Page Include="Styles\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ID3v1View.xaml">
       <SubType>Designer</SubType>
@@ -161,7 +168,26 @@
       <Name>IdSharp.Tagging</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Themes\Navigation\Disabled\Add.png" />
+    <Resource Include="Themes\Navigation\Disabled\Delete.png" />
+    <Resource Include="Themes\Navigation\Disabled\First.png" />
+    <Resource Include="Themes\Navigation\Disabled\Last.png" />
+    <Resource Include="Themes\Navigation\Disabled\Next.png" />
+    <Resource Include="Themes\Navigation\Disabled\Previous.png" />
+    <Resource Include="Themes\Navigation\Hot\Add.png" />
+    <Resource Include="Themes\Navigation\Hot\Delete.png" />
+    <Resource Include="Themes\Navigation\Hot\First.png" />
+    <Resource Include="Themes\Navigation\Hot\Last.png" />
+    <Resource Include="Themes\Navigation\Hot\Next.png" />
+    <Resource Include="Themes\Navigation\Hot\Previous.png" />
+    <Resource Include="Themes\Navigation\Regular\Add.png" />
+    <Resource Include="Themes\Navigation\Regular\Delete.png" />
+    <Resource Include="Themes\Navigation\Regular\First.png" />
+    <Resource Include="Themes\Navigation\Regular\Last.png" />
+    <Resource Include="Themes\Navigation\Regular\Next.png" />
+    <Resource Include="Themes\Navigation\Regular\Previous.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

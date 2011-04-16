@@ -20,14 +20,18 @@ namespace IdSharp.Tagging.Harness.Wpf.Model
             Description = attachedPicture.Description;
             PictureType = attachedPicture.PictureType;
 
-            MemoryStream memoryStream = new MemoryStream(attachedPicture.PictureData);
-            memoryStream.Seek(0, SeekOrigin.Begin);
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.BeginInit();
-            bitmapImage.StreamSource = memoryStream;
-            bitmapImage.EndInit();
+            byte[] pictureData = attachedPicture.PictureData;
+            if (pictureData != null)
+            {
+                MemoryStream memoryStream = new MemoryStream(attachedPicture.PictureData);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.EndInit();
 
-            ImageSource = bitmapImage;
+                ImageSource = bitmapImage;
+            }
         }
 
         private void SendPropertyChanged(string propertyName)
