@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Tagging.Example.Console", "IdSharp.Tagging.Example.Console.csproj", "{FEE4A686-F961-41BF-8748-B4B0115BE9C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Console", "IdSharp.Example.Console.csproj", "{FEE4A686-F961-41BF-8748-B4B0115BE9C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Tagging", "..\..\IdSharp.Tagging\IdSharp.Tagging.csproj", "{A4BC39D2-FB08-4DCE-B485-0F49D21B106D}"
 EndProject

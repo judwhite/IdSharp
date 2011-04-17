@@ -7,9 +7,9 @@ namespace IdSharp.Tagging.VorbisComment
     /// </summary>
     public interface IVorbisComment
     {
-        /// <summary>Writes the tag.</summary>
+        /// <summary>Saves the tag.</summary>
         /// <param name="path">The path.</param>
-        void Write(string path);
+        void Save(string path);
 
         /// <summary>Reads the tag.</summary>
         /// <param name="path">The path.</param>
@@ -17,13 +17,13 @@ namespace IdSharp.Tagging.VorbisComment
 
         /// <summary>Reads the tag.</summary>
         /// <param name="stream">The stream.</param>
-        void ReadStream(Stream stream);
+        void Read(Stream stream);
 
         /// <summary>
-        /// Gets or sets the vendor.
+        /// Gets the vendor specified in the Vorbis Comment header.
         /// </summary>
-        /// <value>The vendor.</value>
-        string Vendor { get; set; }
+        /// <value>The vendor specified in the Vorbis Comment header..</value>
+        string Vendor { get; }
 
         /// <summary>Gets or sets the artist.</summary>
         /// <value>The artist.</value>

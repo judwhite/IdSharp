@@ -47,7 +47,7 @@ namespace IdSharp.Tagging.ID3v1
         {
             _tagVersion = ID3v1TagVersion.ID3v11;
             _genreIndex = 12; // Other
-            ReadStream(stream);
+            Read(stream);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace IdSharp.Tagging.ID3v1
         {
             using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                ReadStream(fileStream);
+                Read(fileStream);
             }
         }
 
@@ -203,7 +203,7 @@ namespace IdSharp.Tagging.ID3v1
         /// Reads the ID3v1 tag from the specified stream.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        public void ReadStream(Stream stream)
+        public void Read(Stream stream)
         {
             if (stream.Length >= 128)
             {

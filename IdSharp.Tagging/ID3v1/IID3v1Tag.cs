@@ -60,7 +60,7 @@ namespace IdSharp.Tagging.ID3v1
         /// Reads the ID3v1 tag from the specified stream.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        void ReadStream(Stream stream);
+        void Read(Stream stream);
 
         /// <summary>
         /// Saves the ID3v1 tag to the specified path.

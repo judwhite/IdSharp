@@ -8,7 +8,7 @@
     <ProjectGuid>{FEE4A686-F961-41BF-8748-B4B0115BE9C4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IdSharp.Tagging.Example.Console</RootNamespace>
+    <RootNamespace>IdSharp.Example.ConsoleApplication</RootNamespace>
     <AssemblyName>idsharp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>

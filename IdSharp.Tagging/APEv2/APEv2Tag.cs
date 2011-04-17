@@ -66,7 +66,7 @@ namespace IdSharp.Tagging.APEv2
         public APEv2Tag(Stream stream)
             : this()
         {
-            ReadStream(stream);
+            Read(stream);
         }
 
         internal long TagOffset
@@ -147,7 +147,7 @@ namespace IdSharp.Tagging.APEv2
         {
             using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                ReadStream(fs);
+                Read(fs);
             }
         }
 
@@ -155,12 +155,12 @@ namespace IdSharp.Tagging.APEv2
         /// Reads the raw data from a specified stream.
         /// </summary>
         /// <param name="stream">The stream to read from.</param>
-        public void ReadStream(Stream stream)
+        public void Read(Stream stream)
         {
-            ReadStream(stream, true);
+            Read(stream, readElements: true);
         }
 
-        internal void ReadStream(Stream stream, bool readElements)
+        internal void Read(Stream stream, bool readElements)
         {
             _tagSize = 0;
             _tagOffset = 0;

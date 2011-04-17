@@ -52,7 +52,7 @@ namespace IdSharp.Tagging.VorbisComment
             if (stream == null)
                 throw new ArgumentNullException("stream");
 
-            ReadStream(stream);
+            Read(stream);
         }
 
         private VorbisComment()
@@ -60,13 +60,12 @@ namespace IdSharp.Tagging.VorbisComment
         }
 
         /// <summary>
-        /// Gets or sets the vendor.
+        /// Gets the vendor specified in the Vorbis Comment header.
         /// </summary>
-        /// <value>The vendor.</value>
+        /// <value>The vendor specified in the Vorbis Comment header..</value>
         public string Vendor
         {
             get { return _vendor; }
-            set { _vendor = value; }
         }
 
         /// <summary>
@@ -158,7 +157,7 @@ namespace IdSharp.Tagging.VorbisComment
         /// Writes the tag.
         /// </summary>
         /// <param name="path">The path.</param>
-        public void Write(string path)
+        public void Save(string path)
         {
             VorbisComment vorbisComment = new VorbisComment();
             InternalInfo info;
@@ -197,7 +196,7 @@ namespace IdSharp.Tagging.VorbisComment
             {
                 using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    ReadStream(fs);
+                    Read(fs);
                 }
             }
             catch (InvalidDataException ex)
@@ -210,7 +209,7 @@ namespace IdSharp.Tagging.VorbisComment
         /// Reads the tag.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        public void ReadStream(Stream stream)
+        public void Read(Stream stream)
         {
             ReadTagInternal(stream);
         }

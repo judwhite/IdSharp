@@ -15,7 +15,7 @@ namespace IdSharp.Tagging.APEv2
             try
             {
                 APEv2Tag apev2 = new APEv2Tag();
-                apev2.ReadStream(stream, false);
+                apev2.Read(stream, readElements: false);
                 return apev2.TagSize;
             }
             finally
@@ -64,7 +64,7 @@ namespace IdSharp.Tagging.APEv2
             APEv2Tag apev2 = new APEv2Tag();
             using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                apev2.ReadStream(fileStream, false);
+                apev2.Read(fileStream, readElements: false);
             }
 
             int tagSize = apev2.TagSize;

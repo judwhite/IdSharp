@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.IO;
+using IdSharp.Common.Utils;
 using IdSharp.Tagging.ID3v1;
 using IdSharp.Tagging.ID3v2;
 
@@ -12,28 +13,18 @@ namespace IdSharp.Tagging.SimpleTag
     /// </summary>
     public class SimpleTag : ISimpleTag
     {
-        #region <<< Private Fields >>>
+        private string _fileName;
+        private string _title;
+        private string _artist;
+        private string _album;
+        private string _year;
+        private string _comment;
+        private string _trackNumber;
+        private string _genre;
+        private string _tagVersion;
 
-        private String m_FileName;
-        private String m_Title;
-        private String m_Artist;
-        private String m_Album;
-        private String m_Year;
-        private String m_Comment;
-        private String m_TrackNumber;
-        private String m_Genre;
-        private String m_TagVersion;
-
-        #endregion <<< Private Fields >>>
-
-        #region <<< INotifyPropertyChanged Members >>>
-
-        /// <summary>
-        /// Occurs when a property value changes.
-        /// </summary>
+        /// <summary>Occurs when a property value changes.</summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion <<< INotifyPropertyChanged Members >>>
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleTag"/> class.
@@ -47,148 +38,122 @@ namespace IdSharp.Tagging.SimpleTag
             Read(path);
         }
 
-        #region <<< ISimpleTag Members >>>
-
-        /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
+        /// <summary>Gets or sets the title.</summary>
         /// <value>The title.</value>
-        public String Title
+        public string Title
         {
-            get { return m_Title; }
+            get { return _title; }
             set
             {
-                m_Title = value;
+                _title = value;
                 SendPropertyChanged("Title");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the artist.
-        /// </summary>
+        /// <summary>Gets or sets the artist.</summary>
         /// <value>The artist.</value>
-        public String Artist
+        public string Artist
         {
-            get { return m_Artist; }
+            get { return _artist; }
             set
             {
-                m_Artist = value;
+                _artist = value;
                 SendPropertyChanged("Artist");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the album.
-        /// </summary>
+        /// <summary>Gets or sets the album.</summary>
         /// <value>The album.</value>
-        public String Album
+        public string Album
         {
-            get { return m_Album; }
+            get { return _album; }
             set
             {
-                m_Album = value;
+                _album = value;
                 SendPropertyChanged("Album");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the year.
-        /// </summary>
+        /// <summary>Gets or sets the year.</summary>
         /// <value>The year.</value>
-        public String Year
+        public string Year
         {
-            get { return m_Year; }
+            get { return _year; }
             set
             {
-                m_Year = value;
+                _year = value;
                 SendPropertyChanged("Year");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the comment.
-        /// </summary>
+        /// <summary>Gets or sets the comment.</summary>
         /// <value>The comment.</value>
-        public String Comment
+        public string Comment
         {
-            get { return m_Comment; }
+            get { return _comment; }
             set
             {
-                m_Comment = value;
+                _comment = value;
                 SendPropertyChanged("Comment");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the track number.
-        /// </summary>
+        /// <summary>Gets or sets the track number.</summary>
         /// <value>The track number.</value>
-        public String TrackNumber
+        public string TrackNumber
         {
-            get { return m_TrackNumber; }
+            get { return _trackNumber; }
             set
             {
-                m_TrackNumber = value;
+                _trackNumber = value;
                 SendPropertyChanged("TrackNumber");
             }
         }
 
-        /// <summary>
-        /// Gets or sets the genre.
-        /// </summary>
+        /// <summary>Gets or sets the genre.</summary>
         /// <value>The genre.</value>
-        public String Genre
+        public string Genre
         {
-            get { return m_Genre; }
+            get { return _genre; }
             set
             {
-                m_Genre = value;
+                _genre = value;
                 SendPropertyChanged("Genre");
             }
         }
 
-        /// <summary>
-        /// Gets the tag type and version.
-        /// </summary>
+        /// <summary>Gets the tag type and version.</summary>
         /// <value>The tag type and version.</value>
-        public String TagVersion
+        public string TagVersion
         {
-            get { return m_TagVersion; }
+            get { return _tagVersion; }
             private set
             {
-                m_TagVersion = value;
+                _tagVersion = value;
                 SendPropertyChanged("TagVersion");
             }
         }
 
-        /// <summary>
-        /// Saves the tag.
-        /// </summary>
+        /// <summary>Saves the tag.</summary>
         public void Save()
         {
-            Save(m_FileName);
+            Save(_fileName);
         }
 
-        #endregion <<< ISimpleTag Members >>>
-
-        #region <<< Private Methods >>>
-
-        /// <summary>
-        /// Reads the tag from the specified stream.
-        /// </summary>
+        /// <summary>Reads the tag from the specified stream.</summary>
         /// <param name="stream">The stream.</param>
-        private void ReadStream(Stream stream)
+        private void Read(Stream stream)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");
 
             bool id3v2Found = false;
-            String tagVersion = String.Empty;
+            string tagVersion = string.Empty;
 
             // ID3v2
-            if (ID3v2.ID3v2Tag.DoesTagExist(stream))
+            if (ID3v2Tag.DoesTagExist(stream))
             {
-                ID3v2.ID3v2Tag id3v2 = new ID3v2.ID3v2Tag(stream);
+                ID3v2Tag id3v2 = new ID3v2Tag(stream);
                 Title = id3v2.Title;
                 Artist = id3v2.Artist;
                 Album = id3v2.Album;
@@ -201,51 +166,26 @@ namespace IdSharp.Tagging.SimpleTag
                 else
                     Comment = null;
 
-                switch (id3v2.Header.TagVersion)
-                {
-                    case ID3v2TagVersion.ID3v22:
-                        tagVersion = "ID3v2.2";
-                        break;
-                    case ID3v2TagVersion.ID3v23:
-                        tagVersion = "ID3v2.3";
-                        break;
-                    case ID3v2TagVersion.ID3v24:
-                        tagVersion = "ID3v2.4";
-                        break;
-                    default:
-                        tagVersion = "ID3v2.?";
-                        break;
-                }
-
+                tagVersion = EnumUtils.GetDescription(id3v2.Header.TagVersion);
+                
                 id3v2Found = true;
             }
 
             // ID3v1
-            if (ID3v1.ID3v1Tag.DoesTagExist(stream))
+            if (ID3v1Tag.DoesTagExist(stream))
             {
-                ID3v1.ID3v1Tag id3v1 = new ID3v1.ID3v1Tag(stream);
+                ID3v1Tag id3v1 = new ID3v1Tag(stream);
 
                 // Use ID3v1 fields if ID3v2 doesn't exist or field is blank
-                if (!id3v2Found || String.IsNullOrEmpty(Title)) Title = id3v1.Title;
-                if (!id3v2Found || String.IsNullOrEmpty(Artist)) Artist = id3v1.Artist;
-                if (!id3v2Found || String.IsNullOrEmpty(Album)) Album = id3v1.Album;
-                if (!id3v2Found || String.IsNullOrEmpty(Year)) Year = id3v1.Year;
-                if (!id3v2Found || String.IsNullOrEmpty(Genre)) Genre = GenreHelper.GenreByIndex[id3v1.GenreIndex];
-                if (!id3v2Found || String.IsNullOrEmpty(TrackNumber)) TrackNumber = id3v1.TrackNumber.ToString();
-                if (!id3v2Found || String.IsNullOrEmpty(Comment)) Comment = id3v1.Comment;
+                if (!id3v2Found || string.IsNullOrEmpty(Title)) Title = id3v1.Title;
+                if (!id3v2Found || string.IsNullOrEmpty(Artist)) Artist = id3v1.Artist;
+                if (!id3v2Found || string.IsNullOrEmpty(Album)) Album = id3v1.Album;
+                if (!id3v2Found || string.IsNullOrEmpty(Year)) Year = id3v1.Year;
+                if (!id3v2Found || string.IsNullOrEmpty(Genre)) Genre = GenreHelper.GenreByIndex[id3v1.GenreIndex];
+                if (!id3v2Found || string.IsNullOrEmpty(TrackNumber)) TrackNumber = id3v1.TrackNumber.ToString();
+                if (!id3v2Found || string.IsNullOrEmpty(Comment)) Comment = id3v1.Comment;
 
-                switch (id3v1.TagVersion)
-                {
-                    case ID3v1TagVersion.ID3v10:
-                        tagVersion += (!String.IsNullOrEmpty(tagVersion) ? ", " : "") + "ID3v1.0";
-                        break;
-                    case ID3v1TagVersion.ID3v11:
-                        tagVersion += (!String.IsNullOrEmpty(tagVersion) ? ", " : "") + "ID3v1.1";
-                        break;
-                    default:
-                        tagVersion += (!String.IsNullOrEmpty(tagVersion) ? ", " : "") + "ID3v1.?";
-                        break;
-                }
+                tagVersion += (!string.IsNullOrEmpty(tagVersion) ? ", " : "") + EnumUtils.GetDescription(id3v1.TagVersion);
             }
 
             // Vorbis Comment
@@ -259,11 +199,11 @@ namespace IdSharp.Tagging.SimpleTag
                 Genre = vc.Genre;
                 TrackNumber = vc.TrackNumber;
                 Comment = vc.Comment;
-                tagVersion = (!String.IsNullOrEmpty(tagVersion) ? ", " : "") + "Vorbis Comment";
+                tagVersion = (!string.IsNullOrEmpty(tagVersion) ? ", " : "") + "Vorbis Comment";
             }
 
             // No tag found
-            if (String.IsNullOrEmpty(tagVersion))
+            if (string.IsNullOrEmpty(tagVersion))
             {
                 Title = null;
                 Artist = null;
@@ -279,9 +219,7 @@ namespace IdSharp.Tagging.SimpleTag
             TagVersion = tagVersion;
         }
 
-        /// <summary>
-        /// Saves the tag to the specified path.
-        /// </summary>
+        /// <summary>Saves the tag to the specified path.</summary>
         /// <param name="path">The full path of the file.</param>
         private void Save(string path)
         {
@@ -298,14 +236,14 @@ namespace IdSharp.Tagging.SimpleTag
                 vc.Genre = Genre;
                 vc.TrackNumber = TrackNumber;
                 vc.Comment = Comment;
-                vc.Write(path);
+                vc.Save(path);
 
-                ID3v2.ID3v2Tag.RemoveTag(path);
-                ID3v1.ID3v1Tag.RemoveTag(path);
+                ID3v2Tag.RemoveTag(path);
+                ID3v1Tag.RemoveTag(path);
             }
             else
             {
-                ID3v2.ID3v2Tag id3v2 = new ID3v2.ID3v2Tag(path);
+                ID3v2Tag id3v2 = new ID3v2Tag(path);
                 id3v2.Title = Title;
                 id3v2.Artist = Artist;
                 id3v2.Album = Album;
@@ -323,7 +261,7 @@ namespace IdSharp.Tagging.SimpleTag
                         id3v2.CommentsList.AddNew().Description = Comment;
                 }
 
-                ID3v1.ID3v1Tag id3v1 = new ID3v1.ID3v1Tag(path);
+                ID3v1Tag id3v1 = new ID3v1Tag(path);
                 id3v1.Title = Title;
                 id3v1.Artist = Artist;
                 id3v1.Album = Album;
@@ -358,9 +296,7 @@ namespace IdSharp.Tagging.SimpleTag
             Read(path);
         }
 
-        /// <summary>
-        /// Reads the tag from the specified path.
-        /// </summary>
+        /// <summary>Reads the tag from the specified path.</summary>
         /// <param name="path">The full path of the file.</param>
         private void Read(string path)
         {
@@ -369,10 +305,10 @@ namespace IdSharp.Tagging.SimpleTag
 
             using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                ReadStream(fileStream);
+                Read(fileStream);
             }
 
-            m_FileName = path;
+            _fileName = path;
         }
 
         private void SendPropertyChanged(string propertyName)
@@ -381,7 +317,5 @@ namespace IdSharp.Tagging.SimpleTag
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        #endregion <<< Private Methods >>>
     }
 }

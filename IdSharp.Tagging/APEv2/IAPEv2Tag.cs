@@ -15,7 +15,7 @@ namespace IdSharp.Tagging.APEv2
 
         /// <summary>Reads the raw data from a specified stream.</summary>
         /// <param name="stream">The stream to read from.</param>
-        void ReadStream(Stream stream);
+        void Read(Stream stream);
 
         /// <summary>Gets the bytes of the current APEv2 tag.</summary>
         /// <returns>The bytes of the current APEv2 tag.</returns>

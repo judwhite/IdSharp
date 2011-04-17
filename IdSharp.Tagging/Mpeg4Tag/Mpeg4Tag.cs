@@ -950,7 +950,7 @@ namespace IdSharp.Tagging.Mpeg4
         {
             using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                ReadStream(fs);
+                Read(fs);
             }
         }
 
@@ -958,7 +958,7 @@ namespace IdSharp.Tagging.Mpeg4
         /// Reads the tag from the specified stream.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        public void ReadStream(Stream stream)
+        public void Read(Stream stream)
         {
             _atoms.Clear();
             _moovpos = 0;

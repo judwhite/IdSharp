@@ -31,7 +31,7 @@ namespace IdSharp.Tagging.ID3v2
         /// Reads the raw data from a specified stream.
         /// </summary>
         /// <param name="stream">The stream to read from.</param>
-        void ReadStream(Stream stream);
+        void Read(Stream stream);
 
         /// <summary>
         /// Saves the tag to the specified path.

@@ -44,7 +44,7 @@ namespace IdSharp.Tagging.ID3v2
         public ID3v2Tag(Stream stream)
             : this()
         {
-            ReadStream(stream);
+            Read(stream);
         }
 
         #endregion <<< Constructor >>>
@@ -63,7 +63,7 @@ namespace IdSharp.Tagging.ID3v2
                 using (Stream stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     if (stream.Length < 10) return;
-                    ReadStream(stream);
+                    Read(stream);
                 }
             }
             catch (Exception ex)
@@ -216,7 +216,7 @@ namespace IdSharp.Tagging.ID3v2
                 // TODO: Take this out eventually, this is just a precaution.
                 tag.Position = 0;
                 ID3v2Tag newID3v2 = new ID3v2Tag();
-                newID3v2.ReadStream(tag);
+                newID3v2.Read(tag);
 
                 return tag.ToArray();
             }
@@ -250,7 +250,7 @@ namespace IdSharp.Tagging.ID3v2
         /// Reads the raw data from a specified stream.
         /// </summary>
         /// <param name="stream">The stream to read from.</param>
-        public void ReadStream(Stream stream)
+        public void Read(Stream stream)
         {
             // Check for 'ID3' marker
             byte[] identifier = stream.Read(3);

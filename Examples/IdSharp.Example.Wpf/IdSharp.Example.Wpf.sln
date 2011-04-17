@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Tagging.Harness.Wpf", "IdSharp.Tagging.Harness.Wpf.csproj", "{C84CCFF5-D059-443B-B913-35A0F73AA2FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Wpf", "IdSharp.Example.Wpf.csproj", "{C84CCFF5-D059-443B-B913-35A0F73AA2FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.AudioInfo", "..\..\IdSharp.AudioInfo\IdSharp.AudioInfo.csproj", "{136F9938-42FC-4C63-B76E-9DAAD3A63864}"
 EndProject
