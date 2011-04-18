@@ -688,9 +688,9 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
-        /// Gets the BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.
+        /// Gets the BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunPGAP, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.
         /// </summary>
-        /// <value>The BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.</value>
+        /// <value>The BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunPGAP, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.</value>
         public BindingList<IComments> iTunesCommentsList
         {
             get { return m_iTunesCommentsList; }

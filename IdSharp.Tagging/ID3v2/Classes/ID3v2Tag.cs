@@ -76,19 +76,11 @@ namespace IdSharp.Tagging.ID3v2
         /// Saves the tag to the specified path.
         /// </summary>
         /// <param name="path">The path to save the tag.</param>
-        /// <param name="encodingType">The type of text encoding.</param>
-        public void SaveEncoding(string path, EncodingType encodingType)
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Saves the tag to the specified path.
-        /// </summary>
-        /// <param name="path">The path to save the tag.</param>
         public void Save(string path)
         {
+            if (string.IsNullOrEmpty(path))
+                throw new ArgumentNullException("path");
+
             int originalTagSize = GetTagSize(path);
 
             byte[] tagBytes = GetBytes(originalTagSize);

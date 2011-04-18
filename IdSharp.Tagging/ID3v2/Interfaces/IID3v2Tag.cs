@@ -40,13 +40,6 @@ namespace IdSharp.Tagging.ID3v2
         void Save(string path);
 
         /// <summary>
-        /// Saves the tag to the specified path.
-        /// </summary>
-        /// <param name="path">The path to save the tag.</param>
-        /// <param name="encodingType">The type of text encoding.</param>
-        void SaveEncoding(string path, EncodingType encodingType);
-
-        /// <summary>
         /// Gets all frames in the ID3v2 tag as a collection of IFrames.
         /// </summary>
         /// <returns>All frames in the ID3v2 tag as a collection of IFrames.</returns>
