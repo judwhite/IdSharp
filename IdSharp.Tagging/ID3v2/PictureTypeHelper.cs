@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using IdSharp.Common.Utils;
 
 namespace IdSharp.Tagging.ID3v2

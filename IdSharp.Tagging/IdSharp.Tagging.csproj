@@ -91,6 +91,8 @@
     <Compile Include="ID3v1\ID3v1Tag.cs" />
     <Compile Include="ID3v1\ID3v1Tag.Static.cs" />
     <Compile Include="ID3v1\IID3v1Tag.cs" />
+    <Compile Include="ID3v2\Classes\FrameContainer.FrameCreation.cs" />
+    <Compile Include="ID3v2\Classes\FrameContainer.Validation.cs" />
     <Compile Include="ID3v2\Classes\ID3v2Tag.cs" />
     <Compile Include="ID3v2\Classes\ID3v2Tag.Static.cs" />
     <Compile Include="ID3v2\Extensions\ITextEncodingExtensions.cs" />
@@ -294,6 +296,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ID3v2\Classes\FrameContainer.FrameProperties.cs" />
     <None Include="idsharp.tagging.snk" />
   </ItemGroup>
   <ItemGroup>

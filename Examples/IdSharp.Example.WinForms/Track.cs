@@ -2,16 +2,6 @@ namespace IdSharp.Tagging.Harness.WinForms
 {
     internal class Track
     {
-        public Track(string artist, string title, string album, string year, string genre, string fileName)
-        {
-            Artist = artist;
-            Title = title;
-            Album = album;
-            Year = year;
-            Genre = genre;
-            FileName = fileName;
-        }
-
         public string FileName { get; set; }
 
         public string Artist { get; set; }

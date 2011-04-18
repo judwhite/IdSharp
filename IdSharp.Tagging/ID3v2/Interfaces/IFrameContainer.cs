@@ -428,10 +428,16 @@ namespace IdSharp.Tagging.ID3v2
         BindingList<ISynchronizedText> SynchronizedLyrics { get; }
 
         /// <summary>
-        /// Gets the BindingList of comment frames.
+        /// Gets the BindingList of comment frames. Excludes iTunes comment frames, see <see cref="iTunesCommentsList" /> instead.
         /// </summary>
-        /// <value>The BindingList of comment frames.</value>
+        /// <value>The BindingList of comment frames.  Excludes iTunes comment frames, see <see cref="iTunesCommentsList" /> instead.</value>
         BindingList<IComments> CommentsList { get; }
+
+        /// <summary>
+        /// Gets the BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.
+        /// </summary>
+        /// <value>The BindingList of iTunes comment frames. For example: iTunNORM, iTunSMPB, iTunes_CDDB_IDs, iTunes_CDDB_1, iTunes_CDDB_TrackNumber.</value>
+        BindingList<IComments> iTunesCommentsList { get; }
 
         /// <summary>
         /// Gets the BindingList of relative volume adjustment frames.

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using IdSharp.AudioInfo;
 using IdSharp.AudioInfo.Inspection;
 using IdSharp.Tagging.Harness.Wpf.Events;
@@ -291,16 +292,9 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
             }
 
             Comment = null;
-            if (_id3v2.CommentsList != null)
+            if (_id3v2.CommentsList.Count > 0)
             {
-                foreach (var item in _id3v2.CommentsList)
-                {
-                    if (item.Description != "iTunNORM")
-                    {
-                        Comment = item.Value;
-                        break;
-                    }
-                }
+                Comment = _id3v2.CommentsList[0].Value;
             }
 
             PlayLength = audioFile.TotalSeconds;
@@ -344,15 +338,7 @@ namespace IdSharp.Tagging.Harness.Wpf.ViewModel
                 _id3v2.PictureList.Remove(deletePicture);
             }
 
-            IComments comments = null;
-            foreach (var item in _id3v2.CommentsList)
-            {
-                if (item.Description != "iTunNORM")
-                {
-                    comments = item;
-                    break;
-                }
-            }
+            IComments comments = _id3v2.CommentsList.FirstOrDefault();
 
             if (!string.IsNullOrWhiteSpace(Comment))
             {

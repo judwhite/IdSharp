@@ -148,7 +148,15 @@ namespace IdSharp.Tagging.Harness.WinForms
 
                     IID3v2Tag id3 = new ID3v2Tag(fileList[i].FullName);
 
-                    trackList.Add(new Track(id3.Artist, id3.Title, id3.Album, id3.Year, id3.Genre, fileList[i].Name));
+                    trackList.Add(new Track 
+                    {
+                        Artist = id3.Artist, 
+                        Title = id3.Title, 
+                        Album = id3.Album, 
+                        Year = id3.Year, 
+                        Genre = id3.Genre, 
+                        FileName = fileList[i].Name
+                    });
 
                     if ((i % 100) == 0)
                     {
