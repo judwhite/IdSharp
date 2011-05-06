@@ -46,7 +46,7 @@
     <DocumentationFile>bin\Debug\IdSharp.WebLookup.XML</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
