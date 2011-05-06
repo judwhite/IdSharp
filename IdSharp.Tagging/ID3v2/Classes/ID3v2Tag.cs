@@ -62,7 +62,8 @@ namespace IdSharp.Tagging.ID3v2
                 // Open the file and read from the stream
                 using (Stream stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    if (stream.Length < 10) return;
+                    if (stream.Length < 10) 
+                        return;
                     Read(stream);
                 }
             }
