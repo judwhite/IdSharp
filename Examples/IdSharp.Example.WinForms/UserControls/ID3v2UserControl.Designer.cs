@@ -74,6 +74,10 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.label11 = new System.Windows.Forms.Label();
             this.txtEncoderPreset = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.chkPodcast = new System.Windows.Forms.CheckBox();
+            this.txtFeedUrl = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).BeginInit();
             this.imageBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,7 +97,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(407, 277);
+            this.label10.Location = new System.Drawing.Point(407, 319);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 13);
             this.label10.TabIndex = 126;
@@ -127,7 +131,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.imageBindingNavigator.Location = new System.Drawing.Point(410, 297);
+            this.imageBindingNavigator.Location = new System.Drawing.Point(410, 339);
             this.imageBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.imageBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.imageBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -229,7 +233,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(407, 250);
+            this.label9.Location = new System.Drawing.Point(407, 292);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 13);
             this.label9.TabIndex = 125;
@@ -251,10 +255,10 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtImageDescription
             // 
-            this.txtImageDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtImageDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImageDescription.Enabled = false;
-            this.txtImageDescription.Location = new System.Drawing.Point(484, 274);
+            this.txtImageDescription.Location = new System.Drawing.Point(484, 316);
             this.txtImageDescription.Name = "txtImageDescription";
             this.txtImageDescription.Size = new System.Drawing.Size(210, 20);
             this.txtImageDescription.TabIndex = 117;
@@ -269,14 +273,14 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.ContextMenuStrip = this.imageContextMenu;
             this.pictureBox1.Location = new System.Drawing.Point(410, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 232);
+            this.pictureBox1.Size = new System.Drawing.Size(284, 274);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 123;
             this.pictureBox1.TabStop = false;
@@ -317,12 +321,12 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // cmbImageType
             // 
-            this.cmbImageType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbImageType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbImageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbImageType.Enabled = false;
             this.cmbImageType.FormattingEnabled = true;
-            this.cmbImageType.Location = new System.Drawing.Point(484, 247);
+            this.cmbImageType.Location = new System.Drawing.Point(484, 289);
             this.cmbImageType.Name = "cmbImageType";
             this.cmbImageType.Size = new System.Drawing.Size(210, 21);
             this.cmbImageType.TabIndex = 116;
@@ -426,7 +430,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // txtPlayLength
             // 
             this.txtPlayLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPlayLength.Location = new System.Drawing.Point(98, 247);
+            this.txtPlayLength.Location = new System.Drawing.Point(98, 289);
             this.txtPlayLength.Name = "txtPlayLength";
             this.txtPlayLength.ReadOnly = true;
             this.txtPlayLength.Size = new System.Drawing.Size(146, 20);
@@ -437,7 +441,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 250);
+            this.label7.Location = new System.Drawing.Point(10, 292);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 128;
@@ -446,7 +450,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // txtBitrate
             // 
             this.txtBitrate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBitrate.Location = new System.Drawing.Point(98, 273);
+            this.txtBitrate.Location = new System.Drawing.Point(98, 315);
             this.txtBitrate.Name = "txtBitrate";
             this.txtBitrate.ReadOnly = true;
             this.txtBitrate.Size = new System.Drawing.Size(146, 20);
@@ -457,7 +461,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 276);
+            this.label11.Location = new System.Drawing.Point(10, 318);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 13);
             this.label11.TabIndex = 130;
@@ -466,7 +470,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // txtEncoderPreset
             // 
             this.txtEncoderPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtEncoderPreset.Location = new System.Drawing.Point(98, 299);
+            this.txtEncoderPreset.Location = new System.Drawing.Point(98, 341);
             this.txtEncoderPreset.Name = "txtEncoderPreset";
             this.txtEncoderPreset.ReadOnly = true;
             this.txtEncoderPreset.Size = new System.Drawing.Size(300, 20);
@@ -477,17 +481,54 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 302);
+            this.label12.Location = new System.Drawing.Point(10, 344);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 132;
             this.label12.Text = "Encoder/Preset";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(10, 219);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 122;
+            this.label13.Text = "Podcast";
+            // 
+            // chkPodcast
+            // 
+            this.chkPodcast.AutoSize = true;
+            this.chkPodcast.Location = new System.Drawing.Point(98, 219);
+            this.chkPodcast.Name = "chkPodcast";
+            this.chkPodcast.Size = new System.Drawing.Size(15, 14);
+            this.chkPodcast.TabIndex = 133;
+            this.chkPodcast.UseVisualStyleBackColor = true;
+            // 
+            // txtFeedUrl
+            // 
+            this.txtFeedUrl.Location = new System.Drawing.Point(98, 239);
+            this.txtFeedUrl.Name = "txtFeedUrl";
+            this.txtFeedUrl.Size = new System.Drawing.Size(300, 20);
+            this.txtFeedUrl.TabIndex = 134;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 242);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(56, 13);
+            this.label14.TabIndex = 135;
+            this.label14.Text = "Feed URL";
+            // 
             // ID3v2UserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtFeedUrl);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.txtEncoderPreset);
+            this.Controls.Add(this.chkPodcast);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtBitrate);
             this.Controls.Add(this.label11);
@@ -508,6 +549,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTrackNumber);
             this.Controls.Add(this.label6);
@@ -516,7 +558,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.Controls.Add(this.cmbGenre);
             this.Controls.Add(this.lblID3v2);
             this.Name = "ID3v2UserControl";
-            this.Size = new System.Drawing.Size(704, 333);
+            this.Size = new System.Drawing.Size(704, 375);
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).EndInit();
             this.imageBindingNavigator.ResumeLayout(false);
             this.imageBindingNavigator.PerformLayout();
@@ -573,5 +615,9 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtEncoderPreset;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox chkPodcast;
+        private System.Windows.Forms.TextBox txtFeedUrl;
+        private System.Windows.Forms.Label label14;
     }
 }

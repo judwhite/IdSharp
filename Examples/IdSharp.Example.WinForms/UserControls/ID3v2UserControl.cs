@@ -140,7 +140,9 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             cmbGenre.Text = _id3v2.Genre;
             txtYear.Text = _id3v2.Year;
             txtTrackNumber.Text = _id3v2.TrackNumber;
-
+            chkPodcast.Checked = _id3v2.Podcast;
+            txtFeedUrl.Text = _id3v2.PodcastFeedUrl;
+            
             BindingSource bindingSource = new BindingSource();
             imageBindingNavigator.BindingSource = bindingSource;
             bindingSource.CurrentChanged += bindingSource_CurrentChanged;
@@ -209,7 +211,8 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             _id3v2.Genre = cmbGenre.Text;
             _id3v2.Year = txtYear.Text;
             _id3v2.TrackNumber = txtTrackNumber.Text;
-
+            _id3v2.Podcast = chkPodcast.Checked;
+            _id3v2.PodcastFeedUrl = txtFeedUrl.Text;
             _id3v2.Save(path);
         }
 
@@ -217,5 +220,6 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         {
             Console.WriteLine(_id3v2.PictureList.Count);
         }
+
     }
 }
