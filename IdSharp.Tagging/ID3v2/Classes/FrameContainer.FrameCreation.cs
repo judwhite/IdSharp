@@ -64,7 +64,7 @@ namespace IdSharp.Tagging.ID3v2
         private readonly SynchronizedTempoCodes m_SynchronizedTempoCodes;
         private readonly AudioSeekPointIndex m_AudioSeekPointIndex;
         private readonly PlayCount m_PlayCount;
-        private readonly Podcast m_Podcast;
+        private readonly Podcast m_IsPodcast;
 
         private readonly IUrlFrame m_AudioFileUrl;
         private readonly IUrlFrame m_AudioSourceUrl;
@@ -123,9 +123,9 @@ namespace IdSharp.Tagging.ID3v2
         private readonly TextFrame m_TitleSortOrder;
         private readonly TextFrame m_ProducedNotice;
         private readonly TextFrame m_SetSubtitle;
-        private readonly TextFrame m_SeriesCategory;
-        private readonly TextFrame m_EpisodeDescription;
-        private readonly TextFrame m_EpisodeUrl;
+        private readonly TextFrame m_PodcastSeriesCategory;
+        private readonly TextFrame m_PodcastEpisodeDescription;
+        private readonly TextFrame m_PodcastEpisodeUrl;
         private readonly TextFrame m_PodcastFeedUrl;
 
 
@@ -273,9 +273,9 @@ namespace IdSharp.Tagging.ID3v2
             m_ProducedNotice = CreateTextFrame("TPRO", "TPRO", null, "ProducedNotice", null/*todo - same as copyright validation*/);
             // Technically only supported in ID3v2.4, but some ID3v2.3 implementations use this frame
             m_SetSubtitle = CreateTextFrame("TSST", "TSST", null, "SetSubtitle", null);
-            m_SeriesCategory = CreateTextFrame("TCAT", "TCAT", null, "SeriesCategory", null);
-            m_EpisodeDescription = CreateTextFrame("TDES", "TDES", null, "EpisodeDescription", null);
-            m_EpisodeUrl = CreateTextFrame("TGID", "TGID", null, "EpisodeUrl", null);
+            m_PodcastSeriesCategory = CreateTextFrame("TCAT", "TCAT", null, "SeriesCategory", null);
+            m_PodcastEpisodeDescription = CreateTextFrame("TDES", "TDES", null, "EpisodeDescription", null);
+            m_PodcastEpisodeUrl = CreateTextFrame("TGID", "TGID", null, "EpisodeUrl", null);
             m_PodcastFeedUrl = CreateTextFrame("WFED", "WFED", null, "PodcastFeedUrl", null);
 
             m_PositionSynchronization = CreatePositionSynchronizationFrame("POSS", "POSS", null, "PositionSynchronization", null);
@@ -293,7 +293,7 @@ namespace IdSharp.Tagging.ID3v2
             m_MusicianCreditsList = CreateMusicianCreditsListFrame("TMCL", "TMCL", null, "MusicianCreditsList", null);
             m_AudioSeekPointIndex = CreateAudioSeekPointIndexFrame("ASPI", "ASPI", null, "AudioSeekPointIndex", null);
             m_PlayCount = CreateFrame<PlayCount>("PCNT", "PCNT", "CNT", "PlayCount");
-            m_Podcast = CreateFrame<Podcast>("PCST", "PCST", "PCS", "Podcast");
+            m_IsPodcast = CreateFrame<Podcast>("PCST", "PCST", "PCS", "Podcast");
             
             // TODO: TYER->TDRL, TDAT,TIME->TDRC (in setters, not here)
 

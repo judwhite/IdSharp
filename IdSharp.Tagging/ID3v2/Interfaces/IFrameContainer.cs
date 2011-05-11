@@ -479,7 +479,7 @@ namespace IdSharp.Tagging.ID3v2
         /// Gets or sets if podcast.
         /// </summary>
         /// <value>True if podcast.</value>
-        bool Podcast { get; set;  }
+        bool IsPodcast { get; set;  }
         
         /// <summary>
         /// Gets the BindingList of popularimeter frames.
@@ -616,7 +616,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The series category. TCAT
         /// </value>
-        string SeriesCategory { get; set; }
+        string PodcastSeriesCategory { get; set; }
 
         /// <summary>
         /// Gets or sets the episode description. Used for iTunes Podcasts.
@@ -625,7 +625,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The episode description. TDES
         /// </value>
-        string EpisodeDescription { get; set; }
+        string PodcastEpisodeDescription { get; set; }
 
         /// <summary>
         /// Gets or sets the episode URL. Used for iTunes Podcasts.
@@ -634,7 +634,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The episode description. TGID
         /// </value>
-        string EpisodeUrl { get; set; }
+        string PodcastEpisodeUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the podcast feed URL.  Used in iTunes Podcasts. WFED.

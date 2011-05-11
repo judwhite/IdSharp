@@ -754,10 +754,10 @@ namespace IdSharp.Tagging.ID3v2
         /// Gets or sets if podcast
         /// </summary>
         /// <value>True if podcast.</value>
-        public bool Podcast
+        public bool IsPodcast
         {
-            get { return m_Podcast.Value; }
-            set { m_Podcast.Value = value; }
+            get { return m_IsPodcast.Value; }
+            set { m_IsPodcast.Value = value; }
         }
 
         /// <summary>
@@ -1061,10 +1061,10 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The series category. TCAT
         /// </value>
-        public string SeriesCategory
+        public string PodcastSeriesCategory
         {
-            get { return m_SeriesCategory.Value; }
-            set { m_SeriesCategory.Value = value; }
+            get { return m_PodcastSeriesCategory.Value; }
+            set { m_PodcastSeriesCategory.Value = value; }
         }
 
         /// <summary>
@@ -1074,10 +1074,10 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The episode description. TDES
         /// </value>
-        public string EpisodeDescription
+        public string PodcastEpisodeDescription
         {
-            get { return m_EpisodeDescription.Value; }
-            set { m_EpisodeDescription.Value = value; }
+            get { return m_PodcastEpisodeDescription.Value; }
+            set { m_PodcastEpisodeDescription.Value = value; }
         }
 
         /// <summary>
@@ -1087,10 +1087,10 @@ namespace IdSharp.Tagging.ID3v2
         /// <value>
         /// The episode description. TGID
         /// </value>
-        public string EpisodeUrl
+        public string PodcastEpisodeUrl
         {
-            get { return m_EpisodeUrl.Value; }
-            set { m_EpisodeUrl.Value = value; }
+            get { return m_PodcastEpisodeUrl.Value; }
+            set { m_PodcastEpisodeUrl.Value = value; }
         }
 
         /// <summary>

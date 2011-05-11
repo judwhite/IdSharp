@@ -76,7 +76,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.chkPodcast = new System.Windows.Forms.CheckBox();
-            this.txtFeedUrl = new System.Windows.Forms.TextBox();
+            this.txtPodcastFeedUrl = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).BeginInit();
             this.imageBindingNavigator.SuspendLayout();
@@ -507,10 +507,10 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             // txtFeedUrl
             // 
-            this.txtFeedUrl.Location = new System.Drawing.Point(98, 239);
-            this.txtFeedUrl.Name = "txtFeedUrl";
-            this.txtFeedUrl.Size = new System.Drawing.Size(300, 20);
-            this.txtFeedUrl.TabIndex = 134;
+            this.txtPodcastFeedUrl.Location = new System.Drawing.Point(98, 239);
+            this.txtPodcastFeedUrl.Name = "txtFeedUrl";
+            this.txtPodcastFeedUrl.Size = new System.Drawing.Size(300, 20);
+            this.txtPodcastFeedUrl.TabIndex = 134;
             // 
             // label14
             // 
@@ -525,7 +525,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtFeedUrl);
+            this.Controls.Add(this.txtPodcastFeedUrl);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtEncoderPreset);
             this.Controls.Add(this.chkPodcast);
@@ -617,7 +617,7 @@ namespace IdSharp.Tagging.Harness.WinForms.UserControls
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chkPodcast;
-        private System.Windows.Forms.TextBox txtFeedUrl;
+        private System.Windows.Forms.TextBox txtPodcastFeedUrl;
         private System.Windows.Forms.Label label14;
     }
 }
