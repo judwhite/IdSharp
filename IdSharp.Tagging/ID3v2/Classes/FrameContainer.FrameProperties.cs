@@ -751,6 +751,16 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
+        /// Gets or sets if podcast
+        /// </summary>
+        /// <value>True if podcast.</value>
+        public bool IsPodcast
+        {
+            get { return m_IsPodcast.Value; }
+            set { m_IsPodcast.Value = value; }
+        }
+
+        /// <summary>
         /// Gets the BindingList of popularimeter frames.
         /// </summary>
         /// <value>The BindingList of popularimeter frames.</value>
@@ -1042,6 +1052,55 @@ namespace IdSharp.Tagging.ID3v2
         {
             get { return m_SetSubtitle.Value; }
             set { m_SetSubtitle.Value = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the series category. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The series category. TCAT
+        /// </value>
+        public string PodcastSeriesCategory
+        {
+            get { return m_PodcastSeriesCategory.Value; }
+            set { m_PodcastSeriesCategory.Value = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the episode description. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The episode description. TDES
+        /// </value>
+        public string PodcastEpisodeDescription
+        {
+            get { return m_PodcastEpisodeDescription.Value; }
+            set { m_PodcastEpisodeDescription.Value = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the episode URL. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TGID in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The episode description. TGID
+        /// </value>
+        public string PodcastEpisodeUrl
+        {
+            get { return m_PodcastEpisodeUrl.Value; }
+            set { m_PodcastEpisodeUrl.Value = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the podcast feed URL.  Used in iTunes Podcasts. WFED.
+        /// </summary>
+        /// <value>The podcast feed URL.  WFED.</value>
+        public string PodcastFeedUrl
+        {
+            get { return m_PodcastFeedUrl.Value; }
+            set { m_PodcastFeedUrl.Value = value; }
         }
 
         /// <summary>
