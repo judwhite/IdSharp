@@ -476,6 +476,12 @@ namespace IdSharp.Tagging.ID3v2
         IPlayCount PlayCount { get; }
 
         /// <summary>
+        /// Gets or sets if podcast.
+        /// </summary>
+        /// <value>True if podcast.</value>
+        bool IsPodcast { get; set;  }
+        
+        /// <summary>
         /// Gets the BindingList of popularimeter frames.
         /// </summary>
         /// <value>The BindingList of popularimeter frames.</value>
@@ -602,6 +608,39 @@ namespace IdSharp.Tagging.ID3v2
         /// a set' (for example, a specific disc in a multi disc album) this track belongs to.
         /// Only supported in ID3v2.4.  TSST in ID3v2.4.</value>
         string SetSubtitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the series category. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The series category. TCAT
+        /// </value>
+        string PodcastSeriesCategory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the episode description. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The episode description. TDES
+        /// </value>
+        string PodcastEpisodeDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the episode URL. Used for iTunes Podcasts.
+        /// Only supported in ID3v2.3+.  TGID in ID3v2.3.
+        /// </summary>
+        /// <value>
+        /// The episode description. TGID
+        /// </value>
+        string PodcastEpisodeUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the podcast feed URL.  Used in iTunes Podcasts. WFED.
+        /// </summary>
+        /// <value>The podcast feed URL.  WFED.</value>
+        string PodcastFeedUrl { get; set; }
 
         /// <summary>
         /// Gets the ownership frame.  OWNE.  Only supported in ID3v2.3 and ID3v2.4.
