@@ -5,7 +5,7 @@ using IdSharp.Tagging.ID3v2.Frames;
 namespace IdSharp.Tagging.ID3v2
 {
     public abstract partial class FrameContainer : IFrameContainer
-	{
+    {
         /// <summary>
         /// Gets the list of unique file identifiers.  See <see cref="IUniqueFileIdentifier"/>.  UFID/UFI.
         /// </summary>
@@ -751,9 +751,9 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
-        /// Gets or sets if podcast
+        /// Gets or sets if the file is podcast.
         /// </summary>
-        /// <value>True if podcast.</value>
+        /// <value><c>true</c> if the file is a podcast; otherwise, <c>false</c>.</value>
         public bool IsPodcast
         {
             get { return m_IsPodcast.Value; }
@@ -1039,14 +1039,14 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
-        /// Gets or sets the set subtitle.  Intended for the subtitle of the 'part of
+        /// Gets or sets the set subtitle. Intended for the subtitle of the 'part of
         /// a set' (for example, a specific disc in a multi disc album) this track belongs to.
-        /// Only supported in ID3v2.4.  TSST in ID3v2.4.
+        /// Only supported in ID3v2.4. TSST in ID3v2.4.
         /// </summary>
         /// <value>
-        /// The set subtitle.  Intended for the subtitle of the 'part of
+        /// The set subtitle. Intended for the subtitle of the 'part of
         /// a set' (for example, a specific disc in a multi disc album) this track belongs to.
-        /// Only supported in ID3v2.4.  TSST in ID3v2.4.
+        /// Only supported in ID3v2.4. TSST in ID3v2.4.
         /// </value>
         public string SetSubtitle
         {
@@ -1056,11 +1056,9 @@ namespace IdSharp.Tagging.ID3v2
 
         /// <summary>
         /// Gets or sets the series category. Used for iTunes Podcasts.
-        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// Only supported in ID3v2.3+. TCAT in ID3v2.3.
         /// </summary>
-        /// <value>
-        /// The series category. TCAT
-        /// </value>
+        /// <value>The series category. TCAT</value>
         public string PodcastSeriesCategory
         {
             get { return m_PodcastSeriesCategory.Value; }
@@ -1069,11 +1067,9 @@ namespace IdSharp.Tagging.ID3v2
 
         /// <summary>
         /// Gets or sets the episode description. Used for iTunes Podcasts.
-        /// Only supported in ID3v2.3+.  TCAT in ID3v2.3.
+        /// Only supported in ID3v2.3+. TDES in ID3v2.3.
         /// </summary>
-        /// <value>
-        /// The episode description. TDES
-        /// </value>
+        /// <value>The episode description. TDES</value>
         public string PodcastEpisodeDescription
         {
             get { return m_PodcastEpisodeDescription.Value; }
@@ -1094,9 +1090,9 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
-        /// Gets or sets the podcast feed URL.  Used in iTunes Podcasts. WFED.
+        /// Gets or sets the podcast feed URL. Used in iTunes Podcasts. WFED.
         /// </summary>
-        /// <value>The podcast feed URL.  WFED.</value>
+        /// <value>The podcast feed URL. WFED.</value>
         public string PodcastFeedUrl
         {
             get { return m_PodcastFeedUrl.Value; }
@@ -1153,5 +1149,5 @@ namespace IdSharp.Tagging.ID3v2
         {
             get { return m_AudioTextList; }
         }
-	}
+    }
 }

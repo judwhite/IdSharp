@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -292,7 +291,7 @@ namespace IdSharp.WebLookup.Amazon
             return signature;
         }
 
-        private static List<PostData> GetOrderedPostData(List<PostData> postData)
+        private static List<PostData> GetOrderedPostData(IEnumerable<PostData> postData)
         {
             List<PostData> newList = new List<PostData>(postData);
             newList.Sort(new PostDataComparer());

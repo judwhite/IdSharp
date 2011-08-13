@@ -6,18 +6,21 @@ namespace IdSharp.Tagging.ID3v2.Frames
 {
     internal sealed class Podcast : Frame, IPodcast
     {
-        private bool m_Value;
+        private bool _value;
 
         public bool Value
         {
-            get { return m_Value; }
+            get { return _value; }
             set
             {
-                m_Value = value;
-                SendPropertyChanged("Value");
+                if (_value != value)
+                {
+                    _value = value;
+                    SendPropertyChanged("Value");
+                }
             }
         }
-        
+
         public override string GetFrameID(ID3v2TagVersion tagVersion)
         {
             switch (tagVersion)
@@ -54,7 +57,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
 
             using (MemoryStream frameData = new MemoryStream())
             {
-                frameData.Write(ByteUtils.Get4Bytes(0));
+                frameData.Write(ByteUtils.Get4Bytes(1));
                 return _frameHeader.GetBytes(frameData, tagVersion, GetFrameID(tagVersion));
             }
         }
