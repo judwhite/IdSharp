@@ -181,7 +181,7 @@ namespace IdSharp.Examples.Console.TagConverter
                     {
                         _isRecursive = true;
                     }
-                    else if (args[i] == "-v" || args[i] == "-verbose" || args[i] == "--verbosity")
+                    else if (args[i] == "-v" || args[i] == "-verbose" || args[i] == "-verbosity")
                     {
                         i++;
                         if (args[i] == "0")
