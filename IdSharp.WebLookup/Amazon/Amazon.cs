@@ -137,13 +137,11 @@ namespace IdSharp.WebLookup.Amazon
             string signature = GetSignature(postData, hostHeader, secretAccessKey);
             postData.Add(new PostData("Signature", signature));
 
-            //postData = GetOrderedPostData(postData);
-
-            string requestUri = String.Format("http://{0}{1}", hostHeader, HttpRequestUri);
+            string requestUri = string.Format("http://{0}{1}", hostHeader, HttpRequestUri);
             requestUri = Http.GetQueryString(requestUri, postData);
             byte[] byteResponse = Http.Get(requestUri);
             if (byteResponse == null)
-                throw new WebException(String.Format("Response from {0} was null", amazonDomain));
+                throw new WebException(string.Format("Response from {0} was null", amazonDomain));
             string response = Encoding.UTF8.GetString(byteResponse);
 
             AmazonSearchResponse result = new AmazonSearchResponse();
@@ -185,8 +183,10 @@ namespace IdSharp.WebLookup.Amazon
 
                                             if (errorMessage != "" || errorCode != "")
                                             {
-                                                if (errorCode != "") errorMessage = string.Format("{0} ({1})", errorMessage, errorCode);
-                                                if (fullErrorMessage != "") fullErrorMessage += "\n\n";
+                                                if (errorCode != "") 
+                                                    errorMessage = string.Format("{0} ({1})", errorMessage, errorCode);
+                                                if (fullErrorMessage != "") 
+                                                    fullErrorMessage += "\n\n";
                                                 fullErrorMessage += errorMessage;
                                             }
                                         }
