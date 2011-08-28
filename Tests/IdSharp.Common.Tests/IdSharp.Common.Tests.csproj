@@ -61,14 +61,10 @@
       <HintPath>..\NUnit\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\CancelDataEventArgsTest.cs" />
+    <Compile Include="Utils\Base64EncoderTest.cs" />
     <Compile Include="Utils\ByteUtilsTest.cs" />
     <Compile Include="Utils\CRC32Test.cs" />
     <Compile Include="Events\DataEventArgsTest.cs" />
