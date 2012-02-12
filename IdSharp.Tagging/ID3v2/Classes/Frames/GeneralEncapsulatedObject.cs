@@ -19,7 +19,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _textEncoding = value;
-                SendPropertyChanged("TextEncoding");
+                RaisePropertyChanged("TextEncoding");
             }
         }
 
@@ -29,7 +29,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _mimeType = value;
-                SendPropertyChanged("MimeType");
+                RaisePropertyChanged("MimeType");
             }
         }
 
@@ -39,7 +39,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _fileName = value;
-                SendPropertyChanged("FileName");
+                RaisePropertyChanged("FileName");
             }
         }
 
@@ -49,7 +49,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _description = value;
-                SendPropertyChanged("Description");
+                RaisePropertyChanged("Description");
             }
         }
 
@@ -59,7 +59,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _encapsulatedObject = ByteUtils.Clone(value);
-                SendPropertyChanged("EncapsulatedObject");
+                RaisePropertyChanged("EncapsulatedObject");
             }
         }
 

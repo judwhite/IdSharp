@@ -68,7 +68,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _textEncoding = value;
-                SendPropertyChanged("TextEncoding");
+                RaisePropertyChanged("TextEncoding");
             }
         }
 
@@ -78,7 +78,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _mimeType = value;
-                SendPropertyChanged("MimeType");
+                RaisePropertyChanged("MimeType");
             }
         }
 
@@ -88,7 +88,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _equivalentText = value;
-                SendPropertyChanged("EquivalentText");
+                RaisePropertyChanged("EquivalentText");
             }
         }
 
@@ -107,7 +107,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 else
                     _audioData = Scramble(_audioData);
             }
-            SendPropertyChanged("AudioData");
+            RaisePropertyChanged("AudioData");
         }
 
         public byte[] GetAudioData(AudioScramblingMode audioScramblingMode)

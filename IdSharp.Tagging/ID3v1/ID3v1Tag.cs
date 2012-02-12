@@ -65,7 +65,7 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 _title = GetTrimmedString(value, 30);
-                SendPropertyChanged("Title");
+                RaisePropertyChanged("Title");
             }
         }
 
@@ -79,7 +79,7 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 _artist = GetTrimmedString(value, 30);
-                SendPropertyChanged("Artist");
+                RaisePropertyChanged("Artist");
             }
         }
 
@@ -93,7 +93,7 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 _album = GetTrimmedString(value, 30);
-                SendPropertyChanged("Album");
+                RaisePropertyChanged("Album");
             }
         }
 
@@ -107,7 +107,7 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 _year = GetTrimmedString(value, 4);
-                SendPropertyChanged("Year");
+                RaisePropertyChanged("Year");
             }
         }
 
@@ -125,7 +125,7 @@ namespace IdSharp.Tagging.ID3v1
                 else
                     _comment = GetTrimmedString(value, 30);
 
-                SendPropertyChanged("Comment");
+                RaisePropertyChanged("Comment");
             }
         }
 
@@ -150,7 +150,7 @@ namespace IdSharp.Tagging.ID3v1
                     if (_tagVersion == ID3v1TagVersion.ID3v10)
                         TagVersion = ID3v1TagVersion.ID3v11;
                 }
-                SendPropertyChanged("TrackNumber");
+                RaisePropertyChanged("TrackNumber");
             }
         }
 
@@ -165,7 +165,7 @@ namespace IdSharp.Tagging.ID3v1
             {
                 if (value >= 0 && value <= 147)
                     _genreIndex = value;
-                SendPropertyChanged("GenreIndex");
+                RaisePropertyChanged("GenreIndex");
             }
         }
 
@@ -179,7 +179,7 @@ namespace IdSharp.Tagging.ID3v1
             set
             {
                 _tagVersion = value;
-                SendPropertyChanged("TagVersion");
+                RaisePropertyChanged("TagVersion");
                 if (value == ID3v1TagVersion.ID3v11)
                 {
                     Comment = _comment;
@@ -306,11 +306,11 @@ namespace IdSharp.Tagging.ID3v1
             }
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler tmpPropertyChanged = PropertyChanged;
-            if (tmpPropertyChanged != null)
-                tmpPropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

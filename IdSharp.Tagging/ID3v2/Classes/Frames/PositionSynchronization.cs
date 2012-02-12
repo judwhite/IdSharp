@@ -19,7 +19,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 m_TimestampFormat = value;
-                SendPropertyChanged("TimestampFormat");
+                RaisePropertyChanged("TimestampFormat");
             }
         }
 
@@ -34,7 +34,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 m_Position = value;
-                SendPropertyChanged("Position");
+                RaisePropertyChanged("Position");
             }
         }
 

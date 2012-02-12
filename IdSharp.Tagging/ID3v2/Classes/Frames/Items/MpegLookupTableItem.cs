@@ -18,7 +18,7 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _deviationInBytes = value;
-                SendPropertyChanged("DeviationInBytes");
+                RaisePropertyChanged("DeviationInBytes");
             }
         }
 
@@ -31,11 +31,11 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _deviationInMilliseconds = value;
-                SendPropertyChanged("DeviationInMilliseconds");
+                RaisePropertyChanged("DeviationInMilliseconds");
             }
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

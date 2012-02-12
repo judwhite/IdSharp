@@ -40,7 +40,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     // iTunes will recognize it.
 
                     _textEncoding = value;
-                    SendPropertyChanged("TextEncoding");
+                    RaisePropertyChanged("TextEncoding");
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 if (_mimeType != value)
                 {
                     _mimeType = value;
-                    SendPropertyChanged("MimeType");
+                    RaisePropertyChanged("MimeType");
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 if (_pictureType != value)
                 {
                     _pictureType = value;
-                    SendPropertyChanged("PictureType");
+                    RaisePropertyChanged("PictureType");
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 if (_description != value)
                 {
                     _description = value;
-                    SendPropertyChanged("Description");
+                    RaisePropertyChanged("Description");
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     {
                         LoadPicture();
                     }
-                    SendPropertyChanged("PictureData");
+                    RaisePropertyChanged("PictureData");
                 }
             }
         }
@@ -179,7 +179,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     }
                 }
 
-                SendPropertyChanged("Picture");
+                RaisePropertyChanged("Picture");
             }
         }
 

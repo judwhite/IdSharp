@@ -18,7 +18,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 _minimumOffsetToNextTag = value;
-                SendPropertyChanged("MinimumOffsetToNextTag");
+                RaisePropertyChanged("MinimumOffsetToNextTag");
             }
         }
 

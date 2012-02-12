@@ -333,7 +333,7 @@ namespace IdSharp.Tagging.ID3v2
         /// Forces the <see cref="INotifyPropertyChanged.PropertyChanged"/> event to fire.
         /// </summary>
         /// <param name="propertyName">The property name.</param>
-        public void SendPropertyChanged(string propertyName)
+        public void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

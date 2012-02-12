@@ -31,7 +31,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _textEncoding = value;
-                SendPropertyChanged("TextEncoding");
+                RaisePropertyChanged("TextEncoding");
             }
         }
 
@@ -46,7 +46,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _validUntil = value.Date;
-                SendPropertyChanged("ValidUntil");
+                RaisePropertyChanged("ValidUntil");
             }
         }
 
@@ -56,7 +56,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _contactUrl = value;
-                SendPropertyChanged("ContactUrl");
+                RaisePropertyChanged("ContactUrl");
             }
         }
 
@@ -66,7 +66,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _receivedAs = value;
-                SendPropertyChanged("ReceivedAs");
+                RaisePropertyChanged("ReceivedAs");
             }
         }
 
@@ -76,7 +76,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _nameOfSeller = value;
-                SendPropertyChanged("NameOfSeller");
+                RaisePropertyChanged("NameOfSeller");
             }
         }
 
@@ -86,7 +86,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _description = value;
-                SendPropertyChanged("Description");
+                RaisePropertyChanged("Description");
             }
         }
 
@@ -96,7 +96,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _sellerLogoMimeType = value;
-                SendPropertyChanged("SellerLogoMimeType");
+                RaisePropertyChanged("SellerLogoMimeType");
             }
         }
 
@@ -106,7 +106,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _sellerLogo = ByteUtils.Clone(value);
-                SendPropertyChanged("SellerLogo");
+                RaisePropertyChanged("SellerLogo");
             }
         }
 

@@ -35,7 +35,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _identification = value;
-                SendPropertyChanged("Identification");
+                RaisePropertyChanged("Identification");
             }
         }
 
@@ -45,7 +45,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontRightAdjustment = value;
-                SendPropertyChanged("FrontRightAdjustment");
+                RaisePropertyChanged("FrontRightAdjustment");
             }
         }
 
@@ -55,7 +55,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontLeftAdjustment = value;
-                SendPropertyChanged("FrontLeftAdjustment");
+                RaisePropertyChanged("FrontLeftAdjustment");
             }
         }
 
@@ -65,7 +65,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backRightAdjustment = value;
-                SendPropertyChanged("BackRightAdjustment");
+                RaisePropertyChanged("BackRightAdjustment");
             }
         }
 
@@ -75,7 +75,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backLeftAdjustment = value;
-                SendPropertyChanged("BackLeftAdjustment");
+                RaisePropertyChanged("BackLeftAdjustment");
             }
         }
 
@@ -85,7 +85,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontCenterAdjustment = value;
-                SendPropertyChanged("FrontCenterAdjustment");
+                RaisePropertyChanged("FrontCenterAdjustment");
             }
         }
 
@@ -95,7 +95,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _subwooferAdjustment = value;
-                SendPropertyChanged("SubwooferAdjustment");
+                RaisePropertyChanged("SubwooferAdjustment");
             }
         }
 
@@ -105,7 +105,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backCenterAdjustment = value;
-                SendPropertyChanged("BackCenterAdjustment");
+                RaisePropertyChanged("BackCenterAdjustment");
             }
         }
 
@@ -115,7 +115,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _otherAdjustment = value;
-                SendPropertyChanged("OtherAdjustment");
+                RaisePropertyChanged("OtherAdjustment");
             }
         }
 
@@ -125,7 +125,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _masterAdjustment = value;
-                SendPropertyChanged("MasterAdjustment");
+                RaisePropertyChanged("MasterAdjustment");
             }
         }
 
@@ -135,7 +135,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontRightPeak = value;
-                SendPropertyChanged("FrontRightPeak");
+                RaisePropertyChanged("FrontRightPeak");
             }
         }
 
@@ -145,7 +145,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontLeftPeak = value;
-                SendPropertyChanged("FrontLeftPeak");
+                RaisePropertyChanged("FrontLeftPeak");
             }
         }
 
@@ -155,7 +155,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backRightPeak = value;
-                SendPropertyChanged("BackRightPeak");
+                RaisePropertyChanged("BackRightPeak");
             }
         }
 
@@ -165,7 +165,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backLeftPeak = value;
-                SendPropertyChanged("BackLeftPeak");
+                RaisePropertyChanged("BackLeftPeak");
             }
         }
 
@@ -175,7 +175,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _frontCenterPeak = value;
-                SendPropertyChanged("FrontCenterPeak");
+                RaisePropertyChanged("FrontCenterPeak");
             }
         }
 
@@ -185,7 +185,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _subwooferPeak = value;
-                SendPropertyChanged("SubwooferPeak");
+                RaisePropertyChanged("SubwooferPeak");
             }
         }
 
@@ -195,7 +195,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _backCenterPeak = value;
-                SendPropertyChanged("BackCenterPeak");
+                RaisePropertyChanged("BackCenterPeak");
             }
         }
 
@@ -205,7 +205,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _otherPeak = value;
-                SendPropertyChanged("OtherPeak");
+                RaisePropertyChanged("OtherPeak");
             }
         }
 
@@ -215,7 +215,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _masterPeak = value;
-                SendPropertyChanged("MasterPeak");
+                RaisePropertyChanged("MasterPeak");
             }
         }
 

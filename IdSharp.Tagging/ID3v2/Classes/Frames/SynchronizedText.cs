@@ -28,7 +28,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _textEncoding = value;
-                SendPropertyChanged("TextEncoding");
+                RaisePropertyChanged("TextEncoding");
             }
         }
 
@@ -39,7 +39,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             {
                 // todo: lang code validation
                 _languageCode = value;
-                SendPropertyChanged("LanguageCode");
+                RaisePropertyChanged("LanguageCode");
             }
         }
 
@@ -49,7 +49,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _timestampFormat = value;
-                SendPropertyChanged("TimestampFormat");
+                RaisePropertyChanged("TimestampFormat");
             }
         }
 
@@ -59,7 +59,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _contentType = value;
-                SendPropertyChanged("ContentType");
+                RaisePropertyChanged("ContentType");
             }
         }
 
@@ -69,7 +69,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set 
             {
                 _contentDescriptor = value;
-                SendPropertyChanged("ContentDescriptor");
+                RaisePropertyChanged("ContentDescriptor");
             }
         }
 

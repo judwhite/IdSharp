@@ -16,7 +16,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 if (_value != value)
                 {
                     _value = value;
-                    SendPropertyChanged("Value");
+                    RaisePropertyChanged("Value");
                 }
             }
         }

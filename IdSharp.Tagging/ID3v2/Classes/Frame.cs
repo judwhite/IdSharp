@@ -34,7 +34,7 @@ namespace IdSharp.Tagging.ID3v2
         /// Fires the property changed event.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        protected void SendPropertyChanged(string propertyName)
+        protected void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

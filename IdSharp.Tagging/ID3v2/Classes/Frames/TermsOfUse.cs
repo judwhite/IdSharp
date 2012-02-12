@@ -17,7 +17,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _textEncoding = value;
-                SendPropertyChanged("TextEncoding");
+                RaisePropertyChanged("TextEncoding");
             }
         }
 
@@ -27,7 +27,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _languageCode = value;
-                SendPropertyChanged("LanguageCode");
+                RaisePropertyChanged("LanguageCode");
             }
         }
 
@@ -37,7 +37,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _value = value;
-                SendPropertyChanged("Value");
+                RaisePropertyChanged("Value");
             }
         }
 

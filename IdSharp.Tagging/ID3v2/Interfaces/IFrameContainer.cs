@@ -676,6 +676,6 @@ namespace IdSharp.Tagging.ID3v2
         /// Forces the <see cref="INotifyPropertyChanged.PropertyChanged"/> event to fire.
         /// </summary>
         /// <param name="propertyName">The property name.</param>
-        void SendPropertyChanged(string propertyName);
+        void RaisePropertyChanged(string propertyName);
     }
 }

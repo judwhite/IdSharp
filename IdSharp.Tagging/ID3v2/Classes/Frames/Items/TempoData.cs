@@ -24,7 +24,7 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
                 }
 
                 _tempoCode = value;
-                SendPropertyChanged("TempoCode");
+                RaisePropertyChanged("TempoCode");
             }
         }
 
@@ -40,11 +40,11 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be less than 0");
 
                 _timestamp = value;
-                SendPropertyChanged("Timestamp");
+                RaisePropertyChanged("Timestamp");
             }
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

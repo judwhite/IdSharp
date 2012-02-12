@@ -20,7 +20,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 _bufferSize = value;
-                SendPropertyChanged("BufferSize");
+                RaisePropertyChanged("BufferSize");
             }
         }
 
@@ -30,7 +30,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _embeddedInfo = value;
-                SendPropertyChanged("EmbeddedInfo");
+                RaisePropertyChanged("EmbeddedInfo");
             }
         }
 
@@ -45,7 +45,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 _offsetToNextTag = value;
-                SendPropertyChanged("OffsetToNextTag");
+                RaisePropertyChanged("OffsetToNextTag");
             }
         }
 

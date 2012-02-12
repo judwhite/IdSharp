@@ -29,7 +29,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be greater than 0xFFFF");
 
                 _framesBetweenReference = value;
-                SendPropertyChanged("FramesBetweenReference");
+                RaisePropertyChanged("FramesBetweenReference");
             }
         }
 
@@ -47,7 +47,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be greater than 0xFFFFFF");
 
                 _bytesBetweenReference = value;
-                SendPropertyChanged("BytesBetweenReference");
+                RaisePropertyChanged("BytesBetweenReference");
             }
         }
 
@@ -65,7 +65,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be greater than 0xFFFFFF");
 
                 _millisecondsBetweenReference = value;
-                SendPropertyChanged("MillisecondsBetweenReference");
+                RaisePropertyChanged("MillisecondsBetweenReference");
             }
         }
 

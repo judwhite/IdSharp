@@ -344,7 +344,7 @@ namespace IdSharp.Tagging.APEv2
         public string Title
         {
             get { return _title; }
-            set { _title = value; SendPropertyChanged("Title"); }
+            set { _title = value; RaisePropertyChanged("Title"); }
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace IdSharp.Tagging.APEv2
         public string Artist
         {
             get { return _artist; }
-            set { _artist = value; SendPropertyChanged("Artist"); }
+            set { _artist = value; RaisePropertyChanged("Artist"); }
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace IdSharp.Tagging.APEv2
         public string Album
         {
             get { return _album; }
-            set { _album = value; SendPropertyChanged("Album"); }
+            set { _album = value; RaisePropertyChanged("Album"); }
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace IdSharp.Tagging.APEv2
         public string Publisher
         {
             get { return _publisher; }
-            set { _publisher = value; SendPropertyChanged("Publisher"); }
+            set { _publisher = value; RaisePropertyChanged("Publisher"); }
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace IdSharp.Tagging.APEv2
         public string TrackNumber
         {
             get { return _trackNumber; }
-            set { _trackNumber = value; SendPropertyChanged("TrackNumber"); }
+            set { _trackNumber = value; RaisePropertyChanged("TrackNumber"); }
         }
 
         /// <summary>
@@ -394,7 +394,7 @@ namespace IdSharp.Tagging.APEv2
         public string Comment
         {
             get { return _comment; }
-            set { _comment = value; SendPropertyChanged("Comment"); }
+            set { _comment = value; RaisePropertyChanged("Comment"); }
         }
 
         /// <summary>
@@ -404,7 +404,7 @@ namespace IdSharp.Tagging.APEv2
         public string Catalog
         {
             get { return _catalog; }
-            set { _catalog = value; SendPropertyChanged("Catalog"); }
+            set { _catalog = value; RaisePropertyChanged("Catalog"); }
         }
 
         /// <summary>
@@ -414,7 +414,7 @@ namespace IdSharp.Tagging.APEv2
         public string Year
         {
             get { return _year; }
-            set { _year = value; SendPropertyChanged("Year"); }
+            set { _year = value; RaisePropertyChanged("Year"); }
         }
 
         /// <summary>
@@ -424,7 +424,7 @@ namespace IdSharp.Tagging.APEv2
         public string RecordDate
         {
             get { return _recordDate; }
-            set { _recordDate = value; SendPropertyChanged("RecordDate"); }
+            set { _recordDate = value; RaisePropertyChanged("RecordDate"); }
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace IdSharp.Tagging.APEv2
         public string Genre
         {
             get { return _genre; }
-            set { _genre = value; SendPropertyChanged("Genre"); }
+            set { _genre = value; RaisePropertyChanged("Genre"); }
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace IdSharp.Tagging.APEv2
         public string Media
         {
             get { return _media; }
-            set { _media = value; SendPropertyChanged("Media"); }
+            set { _media = value; RaisePropertyChanged("Media"); }
         }
 
         /// <summary>
@@ -454,10 +454,10 @@ namespace IdSharp.Tagging.APEv2
         public string Language
         {
             get { return _language; }
-            set { _language = value; SendPropertyChanged("Language"); }
+            set { _language = value; RaisePropertyChanged("Language"); }
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

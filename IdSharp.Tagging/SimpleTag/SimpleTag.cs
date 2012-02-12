@@ -46,7 +46,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _title = value;
-                SendPropertyChanged("Title");
+                RaisePropertyChanged("Title");
             }
         }
 
@@ -58,7 +58,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _artist = value;
-                SendPropertyChanged("Artist");
+                RaisePropertyChanged("Artist");
             }
         }
 
@@ -70,7 +70,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _album = value;
-                SendPropertyChanged("Album");
+                RaisePropertyChanged("Album");
             }
         }
 
@@ -82,7 +82,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _year = value;
-                SendPropertyChanged("Year");
+                RaisePropertyChanged("Year");
             }
         }
 
@@ -94,7 +94,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _comment = value;
-                SendPropertyChanged("Comment");
+                RaisePropertyChanged("Comment");
             }
         }
 
@@ -106,7 +106,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _trackNumber = value;
-                SendPropertyChanged("TrackNumber");
+                RaisePropertyChanged("TrackNumber");
             }
         }
 
@@ -118,7 +118,7 @@ namespace IdSharp.Tagging.SimpleTag
             set
             {
                 _genre = value;
-                SendPropertyChanged("Genre");
+                RaisePropertyChanged("Genre");
             }
         }
 
@@ -130,7 +130,7 @@ namespace IdSharp.Tagging.SimpleTag
             private set
             {
                 _tagVersion = value;
-                SendPropertyChanged("TagVersion");
+                RaisePropertyChanged("TagVersion");
             }
         }
 
@@ -311,7 +311,7 @@ namespace IdSharp.Tagging.SimpleTag
             _fileName = path;
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
             if (handler != null)

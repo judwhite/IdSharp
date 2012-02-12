@@ -17,7 +17,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _ownerIdentifier = value;
-                SendPropertyChanged("OwnerIdentifier");
+                RaisePropertyChanged("OwnerIdentifier");
             }
         }
 
@@ -30,7 +30,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be less than 0");
 
                 _previewStart = value;
-                SendPropertyChanged("PreviewStart");
+                RaisePropertyChanged("PreviewStart");
             }
         }
 
@@ -43,7 +43,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be less than 0");
 
                 _previewLength = value;
-                SendPropertyChanged("PreviewLength");
+                RaisePropertyChanged("PreviewLength");
             }
         }
 
@@ -53,7 +53,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _encryptionInfo = ByteUtils.Clone(value);
-                SendPropertyChanged("EncryptionInfo");
+                RaisePropertyChanged("EncryptionInfo");
             }
         }
 

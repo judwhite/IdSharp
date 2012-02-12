@@ -19,7 +19,7 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _instrument = value;
-                SendPropertyChanged("Instrument");
+                RaisePropertyChanged("Instrument");
             }
         }
 
@@ -32,11 +32,11 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _artists = value;
-                SendPropertyChanged("Artists");
+                RaisePropertyChanged("Artists");
             }
         }
 
-        private void SendPropertyChanged(String propertyName)
+        private void RaisePropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

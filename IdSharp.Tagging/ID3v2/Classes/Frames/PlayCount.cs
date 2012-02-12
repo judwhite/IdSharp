@@ -19,7 +19,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 m_Value = value;
-                SendPropertyChanged("Value");
+                RaisePropertyChanged("Value");
             }
         }
 

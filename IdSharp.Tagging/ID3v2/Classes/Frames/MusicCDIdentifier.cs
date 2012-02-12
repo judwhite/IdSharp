@@ -14,7 +14,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _toc = ByteUtils.Clone(value);
-                SendPropertyChanged("TOC");
+                RaisePropertyChanged("TOC");
             }
         }
 

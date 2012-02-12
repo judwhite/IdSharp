@@ -15,7 +15,7 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _name = value;
-                SendPropertyChanged("Name");
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -25,11 +25,11 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
             set
             {
                 _involvement = value;
-                SendPropertyChanged("Involvement");
+                RaisePropertyChanged("Involvement");
             }
         }
 
-        private void SendPropertyChanged(string propertyName)
+        private void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)

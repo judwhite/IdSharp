@@ -25,7 +25,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be less than 0");
 
                 _indexedDataStart = value;
-                SendPropertyChanged("IndexedDataStart");
+                RaisePropertyChanged("IndexedDataStart");
             }
         }
 
@@ -38,7 +38,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                     throw new ArgumentOutOfRangeException("value", value, "Value cannot be less than 0");
 
                 _indexedDataLength = value;
-                SendPropertyChanged("IndexedDataLength");
+                RaisePropertyChanged("IndexedDataLength");
             }
         }
 
@@ -48,7 +48,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _bitsPerIndexPoint = value;
-                SendPropertyChanged("BitsPerIndexPoint");
+                RaisePropertyChanged("BitsPerIndexPoint");
             }
         }
 

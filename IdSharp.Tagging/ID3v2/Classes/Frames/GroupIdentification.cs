@@ -16,7 +16,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _ownerIdentifier = value;
-                SendPropertyChanged("OwnerIdentifier");
+                RaisePropertyChanged("OwnerIdentifier");
             }
         }
 
@@ -26,7 +26,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _groupSymbol = value;
-                SendPropertyChanged("GroupSymbol");
+                RaisePropertyChanged("GroupSymbol");
             }
         }
 
@@ -36,7 +36,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _groupDependentData = ByteUtils.Clone(value);
-                SendPropertyChanged("GroupDependentData");
+                RaisePropertyChanged("GroupDependentData");
             }
         }
 

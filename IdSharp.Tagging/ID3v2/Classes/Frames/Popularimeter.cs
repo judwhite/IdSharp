@@ -16,7 +16,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _userEmail = value;
-                SendPropertyChanged("UserEmail");
+                RaisePropertyChanged("UserEmail");
             }
         }
 
@@ -26,7 +26,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _rating = value;
-                SendPropertyChanged("Rating");
+                RaisePropertyChanged("Rating");
             }
         }
 
@@ -41,7 +41,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 }
 
                 _playCount = value;
-                SendPropertyChanged("PlayCount");
+                RaisePropertyChanged("PlayCount");
             }
         }
 

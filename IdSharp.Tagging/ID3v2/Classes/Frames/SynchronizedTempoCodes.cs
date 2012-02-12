@@ -22,7 +22,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
             set
             {
                 _timestampFormat = value;
-                SendPropertyChanged("TimestampFormat");
+                RaisePropertyChanged("TimestampFormat");
             }
         }
 
