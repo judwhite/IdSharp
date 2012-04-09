@@ -63,7 +63,7 @@ namespace IdSharp.Tagging.ID3v2.Frames
                 TextEncoding = (EncodingType)stream.Read1();
                 int bytesLeft = _frameHeader.FrameSizeExcludingAdditions - 1;
                 Description = ID3v2Utils.ReadString(TextEncoding, stream, ref bytesLeft);
-                Value = ID3v2Utils.ReadString(EncodingType.ISO88591, stream, bytesLeft);
+                Value = ID3v2Utils.ReadString(TextEncoding, stream, bytesLeft);
             }
             else
             {
