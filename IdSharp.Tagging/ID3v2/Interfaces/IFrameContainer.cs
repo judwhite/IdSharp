@@ -332,6 +332,12 @@ namespace IdSharp.Tagging.ID3v2
         BindingList<ITXXXFrame> UserDefinedText { get; }
 
         /// <summary>
+        /// Gets the list of ReplayGain frames.  TXXX/TXX.
+        /// </summary>
+        /// <value>The list of ReplayGain frames.  TXXX/TXX.</value>
+        BindingList<ITXXXFrame> ReplayGainList { get; }
+
+        /// <summary>
         /// Gets the list of commercial info URLs.  WCOM/WCM.
         /// </summary>
         /// <value>The list of commercial info URLs.  WCOM/WCM.</value>
