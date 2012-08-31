@@ -177,8 +177,18 @@ namespace IdSharp.Tagging.ID3v2.Frames
             }
         }
 
-        public override byte[] GetBytes(ID3v2TagVersion tagVersion)
-        {
+        public override byte[] GetBytes(ID3v2TagVersion tagVersion) {
+            return GetBytes(tagVersion, false);
+        }
+
+        /// <summary>
+        /// Returns the byte array representation of the comment frame, allowing for the appending of a terminating
+        /// null character.  iTunes will only respect comment frames expressly terminated by a null character.
+        /// </summary>
+        /// <param name="tagVersion">The tag version</param>
+        /// <param name="appendNullTerminator">Should a null terminator be appended</param>
+        /// <returns>The byte array representation of the frame</returns>
+        public byte[] GetBytes(ID3v2TagVersion tagVersion, bool appendNullTerminator) {
             if (string.IsNullOrEmpty(Value))
                 return new byte[0];
 
@@ -188,18 +198,19 @@ namespace IdSharp.Tagging.ID3v2.Frames
             byte[] descriptionData;
             byte[] valueData;
 
-            do
-            {
+            do {
                 descriptionData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Description, true);
                 valueData = ID3v2Utils.GetStringBytes(tagVersion, TextEncoding, Value, false);
+
+                if (appendNullTerminator)
+                    Array.Resize<byte>(ref valueData, valueData.Length + 1);
             } while (
                 this.RequiresFix(tagVersion, Description, descriptionData) ||
                 this.RequiresFix(tagVersion, Value, valueData)
             );
 
-            using (MemoryStream frameData = new MemoryStream())
-            {
-                frameData.WriteByte((byte)TextEncoding);
+            using (MemoryStream frameData = new MemoryStream()) {
+                frameData.WriteByte((byte) TextEncoding);
                 frameData.Write(ByteUtils.ISO88591GetBytes(LanguageCode));
                 frameData.Write(descriptionData);
                 frameData.Write(valueData);

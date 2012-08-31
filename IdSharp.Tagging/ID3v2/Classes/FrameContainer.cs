@@ -310,7 +310,8 @@ namespace IdSharp.Tagging.ID3v2
                     {
                         foreach (var frame in m_iTunesCommentsList)
                         {
-                            byte[] rawData = frame.GetBytes(tagVersion);
+                            // iTunes will only respect comments that end with a terminating null character
+                            byte[] rawData = ((Comments) frame).GetBytes(tagVersion, true);
                             frameData.Write(rawData);
                         }
                     }
