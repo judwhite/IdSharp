@@ -88,6 +88,8 @@
     <Compile Include="APEv2\APEv2Tag.cs" />
     <Compile Include="APEv2\APEv2Tag.Static.cs" />
     <Compile Include="APEv2\IAPEv2Tag.cs" />
+    <Compile Include="APEv2\MP3GainTagItems.cs" />
+    <Compile Include="APEv2\ReplayGainTagItems.cs" />
     <Compile Include="ID3v1\ID3v1Tag.cs" />
     <Compile Include="ID3v1\ID3v1Tag.Static.cs" />
     <Compile Include="ID3v1\IID3v1Tag.cs" />
@@ -303,7 +305,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IdSharp.Common\IdSharp.Common.csproj">
-      <Project>{1C83FB63-E16E-4380-9DD0-26E1799C417D}</Project>
+      <Project>{1c83fb63-e16e-4380-9dd0-26e1799c417d}</Project>
       <Name>IdSharp.Common</Name>
     </ProjectReference>
   </ItemGroup>
