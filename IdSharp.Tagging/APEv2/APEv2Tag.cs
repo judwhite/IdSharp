@@ -28,6 +28,8 @@ namespace IdSharp.Tagging.APEv2
         private int _tagSize;
         private int _version;
         private readonly Dictionary<string, string> _items = new Dictionary<string, string>();
+        private readonly ReplayGainTagItems _replayGainItems = new ReplayGainTagItems();
+        private readonly MP3GainTagItems _mp3GainItems = new MP3GainTagItems();
 
         private string _title;
         private string _artist;
@@ -335,6 +337,12 @@ namespace IdSharp.Tagging.APEv2
                     Language = itemValue;
                     break;
             }
+
+            if (itemKey.StartsWith(ReplayGainTagItems.TAG_PREFIX))
+                _replayGainItems.SetField(itemKey, itemValue);
+            else if (itemKey.StartsWith(MP3GainTagItems.TAG_PREFIX))
+                _mp3GainItems.SetField(itemKey, itemValue);
+
         }
 
         /// <summary>
@@ -455,6 +463,22 @@ namespace IdSharp.Tagging.APEv2
         {
             get { return _language; }
             set { _language = value; RaisePropertyChanged("Language"); }
+        }
+
+        /// <summary>
+        /// Gets the ReplayGain items found in the tag
+        /// </summary>
+        /// <value>ReplayGain items</value>
+        public ReplayGainTagItems ReplayGainItems {
+            get { return _replayGainItems; }
+        }
+
+        /// <summary>
+        /// Gets the MP3Gain items found in the tag
+        /// </summary>
+        /// <value>MP3Gain items</value>
+        public MP3GainTagItems MP3GainItems {
+            get { return _mp3GainItems; }
         }
 
         private void RaisePropertyChanged(string propertyName)
