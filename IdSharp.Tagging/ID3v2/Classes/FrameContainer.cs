@@ -335,9 +335,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <param name="propertyName">The property name.</param>
         public void RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null)
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

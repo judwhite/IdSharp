@@ -106,9 +106,7 @@ namespace IdSharp.Tagging.Mpeg4
 
         private void RaisePropertyChanged(string propertyName)
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #region <<< Public Properties >>>

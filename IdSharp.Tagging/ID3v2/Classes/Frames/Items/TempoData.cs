@@ -46,9 +46,7 @@ namespace IdSharp.Tagging.ID3v2.Frames.Items
 
         private void RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null)
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
