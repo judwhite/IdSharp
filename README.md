@@ -6,7 +6,7 @@
 
 ## Project Status
 
-- Complete, but not maintained. Issues and Pull Requests are lower priority.
+- Complete, but not actively maintained. Issues and Pull Requests may be responded to slowly.
 
 ## License
 
