@@ -281,11 +281,7 @@ namespace IdSharp.Tagging.ID3v2
         protected void FireWarning(string propertyName, string message)
         {
             // TODO - Add to log
-            InvalidDataEventHandler tmpInvalidDataEventHandler = InvalidData;
-            if (tmpInvalidDataEventHandler != null)
-            {
-                tmpInvalidDataEventHandler(this, new InvalidDataEventArgs(propertyName, message));
-            }
+            InvalidData?.Invoke(this, new InvalidDataEventArgs(propertyName, message));
         }
     }
 }

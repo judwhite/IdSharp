@@ -30,8 +30,7 @@ namespace IdSharp.Tagging.ID3v2
             frame.PropertyChanged += delegate
             {
                 m_FrameContainer.RaisePropertyChanged(tagProperty);
-                if (validator != null) 
-                    validator();
+                validator?.Invoke();
             };
         }
     }

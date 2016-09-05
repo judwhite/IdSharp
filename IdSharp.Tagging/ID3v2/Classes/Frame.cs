@@ -36,9 +36,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <param name="propertyName">The name of the property.</param>
         protected void RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null)
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public abstract string GetFrameID(ID3v2TagVersion tagVersion);
