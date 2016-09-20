@@ -24,7 +24,7 @@ namespace IdSharp.Tagging.ID3v2
         /// <summary>
         /// Occurs when invalid data is assigned to a property.
         /// </summary>
-        public event InvalidDataEventHandler InvalidData;
+        public event EventHandler<InvalidDataEventArgs> InvalidData;
 
         internal void Read(Stream stream, ID3v2TagVersion tagVersion, TagReadingInfo tagReadingInfo, int readUntil, int frameIDSize)
         {
