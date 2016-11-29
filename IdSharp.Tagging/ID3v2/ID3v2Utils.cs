@@ -234,7 +234,7 @@ namespace IdSharp.Tagging.ID3v2
 
         public static string ReadString(EncodingType textEncoding, Stream stream, int length)
         {
-            string returnValue;
+            string returnValue = string.Empty;
 
             byte[] byteArray = stream.Read(length);
 
@@ -262,10 +262,6 @@ namespace IdSharp.Tagging.ID3v2
                         returnValue = Encoding.Unicode.GetString(byteArray, 0, byteArray.Length);
                     }
                 }
-                else
-                {
-                    returnValue = "";
-                }
             }
             else if (textEncoding == EncodingType.UTF16BE)
             {
@@ -291,11 +287,9 @@ namespace IdSharp.Tagging.ID3v2
                 // Most likely bad data
                 string msg = string.Format("Text Encoding '{0}' unknown at position {1}", textEncoding, stream.Position);
                 Trace.WriteLine(msg);
-                return "";
             }
 
-            returnValue = returnValue.TrimEnd('\0');
-            return returnValue;
+            return returnValue.TrimEnd('\0');
         }
 
         public static string ReadString(EncodingType textEncoding, byte[] bytes)
