@@ -167,9 +167,10 @@ namespace IdSharp.Tagging.ID3v2
             }
 
             // Process iTunes comments
-            foreach (var comment in new List<IComments>(m_CommentsList))
+            for (int i = m_CommentsList.Count - 1; i >= 0; i--)
             {
-                if (comment.Description != null && comment.Description.StartsWith("iTun"))
+                IComments comment = m_CommentsList[i];
+                if (comment.Description?.StartsWith("iTun", StringComparison.Ordinal) == true)
                 {
                     m_CommentsList.Remove(comment);
                     m_iTunesCommentsList.Add(comment);
