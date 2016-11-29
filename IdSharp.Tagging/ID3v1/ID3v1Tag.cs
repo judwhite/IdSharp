@@ -358,8 +358,7 @@ namespace IdSharp.Tagging.ID3v1
                     break;
             }
 
-            string returnValue = ByteUtils.ISO88591.GetString(byteArray, 0, maxLength).TrimEnd('\0').TrimEnd(' ');
-            return returnValue;
+            return ByteUtils.ISO88591.GetString(byteArray, 0, maxLength).TrimEnd('\0').TrimEnd(' ');
         }
 
         /// <summary>
