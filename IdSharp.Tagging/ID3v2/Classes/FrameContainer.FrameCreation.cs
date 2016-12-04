@@ -278,23 +278,23 @@ namespace IdSharp.Tagging.ID3v2
             m_PodcastEpisodeUrl = CreateTextFrame("TGID", "TGID", null, "EpisodeUrl", null);
             m_PodcastFeedUrl = CreateTextFrame("WFED", "WFED", null, "PodcastFeedUrl", null);
 
-            m_PositionSynchronization = CreatePositionSynchronizationFrame("POSS", "POSS", null, "PositionSynchronization", null);
-            m_Ownership = CreateOwnershipFrame("OWNE", "OWNE", null, "Ownership", null);
-            m_RecommendedBufferSize = CreateRecommendedBufferSizeFrame("RBUF", "RBUF", "BUF", "RecommendedBufferSize", null /*todo*/);
-            m_InvolvedPersonList = CreateInvolvedPersonListFrame("TIPL", "IPLS", "IPL", "InvolvedPersonList", null/*TODO - needs validation?*/);
-            m_Languages = CreateLanguageFrame("TLAN", "TLAN", "TLA", "Languages", null);
-            m_MusicCDIdentifier = CreateMusicCDIdentifierFrame("MCDI", "MCDI", "MCI", "MusicCDIdentifier", null/*TODO?*/);
-            m_EventTiming = CreateEventTimingFrame("ETCO", "ETCO", "ETC", "EventTiming", null/*TODO - needs validation?*/);
-            m_MpegLookupTable = CreateMpegLookupTableFrame("MLLT", "MLLT", "MLL", "MpegLookupTable", null);
-            m_Reverb = CreateReverbFrame("RVRB", "RVRB", "REV", "Reverb", null);
-            m_SynchronizedTempoCodes = CreateSynchronizedTempoCodesFrame("SYTC", "SYTC", "STC", "SynchronizedTempoCodeList", null);
-            m_SeekNextTag = CreateSeekFrame("SEEK", "SEEK", null, "SeekNextTag", null);
+            m_PositionSynchronization = CreateFrame<PositionSynchronization>("POSS", "POSS", null, "PositionSynchronization", null);
+            m_Ownership = CreateFrame<Ownership>("OWNE", "OWNE", null, "Ownership", null);
+            m_RecommendedBufferSize = CreateFrame<RecommendedBufferSize>("RBUF", "RBUF", "BUF", "RecommendedBufferSize", null /*todo*/);
+            m_InvolvedPersonList = CreateFrame<InvolvedPersonList>("TIPL", "IPLS", "IPL", "InvolvedPersonList", null/*TODO - needs validation?*/);
+            m_Languages = CreateFrame<LanguageFrame>("TLAN", "TLAN", "TLA", "Languages", null);
+            m_MusicCDIdentifier = CreateFrame<MusicCDIdentifier>("MCDI", "MCDI", "MCI", "MusicCDIdentifier", null/*TODO?*/);
+            m_EventTiming = CreateFrame<EventTiming>("ETCO", "ETCO", "ETC", "EventTiming", null/*TODO - needs validation?*/);
+            m_MpegLookupTable = CreateFrame<MpegLookupTable>("MLLT", "MLLT", "MLL", "MpegLookupTable", null);
+            m_Reverb = CreateFrame<Reverb>("RVRB", "RVRB", "REV", "Reverb", null);
+            m_SynchronizedTempoCodes = CreateFrame<SynchronizedTempoCodes>("SYTC", "SYTC", "STC", "SynchronizedTempoCodeList", null);
+            m_SeekNextTag = CreateFrame<SeekNextTag>("SEEK", "SEEK", null, "SeekNextTag", null);
             // Technically only supported in ID3v2.4, but some ID3v2.3 implementations use this frame
-            m_MusicianCreditsList = CreateMusicianCreditsListFrame("TMCL", "TMCL", null, "MusicianCreditsList", null);
-            m_AudioSeekPointIndex = CreateAudioSeekPointIndexFrame("ASPI", "ASPI", null, "AudioSeekPointIndex", null);
+            m_MusicianCreditsList = CreateFrame<MusicianCreditsList>("TMCL", "TMCL", null, "MusicianCreditsList", null);
+            m_AudioSeekPointIndex = CreateFrame<AudioSeekPointIndex>("ASPI", "ASPI", null, "AudioSeekPointIndex", null);
             m_PlayCount = CreateFrame<PlayCount>("PCNT", "PCNT", "CNT", "PlayCount");
             m_IsPodcast = CreateFrame<Podcast>("PCST", "PCST", "PCS", "Podcast");
-            
+
             // TODO: TYER->TDRL, TDAT,TIME->TDRC (in setters, not here)
 
             // URL frames
@@ -317,96 +317,20 @@ namespace IdSharp.Tagging.ID3v2
             _id3v23FrameAliases.Add("EQU2", "EQUA");
         }
 
-        private T CreateFrame<T>(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property)
-            where T : IFrame, new()
+        private TFrame CreateFrame<TFrame>(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property)
+            where TFrame : IFrame, new()
         {
-            T frame = new T();
+            TFrame frame = new TFrame();
             Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, frame, "TODO", property, null);
             return frame;
         }
 
-        /*private PlayCount CreatePlayCountFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, MethodInvoker validator)
+        private TFrame CreateFrame<TFrame>(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
+            where TFrame : IFrame, new()
         {
-            PlayCount audioSeekPointIndex = new PlayCount();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, audioSeekPointIndex, "TODO", property, validator);
-            return audioSeekPointIndex;
-        }*/
-
-        private AudioSeekPointIndex CreateAudioSeekPointIndexFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            AudioSeekPointIndex audioSeekPointIndex = new AudioSeekPointIndex();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, audioSeekPointIndex, "TODO", property, validator);
-            return audioSeekPointIndex;
-        }
-
-        private SynchronizedTempoCodes CreateSynchronizedTempoCodesFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            SynchronizedTempoCodes synchronizedTempoCodes = new SynchronizedTempoCodes();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, synchronizedTempoCodes, "TODO", property, validator);
-            return synchronizedTempoCodes;
-        }
-
-        private Reverb CreateReverbFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            Reverb reverb = new Reverb();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, reverb, "TODO", property, validator);
-            return reverb;
-        }
-
-        private MpegLookupTable CreateMpegLookupTableFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            MpegLookupTable mpegLookupTable = new MpegLookupTable();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, mpegLookupTable, "TODO", property, validator);
-            return mpegLookupTable;
-        }
-
-        private EventTiming CreateEventTimingFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            EventTiming eventTiming = new EventTiming();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, eventTiming, "TODO", property, validator);
-            return eventTiming;
-        }
-
-        private MusicianCreditsList CreateMusicianCreditsListFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            MusicianCreditsList musicianCreditsList = new MusicianCreditsList();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, musicianCreditsList, "TODO", property, validator);
-            return musicianCreditsList;
-        }
-
-        private SeekNextTag CreateSeekFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            SeekNextTag seekNextTag = new SeekNextTag();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, seekNextTag, "TODO", property, validator);
-            return seekNextTag;
-        }
-
-        private RecommendedBufferSize CreateRecommendedBufferSizeFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            RecommendedBufferSize recommendedBufferSize = new RecommendedBufferSize();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, recommendedBufferSize, "TODO", property, validator);
-            return recommendedBufferSize;
-        }
-
-        private Ownership CreateOwnershipFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            Ownership ownership = new Ownership();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, ownership, "TODO", property, validator);
-            return ownership;
-        }
-
-        private PositionSynchronization CreatePositionSynchronizationFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            PositionSynchronization positionSynchronization = new PositionSynchronization();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, positionSynchronization, "TODO", property, validator);
-            return positionSynchronization;
-        }
-
-        private InvolvedPersonList CreateInvolvedPersonListFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
-        {
-            InvolvedPersonList involvedPersonList = new InvolvedPersonList();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, involvedPersonList, "TODO", property, validator);
-            return involvedPersonList;
+            TFrame frame = new TFrame();
+            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, frame, "TODO", property, validator);
+            return frame;
         }
 
         private void Bind(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, IFrame frame, string frameProperty, string property, Action validator)
