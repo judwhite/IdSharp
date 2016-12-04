@@ -1,3 +1,5 @@
+using System;
+
 namespace IdSharp.Common.Events
 {
     /// <summary>
@@ -8,6 +10,6 @@ namespace IdSharp.Common.Events
         /// <summary>
         /// Occurs when a property in the object has been set to an incorrect state.
         /// </summary>
-        event InvalidDataEventHandler InvalidData;
+        event EventHandler<InvalidDataEventArgs> InvalidData;
     }
 }
