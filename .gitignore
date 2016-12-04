@@ -4,5 +4,6 @@
 *.suo
 *.csproj.user
 *.ReSharper.user
+*.DotSettings
 bin/
 obj/
