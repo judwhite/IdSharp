@@ -9,11 +9,6 @@ namespace IdSharp.Common.Tests.Utils
     [TestFixture]
     public class PathUtilsTest
     {
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void GetTempFileName_ArgumentExceptions()
         {
