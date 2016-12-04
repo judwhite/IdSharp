@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.WinForms", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Wpf", "Examples\IdSharp.Example.Wpf\IdSharp.Example.Wpf.csproj", "{C84CCFF5-D059-443B-B913-35A0F73AA2FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Examples.Console.TagConverter", "Examples\IdSharp.Examples.Console.TagConverter\IdSharp.Examples.Console.TagConverter\IdSharp.Examples.Console.TagConverter.csproj", "{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Console.TagConverter", "Examples\IdSharp.Example.Console.TagConverter\IdSharp.Example.Console.TagConverter.csproj", "{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
