@@ -117,9 +117,7 @@ namespace IdSharp.Tagging.ID3v2
                 Trace.WriteLine(msg);
 
                 stream.Seek(-4, SeekOrigin.Current);
-                _isCRCDataPresent = false;
-                _paddingSize = 0;
-                _totalFrameCRC = 0;
+                Clear();
                 return;
             }
 
