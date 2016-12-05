@@ -292,8 +292,8 @@ namespace IdSharp.Tagging.ID3v2
             // Technically only supported in ID3v2.4, but some ID3v2.3 implementations use this frame
             m_MusicianCreditsList = CreateFrame<MusicianCreditsList>("TMCL", "TMCL", null, "MusicianCreditsList", null);
             m_AudioSeekPointIndex = CreateFrame<AudioSeekPointIndex>("ASPI", "ASPI", null, "AudioSeekPointIndex", null);
-            m_PlayCount = CreateFrame<PlayCount>("PCNT", "PCNT", "CNT", "PlayCount");
-            m_IsPodcast = CreateFrame<Podcast>("PCST", "PCST", "PCS", "Podcast");
+            m_PlayCount = CreateFrame<PlayCount>("PCNT", "PCNT", "CNT", "PlayCount", null);
+            m_IsPodcast = CreateFrame<Podcast>("PCST", "PCST", "PCS", "Podcast", null);
 
             // TODO: TYER->TDRL, TDAT,TIME->TDRC (in setters, not here)
 
@@ -315,14 +315,6 @@ namespace IdSharp.Tagging.ID3v2
             _id3v23FrameAliases.Add("RVA2", "RVAD");
             _id3v23FrameAliases.Add("TIPL", "IPLS");
             _id3v23FrameAliases.Add("EQU2", "EQUA");
-        }
-
-        private TFrame CreateFrame<TFrame>(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property)
-            where TFrame : IFrame, new()
-        {
-            TFrame frame = new TFrame();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, frame, "TODO", property, null);
-            return frame;
         }
 
         private TFrame CreateFrame<TFrame>(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
