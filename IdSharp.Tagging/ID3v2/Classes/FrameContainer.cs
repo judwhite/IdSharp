@@ -263,23 +263,34 @@ namespace IdSharp.Tagging.ID3v2
             if (frameIDs == null)
                 throw new ArgumentNullException("frameIDs");
 
+            if (frameIDs.Any() == false)
+                return new List<IFrame>();
+
             List<IFrame> allFrames = GetAllFrames(tagVersion);
-            foreach (IFrame frame in new List<IFrame>(allFrames))
+            for (int i = allFrames.Count - 1; i >= 0; i--)
             {
+                IFrame frame = allFrames[i];
+
+                // Cached frame IDs.
+                string iD3v22ID = frame.GetFrameID(ID3v2TagVersion.ID3v22);
+                string iD3v23ID = frame.GetFrameID(ID3v2TagVersion.ID3v23);
+                string iD3v24ID = frame.GetFrameID(ID3v2TagVersion.ID3v24);
+
                 bool found = false;
                 foreach (string frameID in frameIDs)
                 {
-                    if (frame.GetFrameID(ID3v2TagVersion.ID3v22) == frameID ||
-                        frame.GetFrameID(ID3v2TagVersion.ID3v23) == frameID ||
-                        frame.GetFrameID(ID3v2TagVersion.ID3v24) == frameID)
+                    if (iD3v22ID.Equals(frameID, StringComparison.Ordinal) ||
+                        iD3v23ID.Equals(frameID, StringComparison.Ordinal) ||
+                        iD3v24ID.Equals(frameID, StringComparison.Ordinal))
                     {
                         found = true;
                         break;
                     }
                 }
-
                 if (!found)
-                    allFrames.Remove(frame);
+                {
+                    allFrames.RemoveAt(i);
+                }
             }
 
             return allFrames;
