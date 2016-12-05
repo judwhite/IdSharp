@@ -167,14 +167,17 @@ namespace IdSharp.Tagging.ID3v2
             }
 
             // Process iTunes comments
-            for (int i = 0; i < m_CommentsList.Count; i++)
+            for (int i = 0; i < m_CommentsList.Count;)
             {
                 var comment = m_CommentsList[i];
                 if (comment.Description?.StartsWith("iTun", StringComparison.Ordinal) == true)
                 {
                     m_CommentsList.RemoveAt(i);
                     m_iTunesCommentsList.Add(comment);
-                    i--;
+                }
+                else
+                {
+                    i++;
                 }
             }
 
