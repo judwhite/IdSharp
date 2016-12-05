@@ -527,6 +527,16 @@ namespace IdSharp.Tagging.ID3v2
         }
 
         /// <summary>
+        /// Gets the list of ReplayGain frames (stored in TXXX/TXX).
+        /// For example: REPLAYGAIN_TRACK_GAIN, REPLAYGAIN_TRACK_PEAK, REPLAYGAIN_ALBUM_GAIN, REPLAYGAIN_ALBUM_PEAK.
+        /// </summary>
+        /// <value>The BindingList of ReplayGain frames.  For example: REPLAYGAIN_TRACK_GAIN, REPLAYGAIN_TRACK_PEAK, REPLAYGAIN_ALBUM_GAIN, REPLAYGAIN_ALBUM_PEAK.</value>
+        public BindingList<ITXXXFrame> ReplayGainList
+        {
+            get { return m_ReplayGainList; }
+        }
+
+        /// <summary>
         /// Gets the list of commercial info URLs.  WCOM/WCM.
         /// </summary>
         /// <value>The list of commercial info URLs.  WCOM/WCM.</value>

@@ -181,6 +181,16 @@ namespace IdSharp.Tagging.ID3v2
                 }
             }
 
+            // Process ReplayGain frames
+            foreach (var frame in new List<ITXXXFrame>(m_UserDefinedTextList))
+            {
+                if (frame.Description != null && frame.Description.ToUpper().StartsWith("REPLAYGAIN_"))
+                {
+                    m_UserDefinedTextList.Remove(frame);
+                    m_ReplayGainList.Add(frame);
+                }
+            }
+
             // Process genre // TODO: may need cleanup
             if (!string.IsNullOrEmpty(m_Genre.Value))
             {
@@ -237,6 +247,13 @@ namespace IdSharp.Tagging.ID3v2
                 {
                     allFrames.AddRange(m_iTunesCommentsList);
                 }
+
+                // Special handling for ReplayGain frames
+                if (kvp.Key == "TXXX" || kvp.Key == "TXX")
+                {
+                    allFrames.AddRange(m_ReplayGainList);
+                }
+                
             }
 
             allFrames.AddRange(_unknownFrames);
@@ -315,6 +332,17 @@ namespace IdSharp.Tagging.ID3v2
                     {
                         foreach (var frame in m_iTunesCommentsList)
                         {
+                            // iTunes will only respect comments that end with a terminating null character
+                            byte[] rawData = ((Comments) frame).GetBytes(tagVersion, true);
+                            frameData.Write(rawData);
+                        }
+                    }
+
+                    // Special handling for ReplayGain frames
+                    if (kvp.Key == "TXXX" || kvp.Key == "TXX")
+                    {
+                        foreach (var frame in m_ReplayGainList)
+                        {   
                             byte[] rawData = frame.GetBytes(tagVersion);
                             frameData.Write(rawData);
                         }

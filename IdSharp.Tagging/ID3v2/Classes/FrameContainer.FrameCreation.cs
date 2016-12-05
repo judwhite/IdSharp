@@ -31,6 +31,7 @@ namespace IdSharp.Tagging.ID3v2
         private readonly UrlBindingList m_ArtistUrlList;
         private readonly UrlBindingList m_CommercialInfoUrlList;
         private readonly UserDefinedTextBindingList m_UserDefinedTextList;
+        private readonly UserDefinedTextBindingList m_ReplayGainList;
         private readonly RelativeVolumeAdjustmentBindingList m_RelativeVolumeAdjustmentList; // TODO: this is a single occurrence in 2.3 and 2.2
         private readonly UnsynchronizedLyricsBindingList m_UnsynchronizedLyricsList;
         private readonly GeneralEncapsulatedObjectBindingList m_GeneralEncapsulatedObjectList;
@@ -155,6 +156,7 @@ namespace IdSharp.Tagging.ID3v2
             m_CommercialInfoUrlList = new UrlBindingList("WCOM", "WCOM", "WCM");
             m_ArtistUrlList = new UrlBindingList("WOAR", "WOAR", "WAR");
             m_UserDefinedTextList = new UserDefinedTextBindingList();
+            m_ReplayGainList = new UserDefinedTextBindingList();
             m_RelativeVolumeAdjustmentList = new RelativeVolumeAdjustmentBindingList();
             m_UnsynchronizedLyricsList = new UnsynchronizedLyricsBindingList();
             m_GeneralEncapsulatedObjectList = new GeneralEncapsulatedObjectBindingList();
@@ -182,6 +184,7 @@ namespace IdSharp.Tagging.ID3v2
             //"CommercialInfoUrl", new MethodInvoker(ValidateCommercialInfoUrl)); // TODO
             AddMultipleOccurrenceFrame("WOAR", "WOAR", "WAR", m_ArtistUrlList);
             AddMultipleOccurrenceFrame("TXXX", "TXXX", "TXX", m_UserDefinedTextList);
+            AddMultipleOccurrenceFrame(null, null, null, m_ReplayGainList);
             AddMultipleOccurrenceFrame("RVA2", "RVAD", "RVA", m_RelativeVolumeAdjustmentList);
             AddMultipleOccurrenceFrame("USLT", "USLT", "ULT", m_UnsynchronizedLyricsList);
             AddMultipleOccurrenceFrame("GEOB", "GEOB", "GEO", m_GeneralEncapsulatedObjectList);
