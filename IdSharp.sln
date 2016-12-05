@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Wpf", "Exam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Example.Console.TagConverter", "Examples\IdSharp.Example.Console.TagConverter\IdSharp.Example.Console.TagConverter.csproj", "{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdSharp.Tagging.Tests", "Tests\IdSharp.Tagging.Tests\IdSharp.Tagging.Tests.csproj", "{BE252912-4EEA-424A-BEE1-4EA134D051A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,14 @@ Global
 		{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}.Release|Any CPU.ActiveCfg = Release|x86
 		{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}.Release|x86.ActiveCfg = Release|x86
 		{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7}.Release|x86.Build.0 = Release|x86
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Debug|x86.Build.0 = Debug|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +119,6 @@ Global
 		{75AF7A05-6D62-42DF-92A2-D24AD1084BAA} = {4FE79B14-AC9E-45BE-8412-FBD13E7D1F0C}
 		{C84CCFF5-D059-443B-B913-35A0F73AA2FE} = {4FE79B14-AC9E-45BE-8412-FBD13E7D1F0C}
 		{70C9EC79-F3EB-43A0-B6B1-1C306034A5B7} = {4FE79B14-AC9E-45BE-8412-FBD13E7D1F0C}
+		{BE252912-4EEA-424A-BEE1-4EA134D051A6} = {2BA9EB65-1684-47D1-A477-868048A3CCD0}
 	EndGlobalSection
 EndGlobal
