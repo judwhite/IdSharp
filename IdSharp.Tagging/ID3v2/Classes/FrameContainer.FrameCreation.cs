@@ -321,17 +321,13 @@ namespace IdSharp.Tagging.ID3v2
             where TFrame : IFrame, new()
         {
             TFrame frame = new TFrame();
-            Bind(id3v24FrameID, id3v23FrameID, id3v22FrameID, frame, "TODO", property, validator);
-            return frame;
-        }
-
-        private void Bind(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, IFrame frame, string frameProperty, string property, Action validator)
-        {
-            _frameBinder.Bind(frame, frameProperty, property, validator);
+            _frameBinder.Bind(frame, "TODO", property, validator);
 
             if (id3v24FrameID != null) _id3v24SingleOccurrenceFrames.Add(id3v24FrameID, frame);
             if (id3v23FrameID != null) _id3v23SingleOccurrenceFrames.Add(id3v23FrameID, frame);
             if (id3v22FrameID != null) _id3v22SingleOccurrenceFrames.Add(id3v22FrameID, frame);
+
+            return frame;
         }
 
         private MusicCDIdentifier CreateMusicCDIdentifierFrame(string id3v24FrameID, string id3v23FrameID, string id3v22FrameID, string property, Action validator)
