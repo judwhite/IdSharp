@@ -322,14 +322,17 @@ namespace IdSharp.Tagging.VorbisComment
             if (seekTableBlock != null) 
                 myMetaDataBlocks.Add(seekTableBlock);
 
-            // Add other blocks we read from the original file.
-            foreach (FlacMetaDataBlock metaDataBlock in _metaDataBlockList)
+            // Add other blocks we read from the original file, if any.
+            if (_metaDataBlockList != null)
             {
-                if (metaDataBlock.BlockType == FlacMetaDataBlockType.Application ||
-                    metaDataBlock.BlockType == FlacMetaDataBlockType.CueSheet ||
-                    metaDataBlock.BlockType == FlacMetaDataBlockType.Picture)
+                foreach (FlacMetaDataBlock metaDataBlock in _metaDataBlockList)
                 {
-                    myMetaDataBlocks.Add(metaDataBlock);
+                    if (metaDataBlock.BlockType == FlacMetaDataBlockType.Application ||
+                        metaDataBlock.BlockType == FlacMetaDataBlockType.CueSheet ||
+                        metaDataBlock.BlockType == FlacMetaDataBlockType.Picture)
+                    {
+                        myMetaDataBlocks.Add(metaDataBlock);
+                    }
                 }
             }
 
